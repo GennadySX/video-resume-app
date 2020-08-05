@@ -1,0 +1,62 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "lib": ["es6"],
+    "moduleResolution": "node",
+    "noEmit": true,
+    "strict": true,
+    "target": "esnext",
+    "module": "commonjs",
+    "importHelpers": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "sourceMap": true
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "baseUrl": ".",
+  "paths": {
+    "@screens/*": [
+      "./src/screen/**/*"
+    ],
+    "@helpers/*": [
+      "./src/helpers/**/*"
+    ],
+    "@components/*": [
+      "./src/components/**/*"
+    ],
+    "@actions/*": [
+      "./src/store/actions/**/*"
+    ],
+    "@reducers/*": [
+      "./src/store/reducers/**/*"
+    ],
+    "@assets/*": [
+      "./src/assets/**/*"
+    ],
+    "@containers/*": [
+      "./src/containers/**/*"
+    ],
+    "@styles/*": [
+      "./src/components/**/*"
+    ],
+    "@constants/*": [
+      "./src/components/**/*"
+    ],
+    "@routes/*": [
+      "./src/components/**/*"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
+}
