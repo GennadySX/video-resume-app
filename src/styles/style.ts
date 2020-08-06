@@ -19,8 +19,5 @@ export const styles = StyleSheet.create({
   defaultText: {
     color: unActive,
   },
-  introScreen: {
-
-  }
-
+  introScreen: {},
 });
