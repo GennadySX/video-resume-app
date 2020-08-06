@@ -56,6 +56,13 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Ionicons.ttf</string>
+		<string>Manrope-Bold.ttf</string>
+		<string>Manrope-Light.ttf</string>
+		<string>Manrope-Medium.ttf</string>
+		<string>Manrope-Regular.ttf</string>
+		<string>Manrope-Semibold.ttf</string>
+		<string>Manrope-Thin.ttf</string>
+		<string>OpenSans-Semibold.ttf</string>
 	</array>
 </dict>
 </plist>
