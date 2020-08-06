@@ -5,6 +5,7 @@ import {
   StyleSheetProperties,
   Text,
   TouchableOpacity,
+  View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {Width} from '../../../helpers/Normalizer';
@@ -28,6 +29,7 @@ export interface IButton {
   icon?: Icons;
   style?: StyleSheetProperties | any;
   textStyle?: StyleSheetProperties | any;
+  iconSize?: StyleSheetProperties | any;
   shadow?: boolean;
 }
 
@@ -42,29 +44,32 @@ export default function Button(props: IButton) {
         end={{x: 1, y: 0}}
         style={s.btn}>
         {props.icon && <Image source={props.icon} style={s.btnIcon} />}
-        <Text style={s.btnText}>{props.title}</Text>
+        <Text style={[s.btnText, props.textStyle,{padding: !props.icon ? 3 : 0}]}>{props.title}</Text>
       </LinearGradient>
     </TouchableOpacity>
   ) : (
-    <TouchableOpacity
-      onPress={() => props.onPress()}
-      style={[
-        s.block,
-        s.btn,
-        props.style,
-        props.shadow && s.shadow,
-        props.type === buttonType.white && {backgroundColor: 'white'},
-      ]}>
-      {props.icon && <Image source={props.icon} style={s.btnIcon} />}
-      <Text
+    <View style={s.block}>
+      <TouchableOpacity
+        onPress={() => props.onPress()}
         style={[
-          s.btnText,
-          props.textStyle,
-          props.type === buttonType.white && {color: '#000000'},
+          s.btn,
+          props.style,
+          props.shadow && s.shadow,
+          props.type === buttonType.white
+            ? {backgroundColor: 'white'}
+            : {backgroundColor: props.type},
         ]}>
-        {props.title}
-      </Text>
-    </TouchableOpacity>
+        {props.icon && <Image source={props.icon} style={[s.btnIcon,  props.iconSize && {width: props.iconSize, height: props.iconSize}]} />}
+        <Text
+          style={[
+            s.btnText,
+            props.textStyle,
+            props.type === buttonType.white && {color: '#000000'},
+          ]}>
+          {props.title}
+        </Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
@@ -80,7 +85,6 @@ const s = StyleSheet.create({
   btn: {
     flexDirection: 'row',
     alignItems: 'center',
-    alignContent: 'center',
     justifyContent: 'center',
     padding: 10,
     paddingLeft: 20,
@@ -95,7 +99,7 @@ const s = StyleSheet.create({
     marginRight: 15,
   },
   btnText: {
-    fontSize: 17,
+    fontSize: 14.5,
     fontFamily: 'Manrope-Medium',
     color: '#fafafa',
   },

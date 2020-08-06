@@ -1,5 +1,6 @@
 import AuthScreen from '../screens/Auth';
 import IntroScreen from '../screens/Intro';
+import RegisterScreen from '../screens/Register';
 
 export const Routes = [
   {
@@ -9,5 +10,9 @@ export const Routes = [
   {
     name: 'Auth',
     component: AuthScreen,
+  },
+  {
+    name: 'Register',
+    component: RegisterScreen,
   },
 ];
