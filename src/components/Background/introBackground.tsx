@@ -1,5 +1,11 @@
 import React, {ReactChild, ReactChildren} from 'react';
-import {StyleSheet, View, Image} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import {Height, Width} from '../../helpers/Normalizer';
 
 export interface IIntroBackgroundComponent {
@@ -12,12 +18,15 @@ const br = require('../../assets/img/background/bottom-round.png');
 
 export default function IntroBackground(props: IIntroBackgroundComponent) {
   return (
-    <View style={s.block}>
+    <KeyboardAvoidingView
+      style={s.block}
+      enabled={false}
+      behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
       <Image source={tl} style={[s.backImage, s.tl]} />
       <Image source={tr} style={[s.backImage, s.tr]} />
       <Image source={br} style={[s.backImage, s.br]} />
       {props.children}
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -33,8 +42,8 @@ const s = StyleSheet.create({
   },
   tl: {
     left: 0,
-      height: '30%',
-      width: '30%',
+    height: Width * 0.3,
+    width: Width * 0.25,
   },
   tr: {
     top: '10%',

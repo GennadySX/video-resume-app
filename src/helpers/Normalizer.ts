@@ -4,4 +4,6 @@ const Window = Dimensions.get('window');
 const Width = Window.width;
 const Height = Window.height;
 
-export {Window, Width, Height};
+const phoneMask = (phone: string) => {};
+
+export {Window, Width, Height, phoneMask};

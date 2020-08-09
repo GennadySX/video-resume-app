@@ -7,11 +7,12 @@ interface ITitle {
   center?: boolean;
   left?: boolean;
   right?: boolean;
+  style?: any;
 }
 
-export default function Title({text}: ITitle) {
+export default function Title({text, style}: ITitle) {
   return (
-    <View style={s.titleBlock}>
+    <View style={[s.titleBlock, style]}>
       <Text style={s.text}>{text} </Text>
     </View>
   );
@@ -25,7 +26,8 @@ const s = StyleSheet.create({
   },
   titleBlock: {
     position: 'relative',
-    left: Width * -0.28,
-    marginBottom: 40,
+    left: -20,
+    width: Width * 0.7,
+    marginBottom: 30,
   },
 });

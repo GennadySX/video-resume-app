@@ -15,15 +15,13 @@ const App = () => {
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{headerShown: false}}
-            initialRouteName={'Register'}>
+            initialRouteName={'SearchPage'}>
             {Routes.map((screen: any, index: number) => (
               <Stack.Screen
                 key={index}
                 name={screen.name}
                 component={screen.component}
-                options={{
-                  headerShow: false,
-                }}
+                options={screen.options}
               />
             ))}
           </Stack.Navigator>

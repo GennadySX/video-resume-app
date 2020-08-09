@@ -1,5 +1,6 @@
 export enum Icons {
   back = require('../assets/img/icons/back.png'),
+  next = require('../assets/img/icons/right.png'),
   archive = require('../assets/img/icons/archive.png'),
   apple = require('../assets/img/icons/apple.png'),
   google = require('../assets/img/icons/google.png'),
@@ -23,4 +24,10 @@ export enum Icons {
   search = require('../assets/img/icons/search.png'),
   searchActiveOutline = require('../assets/img/icons/searchActiveOutline.png'),
   send = require('../assets/img/icons/send.png'),
+}
+
+export enum Slide {
+  slide1 = require('../assets/img/slide/a.png'),
+  slide2 = require('../assets/img/slide/ab.png'),
+  slide3 = require('../assets/img/slide/b.png'),
 }
