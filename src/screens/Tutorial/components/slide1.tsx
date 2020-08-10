@@ -35,12 +35,12 @@ const s = StyleSheet.create({
     resizeMode: 'contain',
   },
   btnSkip: {
-      padding: 10,
+    padding: 10,
     alignSelf: 'flex-end',
     position: 'relative',
   },
   btnSkipText: {
     color: 'gray',
-    fontSize: 17,
+    fontSize: 16,
   },
 });

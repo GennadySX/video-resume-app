@@ -48,23 +48,22 @@ export default function Button(props: IButton) {
       </LinearGradient>
     </TouchableOpacity>
   ) : (
-    <View style={s.block}>
+    <View style={[s.block, props.style]}>
       <TouchableOpacity
         onPress={() => props.onPress()}
         style={[
           s.btn,
-          props.style,
           props.shadow && s.shadow,
           props.type === buttonType.white
             ? {backgroundColor: 'white'}
-            : {backgroundColor: props.type},
+            : {backgroundColor: props.type, ...props.style},
         ]}>
         {props.icon && <Image source={props.icon} style={[s.btnIcon,  props.iconSize && {width: props.iconSize, height: props.iconSize}]} />}
         <Text
           style={[
             s.btnText,
-            props.textStyle,
             props.type === buttonType.white && {color: '#000000'},
+            props.textStyle,
           ]}>
           {props.title}
         </Text>

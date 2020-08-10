@@ -3,6 +3,8 @@ import IntroScreen from '../screens/Intro';
 import RegisterScreen from '../screens/Register';
 import TutorialScreen from "../screens/Tutorial";
 import SearchPageScreen from "../screens/SearchPage";
+import VacancyScreen from "../screens/Vacancy";
+import SearchResultScreen from "../screens/SearchResult";
 
 export const Routes = [
   {
@@ -28,6 +30,16 @@ export const Routes = [
   {
     name: 'SearchPage',
     component: SearchPageScreen,
+    options: {headerShow: false},
+  },
+  {
+    name: 'SearchResult',
+    component: SearchResultScreen,
+    options: {headerShow: false},
+  },
+  {
+    name: 'Vacancy',
+    component: VacancyScreen,
     options: {headerShow: false},
   },
 ];

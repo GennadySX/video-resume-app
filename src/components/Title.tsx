@@ -8,19 +8,19 @@ interface ITitle {
   left?: boolean;
   right?: boolean;
   style?: any;
+  fontSize?: any;
 }
 
-export default function Title({text, style}: ITitle) {
+export default function Title({text, style, fontSize}: ITitle) {
   return (
     <View style={[s.titleBlock, style]}>
-      <Text style={s.text}>{text} </Text>
+      <Text style={[s.text, {fontSize: fontSize || 27}]}>{text} </Text>
     </View>
   );
 }
 
 const s = StyleSheet.create({
   text: {
-    fontSize: 27,
     fontFamily: 'Manrope-Bold',
     fontWeight: '600',
   },

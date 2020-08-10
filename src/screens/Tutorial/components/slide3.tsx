@@ -4,29 +4,34 @@ import Title from '../../../components/Title';
 import {Icons, Slide} from '../../../helpers/Assets';
 import {Width} from "../../../helpers/Normalizer";
 
-export default function Slide3() {
+export default function Slide3(props: any) {
   return (
     <View style={s.block}>
-      <TouchableOpacity style={s.btnSkip}>
+      <TouchableOpacity style={s.btnSkip} onPress={() => {}}>
         <Text style={s.btnSkipText}>Пропустить</Text>
       </TouchableOpacity>
-      <Title text={'Работа в короткие сроки'} style={{left: 0, marginTop: 25}} />
+      <Title text={'Работа в короткие сроки'} style={s.title} />
       <Text style={s.text}>
         Экономия времени позволяет найти работу в короткие сроки
       </Text>
       <Image source={Slide.slide3} style={s.img} />
-      <Image source={Icons.next} style={[s.img, s.next]} />
+      <TouchableOpacity onPress={() => props.onClick()} style={s.next}>
+          <Image source={Icons.next} style={[s.img]} />
+      </TouchableOpacity>
     </View>
   );
 }
 
 const s = StyleSheet.create({
   block: {
-    padding: 20,
+    padding: 25,
   },
+  title: {left: 0, marginTop: 25, position: 'relative', top: 25},
   text: {
     fontSize: 14,
     fontFamily: 'Manrope-Medium',
+    position: 'relative',
+    top: 15
   },
   img: {
     width: 300,
@@ -37,6 +42,7 @@ const s = StyleSheet.create({
   btnSkip: {
     alignSelf: 'flex-end',
     position: 'relative',
+    top: 10
   },
   btnSkipText: {
     color: 'gray',
@@ -44,7 +50,7 @@ const s = StyleSheet.create({
   },
   next: {
     alignSelf: 'flex-end',
-    left: Width * 0.333,
-    top: 11
+    left: Width * 0.379,
+    bottom: 22,
   }
 });

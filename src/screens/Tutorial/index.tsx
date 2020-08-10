@@ -6,8 +6,8 @@ import Swiper from 'react-native-swiper';
 import {Icons} from '../../helpers/Assets';
 import {Height} from '../../helpers/Normalizer';
 import Slide1 from './components/slide1';
-import Slide2 from "./components/slide2";
-import Slide3 from "./components/slide3";
+import Slide2 from './components/slide2';
+import Slide3 from './components/slide3';
 
 export interface ITutorialScreen {}
 
@@ -23,9 +23,10 @@ class TutorialScreen extends React.Component<any, any> {
     this.swiperRef = React.createRef();
   }
 
-
-  componentDidMount(): void {
-    console.log('ref is ', this.swiperRef)
+  next(index: number) {
+    Promise.resolve(this.swiperRef.scrollTo(index)).then(() => index < 2 &&
+      this.setState({swipeIndex: index }),
+    );
   }
 
   render() {
@@ -33,8 +34,7 @@ class TutorialScreen extends React.Component<any, any> {
     return (
       <IntroBackground>
         <Swiper
-
-            ref={(ref:any) => this.swiperRef = ref}
+          ref={(ref: any) => (this.swiperRef = ref)}
           loop={false}
           showsButtons={true}
           buttonWrapperStyle={styles.btnWrapper}
@@ -43,7 +43,7 @@ class TutorialScreen extends React.Component<any, any> {
           prevButton={<View />}
           paginationStyle={{
             position: 'relative',
-            left: -150,
+            left: -120,
             bottom: 50,
           }}
           dotStyle={{
@@ -57,9 +57,10 @@ class TutorialScreen extends React.Component<any, any> {
             borderRadius: 50,
           }}
           activeDotColor={'#481380'}
-
           nextButton={
-            <TouchableOpacity style={styles.nextBtn} onPress={() => this.swiperRef.scrollTo(2)}>
+            <TouchableOpacity
+              style={styles.nextBtn}
+              onPress={() => this.next(swipeIndex + 1)}>
               <Image source={Icons.next} />
             </TouchableOpacity>
           }>
@@ -70,7 +71,7 @@ class TutorialScreen extends React.Component<any, any> {
             <Slide2 />
           </View>
           <View style={styles.slide3}>
-            <Slide3 />
+            <Slide3 onClick={() => this.props.navigation.navigate('SearchPage')} />
           </View>
         </Swiper>
       </IntroBackground>

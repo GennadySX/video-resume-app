@@ -1,9 +1,16 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  Image,
+  ScrollView,
+} from 'react-native';
 import Filter from './components/Filter';
 import BlockTab from './components/BlockTab';
 import Title from '../../components/Title';
-
+import Card from "../../components/Card";
 export interface ISearchPage {}
 
 export default class SearchPageScreen extends React.Component<any, any> {
@@ -15,9 +22,17 @@ export default class SearchPageScreen extends React.Component<any, any> {
   render() {
     return (
       <View style={s.block}>
-        <Title text={'Поиск работы'} style={{left: 0}}/>
+        <Title
+          text={'Поиск работы'}
+          style={{left: 0, marginBottom: 20}}
+        />
         <Filter />
         <BlockTab />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Card onClick={() => this.props.navigation.navigate('Vacancy')} />
+          <Card  onClick={() => this.props.navigation.navigate('Vacancy')}/>
+          <Card  onClick={() => this.props.navigation.navigate('Vacancy')} latest />
+        </ScrollView>
       </View>
     );
   }
@@ -25,7 +40,7 @@ export default class SearchPageScreen extends React.Component<any, any> {
 
 const s = StyleSheet.create({
   block: {
-      padding: 25,
-    flex: 1,
+    padding: 15,
+    paddingTop: 25,
   },
 });

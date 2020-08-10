@@ -52,8 +52,8 @@ const s = StyleSheet.create({
   },
   tab: {
     padding: 10,
-    paddingLeft: 40,
-    paddingRight: 40,
+    paddingLeft: 39,
+    paddingRight: 39,
     backgroundColor: 'rgba(72, 19, 128, 0.07)',
     borderRadius: 5,
   },

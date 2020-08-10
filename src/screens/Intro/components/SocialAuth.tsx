@@ -12,7 +12,7 @@ export function SocialAuth(props: ISocialAuth) {
   const navigation = useNavigation();
 
   const closeIt = () =>
-    Promise.resolve(props.onClose()).then(() => navigation.navigate('Auth'));
+    Promise.resolve(props.onClose()).then(() => navigation.navigate('Register'));
 
   return (
     <View>

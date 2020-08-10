@@ -29,7 +29,7 @@ class RegisterScreen extends React.Component<any, any> {
         ) : confirm ? (
           <ConfirmCode onSubmit={() => this.setState({confirm: false})} />
         ) : (
-          <BaseInput onSubmit={() => this.setState({baseInput: true})} />
+          <BaseInput onSubmit={() => this.props.navigation.navigate('Tutorial')} />
         )}
       </IntroBackground>
     );

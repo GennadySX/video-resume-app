@@ -22,7 +22,7 @@ export default class Interactable extends React.Component<any, any> {
   }
 
   render() {
-    const {active, maxHeight, initHeight, children} = this.props;
+    const {maxHeight, children} = this.props;
     return (
       <InteractableX.View
         ref={(v: any) => (this.bs = v)}

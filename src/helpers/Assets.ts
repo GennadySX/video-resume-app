@@ -24,10 +24,22 @@ export enum Icons {
   search = require('../assets/img/icons/search.png'),
   searchActiveOutline = require('../assets/img/icons/searchActiveOutline.png'),
   send = require('../assets/img/icons/send.png'),
+  geo = require('../assets/img/icons/geolocation.png'),
+  share = require('../assets/img/icons/share.png'),
+  like = require('../assets/img/icons/like.png'),
+  filters = require('../assets/img/icons/filters.png'),
 }
 
 export enum Slide {
   slide1 = require('../assets/img/slide/a.png'),
   slide2 = require('../assets/img/slide/ab.png'),
   slide3 = require('../assets/img/slide/b.png'),
+}
+
+
+export enum Assets {
+  cardAsset = require('../assets/img/card/index.png'),
+  cardVideoA = require('../assets/img/card/a.png'),
+  cardVideoB = require('../assets/img/card/b.png'),
+  cardVideoC = require('../assets/img/card/c.png'),
 }

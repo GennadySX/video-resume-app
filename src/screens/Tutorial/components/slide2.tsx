@@ -9,7 +9,7 @@ export default function Slide2() {
       <TouchableOpacity style={s.btnSkip}>
         <Text style={s.btnSkipText}>Пропустить</Text>
       </TouchableOpacity>
-      <Title text={'Собеседования в телефоне'} style={{left: 0, marginTop: 25}} />
+      <Title text={'Собеседования в телефоне'} style={s.title} />
       <Text style={s.text}>
         Соискатели загружают свои видео-резюме для работодателей, а работодатели
         размещают видео-вакансии. С подходящими кандидатами проводят видео-собеседования
@@ -23,17 +23,19 @@ const s = StyleSheet.create({
   block: {
     padding: 20,
   },
+  title: {left: 0, marginTop: 25, position: 'relative', top: 10},
   text: {
     fontSize: 14,
     fontFamily: 'Manrope-Medium',
   },
   img: {
-    width: 320,
+    width: 300,
     justifyContent: 'center',
     alignSelf: 'center',
     resizeMode: 'contain',
   },
   btnSkip: {
+    padding: 10,
     alignSelf: 'flex-end',
     position: 'relative',
   },
