@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, View, Text} from 'react-native';
-import Index from '../../../components/ui/title';
+import Index from '../../../components/ui/Title';
 import Button, {buttonType} from '../../../components/ui/buttons';
 import {Width} from '../../../helpers/Normalizer';
 import InputUI from '../../../components/ui/inputs/input';

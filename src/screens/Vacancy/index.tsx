@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Index from '../../components/ui/title';
+import Index from '../../components/ui/Title';
 import Card from '../../components/Card';
 import Header from '../../components/Header';
 import Button, {buttonType} from '../../components/ui/buttons';

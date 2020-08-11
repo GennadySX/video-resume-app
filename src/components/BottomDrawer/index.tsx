@@ -1,12 +1,14 @@
 import React, {useEffect} from 'react';
 import RBSheet from 'react-native-raw-bottom-sheet';
+import {Width} from '../../helpers/Normalizer';
 export interface ISignDrawer {
-  children?: React.ReactChild | React.ReactChildren;
+  children: React.ReactChild | React.ReactChildren;
   startUp?: boolean;
   height?: number;
   duration?: number;
   closeDuration?: number;
   padding?: number;
+  full?: boolean;
 }
 
 export default function BottomDrawer({
@@ -16,6 +18,7 @@ export default function BottomDrawer({
   duration,
   closeDuration,
   padding,
+  full,
 }: ISignDrawer) {
   let RBSheetX: {open: () => void; close(): void} | null = null;
 
@@ -40,7 +43,7 @@ export default function BottomDrawer({
       closeOnDragDown={true}
       customStyles={{
         wrapper: {
-          padding: padding || 10,
+          padding: full ? 0 : padding || 10,
         },
         draggableIcon: {
           padding: 0,

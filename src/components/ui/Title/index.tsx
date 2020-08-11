@@ -11,7 +11,7 @@ interface ITitle {
   fontSize?: any;
 }
 
-export default function Index({text, style, fontSize}: ITitle) {
+export default function Title({text, style, fontSize}: ITitle) {
   return (
     <View style={[s.titleBlock, style]}>
       <Text style={[s.text, {fontSize: fontSize || 27}]}>{text} </Text>
@@ -26,7 +26,8 @@ const s = StyleSheet.create({
   },
   titleBlock: {
     position: 'relative',
-    left: -20,
+    // backgroundColor: 'yellow',
+    alignSelf: 'flex-start',
     width: Width * 0.7,
     marginBottom: 30,
   },

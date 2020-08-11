@@ -28,6 +28,7 @@ export enum Icons {
   share = require('../assets/img/icons/share.png'),
   like = require('../assets/img/icons/like.png'),
   filters = require('../assets/img/icons/filters.png'),
+  plusWhite = require('../assets/img/icons/plusWhite.png'),
 }
 
 export enum Slide {

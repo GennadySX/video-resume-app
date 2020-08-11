@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import {styles} from '../../../styles/style';
-import Index from '../../../components/ui/title';
+import Index from '../../../components/ui/Title';
 import Button, {buttonType} from '../../../components/ui/buttons';
 import IntroBackground from '../../../components/Background/introBackground';
 import {Width} from '../../../helpers/Normalizer';

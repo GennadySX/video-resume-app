@@ -15,7 +15,7 @@ const App = () => {
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{headerShown: false}}
-            initialRouteName={Routes[0].name}>
+            initialRouteName={'SearchPage'}>
             {Routes.map((screen: any, index: number) => (
               <Stack.Screen
                 key={index}

@@ -6,12 +6,13 @@ export interface IInputUI {
   value: string;
   onChangeText: (s: string) => void;
   placeholder?: string;
+  fullWidth?: boolean;
 }
 
 export default function InputUI(props: IInputUI) {
   const [val, setVal] = React.useState('');
   return (
-    <View style={s.block}>
+    <View style={[s.block, props.fullWidth && {width: Width * 0.88}]}>
       <TextInput
         value={props.value}
         onChangeText={(e: string) => props.onChangeText(e)}

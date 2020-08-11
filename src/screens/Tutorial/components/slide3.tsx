@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Image, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import Index from '../../../components/ui/title';
+import Index from '../../../components/ui/Title';
 import {Icons, Slide} from '../../../helpers/Assets';
 import {Width} from "../../../helpers/Normalizer";
 
