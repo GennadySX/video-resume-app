@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Image, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import Title from '../../../components/Title';
+import Index from '../../../components/ui/title';
 import {Icons, Slide} from '../../../helpers/Assets';
 import {Width} from "../../../helpers/Normalizer";
 
@@ -10,7 +10,7 @@ export default function Slide3(props: any) {
       <TouchableOpacity style={s.btnSkip} onPress={() => {}}>
         <Text style={s.btnSkipText}>Пропустить</Text>
       </TouchableOpacity>
-      <Title text={'Работа в короткие сроки'} style={s.title} />
+      <Index text={'Работа в короткие сроки'} style={s.title} />
       <Text style={s.text}>
         Экономия времени позволяет найти работу в короткие сроки
       </Text>

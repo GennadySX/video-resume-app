@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Filter from './components/Filter';
 import BlockTab from './components/BlockTab';
-import Title from '../../components/Title';
+import Index from '../../components/ui/title';
 import Card from "../../components/Card";
 export interface ISearchPage {}
 
@@ -22,7 +22,7 @@ export default class SearchPageScreen extends React.Component<any, any> {
   render() {
     return (
       <View style={s.block}>
-        <Title
+        <Index
           text={'Поиск работы'}
           style={{left: 0, marginBottom: 20}}
         />

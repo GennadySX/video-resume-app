@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Image, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import Title from '../../../components/Title';
+import Index from '../../../components/ui/title';
 import {Slide} from '../../../helpers/Assets';
 import {Width} from '../../../helpers/Normalizer';
 
@@ -10,7 +10,7 @@ export default function Slide1() {
       <TouchableOpacity style={s.btnSkip}>
         <Text style={s.btnSkipText}>Пропустить</Text>
       </TouchableOpacity>
-      <Title text={'Быстрый поиск работы'} style={{left: 0, marginTop: 25}} />
+      <Index text={'Быстрый поиск работы'} style={{left: 0, marginTop: 25}} />
       <Text style={s.text}>
         Video Resume - cервис по поиску работы и работников, позволяющий
         сократить время первого касания за счет короткого и емкого видео о

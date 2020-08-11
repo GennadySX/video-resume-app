@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Title from '../../components/Title';
+import Index from '../../components/ui/title';
 import Card from '../../components/Card';
 import Header from '../../components/Header';
 import Button, {buttonType} from '../../components/ui/buttons';
@@ -42,7 +42,7 @@ export default class VacancyScreen extends React.Component<any, any> {
           }
         />
         <ScrollView showsVerticalScrollIndicator={false} style={s.mainBlock}>
-          <Title text={'Web-дизайнер'} style={{left: 0, marginBottom: 0}} />
+          <Index text={'Web-дизайнер'} style={{left: 0, marginBottom: 0}} />
           <Text style={[s.companyText, s.font]}>Компания</Text>
           <Text style={[s.salaryText, s.font]}>от 30000 р.</Text>
           <Text style={[s.experienceText, s.font]}>Опыт от 1 года</Text>

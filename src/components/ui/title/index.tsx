@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Width} from '../helpers/Normalizer';
+import {Width} from '../../../helpers/Normalizer';
 
 interface ITitle {
   text: string;
@@ -11,7 +11,7 @@ interface ITitle {
   fontSize?: any;
 }
 
-export default function Title({text, style, fontSize}: ITitle) {
+export default function Index({text, style, fontSize}: ITitle) {
   return (
     <View style={[s.titleBlock, style]}>
       <Text style={[s.text, {fontSize: fontSize || 27}]}>{text} </Text>

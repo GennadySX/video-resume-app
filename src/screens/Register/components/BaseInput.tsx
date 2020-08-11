@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, View, Text} from 'react-native';
-import Title from '../../../components/Title';
+import Index from '../../../components/ui/title';
 import Button, {buttonType} from '../../../components/ui/buttons';
 import {Width} from '../../../helpers/Normalizer';
 import InputUI from '../../../components/ui/inputs/input';
@@ -19,7 +19,7 @@ export default function BaseInput({onSubmit}: IBaseInput) {
   return (
     <View style={s.block}>
       <Image source={logoSmall} style={s.logoSmall} />
-      <Title text={'Основные данные'} />
+      <Index text={'Основные данные'} />
       <InputUI
         value={firstname}
         onChangeText={(e: string) => setFirstname(e)}

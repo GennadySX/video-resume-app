@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, View, Text} from 'react-native';
-import Title from '../../../components/Title';
+import Index from '../../../components/ui/title';
 import Button, {buttonType} from '../../../components/ui/buttons';
 import {Width} from '../../../helpers/Normalizer';
 import TextInputMask from 'react-native-text-input-mask';
@@ -29,7 +29,7 @@ export default function ConfirmCode({onSubmit}: IConfirmCode) {
   return (
     <View style={s.block}>
       <Image source={logoSmall} style={s.logoSmall} />
-      <Title text={'Подтверждение номера'} />
+      <Index text={'Подтверждение номера'} />
       <Text style={s.textDescription}>
         Введите код, который мы отправили Вам на номер + 7 (9**) *** - ** - 21
       </Text>

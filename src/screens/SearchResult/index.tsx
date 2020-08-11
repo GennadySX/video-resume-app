@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Title from '../../components/Title';
+import Index from '../../components/ui/title';
 import Card from '../../components/Card';
 import Header from '../../components/Header';
 import Button, {buttonType} from '../../components/ui/buttons';
@@ -37,7 +37,7 @@ export default class SearchResultScreen extends React.Component<any, any> {
           }
         />
         <ScrollView showsVerticalScrollIndicator={false} style={s.mainBlock}>
-          <Title
+          <Index
             text={'Результаты поиска'}
             style={{left: 0, marginBottom: 0, width: '100%'}}
           />
