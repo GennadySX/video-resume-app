@@ -25,10 +25,13 @@ export enum Icons {
   searchActiveOutline = require('../assets/img/icons/searchActiveOutline.png'),
   send = require('../assets/img/icons/send.png'),
   geo = require('../assets/img/icons/geolocation.png'),
+  geoBlack = require('../assets/img/icons/geolocationBlack.png'),
   share = require('../assets/img/icons/share.png'),
   like = require('../assets/img/icons/like.png'),
   filters = require('../assets/img/icons/filters.png'),
   plusWhite = require('../assets/img/icons/plusWhite.png'),
+  oval = require('../assets/img/icons/oval.png'),
+  arrowDownPurple = require('../assets/img/icons/arrowDownPurple.png'),
 }
 
 export enum Slide {
@@ -44,3 +47,8 @@ export enum Assets {
   cardVideoB = require('../assets/img/card/b.png'),
   cardVideoC = require('../assets/img/card/c.png'),
 }
+export enum AssetsBackground {
+  roundBackground = require('../assets/img/background/background-l-rounded.png'),
+
+}
+

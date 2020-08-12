@@ -15,23 +15,20 @@ export interface IFilter {
   value?: string;
 }
 
-export default function Filter({
-  onFocus,
-  onChange,
-  iconClick,
-  value,
-}: IFilter) {
+export default function Filter({onFocus, onChange, iconClick, value}: IFilter) {
   const [val, setVal] = React.useState(value);
 
   return (
     <View style={s.block}>
-      <TextInput
-        style={s.inputField}
-        value={val}
-        placeholder={'Поиск'}
-        onFocus={onFocus}
-        onChangeText={(e: string) => setVal(e)}
-      />
+      <TouchableOpacity onPress={onFocus} style={s.inputField}>
+        <TextInput
+          editable={false}
+          value={val}
+          placeholder={'Поиск'}
+          onFocus={onFocus}
+          onChangeText={(e: string) => setVal(e)}
+        />
+      </TouchableOpacity>
       <TouchableOpacity onPress={iconClick}>
         <Image source={Icons.filter} style={s.filterIcon} />
       </TouchableOpacity>

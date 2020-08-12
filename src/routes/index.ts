@@ -5,6 +5,7 @@ import TutorialScreen from "../screens/Tutorial";
 import SearchPageScreen from "../screens/SearchPage";
 import VacancyScreen from "../screens/Vacancy";
 import SearchResultScreen from "../screens/SearchResult";
+import CompanyScreen from "../screens/Company";
 
 export const Routes = [
   {
@@ -40,6 +41,11 @@ export const Routes = [
   {
     name: 'Vacancy',
     component: VacancyScreen,
+    options: {headerShow: false},
+  },
+  {
+    name: 'Company',
+    component: CompanyScreen,
     options: {headerShow: false},
   },
 ];
