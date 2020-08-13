@@ -6,6 +6,7 @@ import SearchPageScreen from "../screens/SearchPage";
 import VacancyScreen from "../screens/Vacancy";
 import SearchResultScreen from "../screens/SearchResult";
 import CompanyScreen from "../screens/Company";
+import FavoritesScreen from "../screens/Favorites";
 
 export const Routes = [
   {
@@ -46,6 +47,11 @@ export const Routes = [
   {
     name: 'Company',
     component: CompanyScreen,
+    options: {headerShow: false},
+  },
+  {
+    name: 'Favorites',
+    component: FavoritesScreen,
     options: {headerShow: false},
   },
 ];
