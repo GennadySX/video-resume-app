@@ -4,6 +4,7 @@ import {Width} from '../../helpers/Normalizer';
 export interface ISignDrawer {
   children: React.ReactChild | React.ReactChildren;
   startUp?: boolean;
+  onClose?: () => void;
   height?: number;
   duration?: number;
   closeDuration?: number;
@@ -13,6 +14,7 @@ export interface ISignDrawer {
 
 export default function BottomDrawer({
   startUp,
+  onClose,
   children,
   height,
   duration,
@@ -25,10 +27,6 @@ export default function BottomDrawer({
   useEffect(() => {
     if (startUp && RBSheetX) {
       RBSheetX.open();
-    } else {
-      if (RBSheetX) {
-        RBSheetX.close();
-      }
     }
   });
 
@@ -41,6 +39,7 @@ export default function BottomDrawer({
       openDuration={duration || 1000}
       closeDuration={closeDuration || 300}
       closeOnDragDown={true}
+      onClose={() => (onClose ? onClose() : {})}
       customStyles={{
         wrapper: {
           padding: full ? 0 : padding || 10,

@@ -10,7 +10,7 @@ export enum Icons {
   filter = require('../assets/img/icons/filter.png'),
   flag = require('../assets/img/icons/flag.png'),
   heartActive = require('../assets/img/icons/heartActive.png'),
-  heartActiveOutline = require('../assets/img/icons/heartActive.png'),
+  heartActiveOutline = require('../assets/img/icons/heartActiveOutline.png'),
   heart = require('../assets/img/icons/heart.png'),
   feedback = require('../assets/img/icons/feedback.png'),
   feedbackActive = require('../assets/img/icons/feedbackActive.png'),
