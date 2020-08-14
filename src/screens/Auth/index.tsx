@@ -14,7 +14,6 @@ class AuthScreen extends React.Component<any, any> {
 
   componentDidMount(): void {
     GoogleSignin.configure({
-      androidClientId: '581895421213-qfnh61g6vgd1taa014qgpvqhj8f59ujv.apps.googleusercontent.com',
       webClientId: '581895421213-qfnh61g6vgd1taa014qgpvqhj8f59ujv.apps.googleusercontent.com',
       scopes: ['openid', 'email', 'profile'],
       offlineAccess: true,
