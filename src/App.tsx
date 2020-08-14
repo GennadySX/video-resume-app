@@ -5,9 +5,7 @@ import {Routes} from './routes';
 import {PersistGate} from 'redux-persist/es/integration/react';
 import {Provider} from 'react-redux';
 import {persistor, store} from './store/store';
-
 const Stack = createStackNavigator();
-
 const App = () => {
   return (
     <Provider store={store}>
@@ -15,7 +13,7 @@ const App = () => {
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{headerShown: false}}
-            initialRouteName={'Favorites'}>
+            initialRouteName={'Auth'}>
             {Routes.map((screen: any, index: number) => (
               <Stack.Screen
                 key={index}

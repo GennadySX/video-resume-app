@@ -1,18 +1,42 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Text, View} from 'react-native';
-
+import {Text, View, Button} from 'react-native';
 export interface IAuthScreeen {}
+import auth from '@react-native-firebase/auth';
+import { GoogleSignin, statusCodes } from '@react-native-community/google-signin';
+
 
 class AuthScreen extends React.Component<any, any> {
   constructor(props: IAuthScreeen) {
     super(props);
+
   }
+
+  componentDidMount(): void {
+    GoogleSignin.configure({
+      androidClientId: '581895421213-qfnh61g6vgd1taa014qgpvqhj8f59ujv.apps.googleusercontent.com',
+      webClientId: '581895421213-qfnh61g6vgd1taa014qgpvqhj8f59ujv.apps.googleusercontent.com',
+      scopes: ['openid', 'email', 'profile'],
+      offlineAccess: true,
+    });
+  }
+
+  signIn = async () => {
+    try {
+      const userInfo = await GoogleSignin.signIn();
+      this.setState({ userInfo }, () => console.log('state', this.state));
+    } catch (error) {
+        // some other error happened.
+        console.log('err', error);
+
+    }
+  };
 
   render() {
     return (
       <View>
         <Text> Test Text</Text>
+        <Button title="Google Sign-In" onPress={() => this.signIn()} />
       </View>
     );
   }

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "581895421213",
+    "firebase_url": "https://video-resume-c945f.firebaseio.com",
+    "project_id": "video-resume-c945f",
+    "storage_bucket": "video-resume-c945f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581895421213:android:3976b4b3cff73b524375f4",
+        "android_client_info": {
+          "package_name": "com.guscom.vresume"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "581895421213-r8p9r7sk4s712874h037bfa2c4gnsf9j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.guscom.vresume",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "581895421213-qfnh61g6vgd1taa014qgpvqhj8f59ujv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGIyM2Ou6VJ9qrGZ5swAJP91BPYyk70yw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "581895421213-qfnh61g6vgd1taa014qgpvqhj8f59ujv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
