@@ -3,6 +3,8 @@ import Button, {buttonType} from '../../../components/ui/buttons';
 import {Icons} from '../../../helpers/Assets';
 import {View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {GoogleSignin} from "@react-native-community/google-signin";
+import {setStorage, Storage} from "../../../helpers/Storage";
 
 export interface ISocialAuth {
   onClose: () => void;
@@ -11,8 +13,36 @@ export interface ISocialAuth {
 export function SocialAuth(props: ISocialAuth) {
   const navigation = useNavigation();
 
+  const [user, setUser] = React.useState<any>()
+
+  const init = () => {
+      GoogleSignin.configure({
+          webClientId: '581895421213-qfnh61g6vgd1taa014qgpvqhj8f59ujv.apps.googleusercontent.com',
+          scopes: ['openid', 'email', 'profile'],
+          offlineAccess: true,
+
+      });
+  }
+  init();
+
+
   const closeIt = () =>
     Promise.resolve(props.onClose()).then(() => navigation.navigate('Register'));
+
+
+   const signIn = async () => {
+        try {
+            await GoogleSignin.hasPlayServices();
+            const userInfo: any = await GoogleSignin.signIn();
+            Promise.all([
+                Storage.set('user', userInfo.user),
+                Storage.set('userIdToken', userInfo.idToken),
+            ]).then(() => closeIt())
+        } catch (error) {
+            console.log('err', error);
+        }
+    };
+
 
   return (
     <View>
@@ -42,7 +72,7 @@ export function SocialAuth(props: ISocialAuth) {
         icon={Icons.ok}
       />
       <Button
-        onPress={() => {}}
+        onPress={() => signIn()}
         title={'Google'}
         type={buttonType.white}
         icon={Icons.google}

@@ -27,6 +27,8 @@ export default function BottomDrawer({
   useEffect(() => {
     if (startUp && RBSheetX) {
       RBSheetX.open();
+    } else if (startUp === false && RBSheetX) {
+      RBSheetX.close();
     }
   });
 

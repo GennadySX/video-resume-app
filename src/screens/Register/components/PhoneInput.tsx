@@ -29,6 +29,7 @@ export default function PhoneInput({onSubmit}: IPhoneInput) {
         placeholder={'Номер телефона'}
         style={s.textInput}
         value={number}
+
         mask={'+7 ([000]) [000] [00] [00]'}
       />
       <Button

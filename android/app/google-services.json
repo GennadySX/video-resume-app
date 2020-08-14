@@ -8,17 +8,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:581895421213:android:3976b4b3cff73b524375f4",
+        "mobilesdk_app_id": "1:581895421213:android:13c0ecb2f6fba4e44375f4",
         "android_client_info": {
-          "package_name": "com.guscom.vresume"
+          "package_name": "com.videoresume"
         }
       },
       "oauth_client": [
         {
-          "client_id": "581895421213-r8p9r7sk4s712874h037bfa2c4gnsf9j.apps.googleusercontent.com",
+          "client_id": "581895421213-qqb59m9312gsbic39mh9ve97a93ov7uf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.guscom.vresume",
+            "package_name": "com.videoresume",
             "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
           }
         },

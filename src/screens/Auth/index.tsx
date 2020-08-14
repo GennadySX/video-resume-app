@@ -9,7 +9,9 @@ import { GoogleSignin, statusCodes } from '@react-native-community/google-signin
 class AuthScreen extends React.Component<any, any> {
   constructor(props: IAuthScreeen) {
     super(props);
-
+    this.state = {
+      userInfo: null
+    }
   }
 
   componentDidMount(): void {
@@ -17,6 +19,7 @@ class AuthScreen extends React.Component<any, any> {
       webClientId: '581895421213-qfnh61g6vgd1taa014qgpvqhj8f59ujv.apps.googleusercontent.com',
       scopes: ['openid', 'email', 'profile'],
       offlineAccess: true,
+
     });
   }
 

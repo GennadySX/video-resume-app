@@ -1,3 +1,7 @@
+/*
+ * GennadySX @2020
+ */
+
 export enum Icons {
   back = require('../assets/img/icons/back.png'),
   next = require('../assets/img/icons/right.png'),

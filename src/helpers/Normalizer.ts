@@ -1,3 +1,7 @@
+/*
+ * GennadySX @2020
+ */
+
 import {Dimensions} from 'react-native';
 
 const Window = Dimensions.get('window');

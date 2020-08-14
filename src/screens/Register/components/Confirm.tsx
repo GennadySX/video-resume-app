@@ -3,7 +3,6 @@ import {Image, StyleSheet, View, Text} from 'react-native';
 import Index from '../../../components/ui/Title';
 import Button, {buttonType} from '../../../components/ui/buttons';
 import {Width} from '../../../helpers/Normalizer';
-import TextInputMask from 'react-native-text-input-mask';
 
 import {
   CodeField,
@@ -13,7 +12,7 @@ import {
 } from 'react-native-confirmation-code-field';
 
 const logoSmall = require('../../../assets/img/logoSmall.png');
-const CELL_COUNT = 5;
+const CELL_COUNT = 6;
 export interface IConfirmCode {
   onSubmit: (phone: string) => void;
 }
@@ -39,7 +38,9 @@ export default function ConfirmCode({onSubmit}: IConfirmCode) {
         value={value}
         onChangeText={(e: string) => {
           setValue(e)
-          console.log('text', e);
+          if (e.toString().length === CELL_COUNT) {
+            onSubmit(e)
+          }
         }}
         cellCount={CELL_COUNT}
         rootStyle={s.codeFieldRoot}

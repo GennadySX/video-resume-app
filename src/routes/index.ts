@@ -1,3 +1,7 @@
+/*
+ * GennadySX @2020
+ */
+
 import AuthScreen from '../screens/Auth';
 import IntroScreen from '../screens/Intro';
 import RegisterScreen from '../screens/Register';

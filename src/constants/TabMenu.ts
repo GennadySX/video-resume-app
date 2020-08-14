@@ -1,3 +1,8 @@
+/*
+ * GennadySX @2020
+ */
+
+
 import {Icons} from '../helpers/Assets';
 
 export const TAB_MENU = [

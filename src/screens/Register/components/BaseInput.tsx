@@ -16,6 +16,8 @@ export default function BaseInput({onSubmit}: IBaseInput) {
   const [lastname, setLastname] = React.useState('');
   const [email, setEmail] = React.useState('');
 
+
+
   return (
     <View style={s.block}>
       <Image source={logoSmall} style={s.logoSmall} />
