@@ -4,7 +4,6 @@ import IntroBackground from '../../components/Background/introBackground';
 import PhoneInput from './components/PhoneInput';
 import ConfirmCode from './components/Confirm';
 import BaseInput from './components/BaseInput';
-import firebase from '@react-native-firebase/app';
 import auth from '@react-native-firebase/auth';
 import {Storage} from "../../helpers/Storage";
 import {httpPOST} from "../../helpers/HTTP";
@@ -27,11 +26,8 @@ class RegisterScreen extends React.Component<any, any> {
   }
 
 
-  componentDidMount() {
-    Storage.get('user', (user:any) => this.setState({user}))
-
-  }
-
+  componentDidMount = () =>
+      Storage.get('user', (user:any) => this.setState({user}))
 
   async signInWithPhoneNumber(phoneNumber: string) {
     try {
@@ -60,8 +56,7 @@ class RegisterScreen extends React.Component<any, any> {
       first_name: user.givenName,
       phone_number: "+79991571858"
     }
-    console.log('data is',data )
-
+    // console.log('data is',data )
     return httpPOST(API.signUp, JSON.stringify(data) ).then((res: any) => {
       console.log('result ', res)
     })

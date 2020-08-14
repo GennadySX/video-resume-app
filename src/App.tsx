@@ -2,7 +2,6 @@
  * GennadySX @2020
  */
 
-
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -20,7 +19,7 @@ const App = () => {
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{headerShown: false}}
-            initialRouteName={'Intro'}>
+            initialRouteName={'SearchPage'}>
             {Routes.map((screen: any, index: number) => (
               <Stack.Screen
                 key={index}

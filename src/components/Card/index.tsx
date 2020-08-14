@@ -8,6 +8,7 @@ export interface ICard {
   active?: boolean;
   new?: boolean;
   onClick: () => void;
+  disLikeAble?: boolean;
 }
 
 export default function Card(props: ICard) {
@@ -24,14 +25,16 @@ export default function Card(props: ICard) {
           style={s.blockChild}>
           <View style={s.header}>
             <Text style={[s.cardDate, s.font]}>Сегодня</Text>
+            {!props.disLikeAble &&
             <TouchableOpacity
-              onPress={() => setActive(!active)}
-              activeOpacity={1}>
+                onPress={() => setActive(!active)}
+                activeOpacity={1}>
               <Image
-                source={active ? Icons.heartActive : Icons.heart}
-                style={s.headerHeartIcon}
+                  source={active ? Icons.heartActive : Icons.heart}
+                  style={s.headerHeartIcon}
               />
             </TouchableOpacity>
+            }
           </View>
           <View style={s.body}>
             <TouchableOpacity onPress={() => props.onClick()} activeOpacity={1}>
@@ -71,14 +74,16 @@ export default function Card(props: ICard) {
         <View style={s.blockChild}>
           <View style={s.header}>
             <Text style={[s.cardDate, s.font]}>Сегодня</Text>
+            {!props.disLikeAble &&
             <TouchableOpacity
-              onPress={() => setActive(!active)}
-              activeOpacity={1}>
+                onPress={() => setActive(!active)}
+                activeOpacity={1}>
               <Image
-                source={active ? Icons.heartActive : Icons.heart}
-                style={s.headerHeartIcon}
+                  source={active ? Icons.heartActive : Icons.heart}
+                  style={s.headerHeartIcon}
               />
             </TouchableOpacity>
+            }
           </View>
           <View style={s.body}>
             <TouchableOpacity onPress={() => props.onClick()} activeOpacity={1}>
