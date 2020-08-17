@@ -1,12 +1,7 @@
 import React, {ReactChild, ReactChildren} from 'react';
-import {
-  StyleSheet,
-  View,
-  Image,
-  KeyboardAvoidingView,
-  Platform,
-} from 'react-native';
-import {Height, Width} from '../../helpers/Normalizer';
+import {Image, KeyboardAvoidingView, Platform} from 'react-native';
+
+import {IntroBackgroundStyle as s} from './styles';
 
 export interface IIntroBackgroundComponent {
   children?: ReactChild | ReactChildren;
@@ -29,28 +24,3 @@ export default function IntroBackground(props: IIntroBackgroundComponent) {
     </KeyboardAvoidingView>
   );
 }
-
-const s = StyleSheet.create({
-  block: {
-    flex: 1,
-    backgroundColor: '#fafafa',
-    alignItems: 'center',
-    bottom: 0,
-  },
-  backImage: {
-    position: 'absolute',
-  },
-  tl: {
-    left: 0,
-    height: Width * 0.3,
-    width: Width * 0.25,
-  },
-  tr: {
-    top: '10%',
-    right: '4%',
-  },
-  br: {
-    top: '50%',
-    resizeMode: 'cover',
-  },
-});

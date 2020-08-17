@@ -1,6 +1,6 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {Width} from '../../../helpers/Normalizer';
+import {Text, View} from 'react-native';
+import {titleStyle as s} from './styles';
 
 interface ITitle {
   text: string;
@@ -11,24 +11,10 @@ interface ITitle {
   fontSize?: any;
 }
 
-export default function Title({text, style, fontSize}: ITitle) {
+export default function Title({text, style, fontSize, left}: ITitle) {
   return (
-    <View style={[s.titleBlock, style]}>
+    <View style={[s.titleBlock, style, left && {paddingLeft: 0}]}>
       <Text style={[s.text, {fontSize: fontSize || 27}]}>{text} </Text>
     </View>
   );
 }
-
-const s = StyleSheet.create({
-  text: {
-    fontFamily: 'Manrope-Bold',
-    fontWeight: '600',
-  },
-  titleBlock: {
-    position: 'relative',
-    // backgroundColor: 'yellow',
-    alignSelf: 'flex-start',
-    width: Width * 0.7,
-    marginBottom: 30,
-  },
-});

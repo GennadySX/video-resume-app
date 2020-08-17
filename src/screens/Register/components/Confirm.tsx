@@ -1,8 +1,8 @@
 import React from 'react';
-import {Image, StyleSheet, View, Text} from 'react-native';
+import {Image, View, Text} from 'react-native';
 import Index from '../../../components/ui/Title';
 import Button, {buttonType} from '../../../components/ui/buttons';
-import {Width} from '../../../helpers/Normalizer';
+import {confirmStyle as s} from '../styles/confirmStyle';
 
 import {
   CodeField,
@@ -37,9 +37,9 @@ export default function ConfirmCode({onSubmit}: IConfirmCode) {
         {...props}
         value={value}
         onChangeText={(e: string) => {
-          setValue(e)
+          setValue(e);
           if (e.toString().length === CELL_COUNT) {
-            onSubmit(e)
+            onSubmit(e);
           }
         }}
         cellCount={CELL_COUNT}
@@ -65,56 +65,3 @@ export default function ConfirmCode({onSubmit}: IConfirmCode) {
     </View>
   );
 }
-
-const s = StyleSheet.create({
-  block: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  logoSmall: {
-    position: 'absolute',
-    top: '-2%',
-    marginBottom: 40,
-    width: Width * 0.27,
-    height: Width * 0.27,
-    resizeMode: 'contain',
-  },
-  bottomButton: {
-    marginTop: 20,
-  },
-  textDescription: {
-    position: 'relative',
-    left: 0,
-    width: Width * 0.8,
-    marginBottom: 30,
-    color: '#272727',
-    opacity: 0.8,
-  },
-  textInput: {
-    borderBottomColor: 'lightgray',
-    borderBottomWidth: 1,
-    width: Width * 0.8,
-    fontFamily: 'Manrope-Medium',
-    fontSize: 15,
-    marginBottom: 20,
-  },
-
-  //
-  root: {flex: 1, padding: 20},
-  title: {textAlign: 'center', fontSize: 30},
-  codeFieldRoot: {marginTop: 20},
-  cell: {
-    width: 50,
-    height: 40,
-    lineHeight: 38,
-    fontSize: 40,
-    borderBottomWidth: 2,
-    borderBottomColor: '#272727',
-    textAlign: 'center',
-    marginRight: 10,
-  },
-  focusCell: {
-    borderColor: '#000',
-  },
-});

@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {Assets, Icons} from '../../../helpers/Assets';
+import {Icons} from '../../../helpers/Assets';
+import {miniCardStyle as s} from '../styles/miniCardStyle';
 
 export interface IMiniCard {
   latest?: boolean;
@@ -24,11 +25,11 @@ export default function MiniCard(props: IMiniCard) {
           </View>
           <TouchableOpacity onPress={() => {}} activeOpacity={1}>
             <LinearGradient
-                colors={['#6b35af', 'rgba(191,129,232,0.69)']}
-                start={{x: 0, y: 1}}
-                end={{x: 1, y: 0}}
-                style={s.badge}>
-            <Text style={[s.badgeTitle, s.font]}>1 вакансии</Text>
+              colors={['#6b35af', 'rgba(191,129,232,0.69)']}
+              start={{x: 0, y: 1}}
+              end={{x: 1, y: 0}}
+              style={s.badge}>
+              <Text style={[s.badgeTitle, s.font]}>1 вакансии</Text>
             </LinearGradient>
           </TouchableOpacity>
         </View>
@@ -53,79 +54,3 @@ export default function MiniCard(props: IMiniCard) {
     </View>
   );
 }
-
-const s = StyleSheet.create({
-  block: {
-    marginTop: 15,
-    padding: 2,
-  },
-  blockChild: {
-    flexDirection: 'column',
-    paddingBottom: 7,
-    borderRadius: 10,
-    elevation: 2,
-    backgroundColor: '#fafafa',
-    padding: 17,
-    paddingTop: 10,
-  },
-  font: {
-    fontFamily: 'Manrope-Medium',
-  },
-
-  body: {
-    paddingTop: 7,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-
-  },
-  bodyPart: {},
-  bodyCardTitle: {
-    fontSize: 15,
-  },
-  badge: {
-    padding: 5,
-    paddingLeft: 14,
-    paddingRight: 14,
-    borderRadius: 50
-  },
-  badgeTitle: {
-    fontSize: 10,
-    color: '#fafafa'
-  },
-  vacancyText: {
-    marginTop: 5,
-    marginBottom: 5,
-    fontSize: 12,
-    color: 'rgba(39,39,39,0.5)',
-  },
-  bodyGeo: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'flex-start',
-    justifyContent: 'flex-start',
-    height: 25,
-  },
-  geoIcon: {
-    position: 'relative',
-    right: 3,
-    resizeMode: 'contain',
-    width: 20,
-  },
-  geoText: {
-    fontSize: 11,
-    color: 'rgba(39,39,39,0.5)',
-  },
-  footer: {
-    width: '100%',
-    paddingTop: 7,
-    paddingBottom: 5,
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-  },
-  footerText: {
-    alignSelf: 'flex-end',
-    color: '#481380',
-    fontWeight: 'bold',
-    fontSize: 13,
-  },
-});

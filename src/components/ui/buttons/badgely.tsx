@@ -1,8 +1,8 @@
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Image,  Text, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {Icons} from '../../../helpers/Assets';
-import {Width} from '../../../helpers/Normalizer';
+import {buttonBadgeStyle as s} from './styles';
 
 export interface IButtonBadge {
   onClick?: () => void;
@@ -27,31 +27,3 @@ export default function ButtonBadge(props: IButtonBadge) {
     </TouchableOpacity>
   );
 }
-
-const s = StyleSheet.create({
-  dropBtn: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    width: Width * 0.87,
-    borderRadius: 10,
-    padding: 15,
-      marginBottom: 10
-  },
-  badge: {
-    backgroundColor: 'white',
-    width: 20,
-    height: 20,
-    borderRadius: 50,
-    alignSelf: 'flex-end',
-    textAlign: 'center',
-  },
-  btnIcon: {
-    maxWidth: 17,
-    maxHeight: 17,
-    marginLeft: 5,
-    marginRight: 10,
-    resizeMode: 'contain',
-  },
-  btnTitle: {color: '#fafafa', width: '80%'},
-});

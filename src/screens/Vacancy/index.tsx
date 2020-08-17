@@ -1,29 +1,70 @@
 import React from 'react';
-import {
-  Image,
-  ImageBackground,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import Index from '../../components/ui/Title';
+import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import Card from '../../components/Card';
 import Header from '../../components/Header';
 import Button, {buttonType} from '../../components/ui/buttons';
 import {Assets, Icons} from '../../helpers/Assets';
-import {Width} from '../../helpers/Normalizer';
+import {vacancyScreenStyle as s} from './styles';
+import BottomDrawer from '../../components/BottomDrawer';
+import {Height} from '../../helpers/Normalizer';
+import Title from '../../components/ui/Title';
+import Container from '../../components/Container';
+import ResumeCard from './components/ResumeCard';
 
 export interface IVacancy {}
+
+const resumeList = [
+  {
+    id: 1,
+    title: 'Web Developer',
+    link: 'https://example.com/user/resume/1',
+  },
+  {
+    id: 2,
+    title: 'Java Developer',
+    link: 'https://example.com/user/resume/1',
+  },
+  {
+    id: 3,
+    title: 'JS Developer',
+    link: 'https://example.com/user/resume/1',
+  },
+  {
+    id: 4,
+    title: 'Full Stack Developer',
+    link: 'https://example.com/user/resume/1',
+  },
+  {
+    id: 5,
+    title: 'Designer',
+    link: 'https://example.com/user/resume/1',
+  },
+];
 
 export default class VacancyScreen extends React.Component<any, any> {
   constructor(props: IVacancy) {
     super(props);
-    this.state = {};
+    this.state = {
+      isBottomDrawer: false,
+      onChoose: false,
+      selected: null,
+    };
+  }
+
+  openBottomDrawer() {
+    this.setState({isBottomDrawer: !this.state.isBottomDrawer, selected: null});
+  }
+
+  setChoose(itemId: number) {
+    if (this.state.selected === itemId) {
+      this.setState({onChoose: false, selected: null});
+    } else {
+      this.setState({onChoose: true, selected: itemId});
+    }
   }
 
   render() {
+    const {isBottomDrawer, onChoose, selected} = this.state;
     return (
       <View style={s.block}>
         <Header
@@ -42,7 +83,7 @@ export default class VacancyScreen extends React.Component<any, any> {
           }
         />
         <ScrollView showsVerticalScrollIndicator={false} style={s.mainBlock}>
-          <Index text={'Web-дизайнер'} style={{left: 0, marginBottom: 0}} />
+          <Title text={'Web-дизайнер'} style={{left: 0, marginBottom: 0}} />
           <Text style={[s.companyText, s.font]}>Компания</Text>
           <Text style={[s.salaryText, s.font]}>от 30000 р.</Text>
           <Text style={[s.experienceText, s.font]}>Опыт от 1 года</Text>
@@ -53,7 +94,7 @@ export default class VacancyScreen extends React.Component<any, any> {
 
           <Button
             title={'Откликнуться'}
-            onPress={() => {}}
+            onPress={() => this.openBottomDrawer()}
             type={buttonType.white}
             textStyle={{color: '#481380'}}
             style={{paddingBottom: 0, paddingTop: 20}}
@@ -75,89 +116,67 @@ export default class VacancyScreen extends React.Component<any, any> {
           </View>
           <Text style={s.blockTitle}>Видео</Text>
           <View style={s.videoBlock}>
-            <TouchableOpacity onPress={() => {}} >
+            <TouchableOpacity onPress={() => {}}>
               <Image source={Assets.cardVideoA} style={s.videoBlockImg} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}} >
+            <TouchableOpacity onPress={() => {}}>
               <Image source={Assets.cardVideoB} style={s.videoBlockImg} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}} >
+            <TouchableOpacity onPress={() => {}}>
               <Image source={Assets.cardVideoC} style={s.videoBlockImg} />
             </TouchableOpacity>
           </View>
           <Text style={[s.blockTitle, {paddingBottom: 0}]}>
             Похожие вакансии
           </Text>
-          <Card  onClick={() => this.props.navigation.navigate('Vacancy')}/>
-          <Card  onClick={() => this.props.navigation.navigate('Vacancy')}/>
-          <Card latest  onClick={() => this.props.navigation.navigate('Vacancy')}/>
+          <Card onClick={() => this.props.navigation.navigate('Vacancy')} />
+          <Card onClick={() => this.props.navigation.navigate('Vacancy')} />
+          <Card
+            latest
+            onClick={() => this.props.navigation.navigate('Vacancy')}
+          />
         </ScrollView>
+
+        <BottomDrawer
+          full
+          height={onChoose ? 280 : 230}
+          startUp={isBottomDrawer}
+          onClose={() => this.openBottomDrawer()}>
+          <Container unPadding>
+            <Title text={'Выберите резьюме'} fontSize={18} />
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              style={{marginBottom: 10}}>
+              {resumeList.map((resume: any, index: number) => (
+                <ResumeCard
+                  value={resume}
+                  first={index === 0}
+                  onClick={(item: number) => this.setChoose(item)}
+                  active={selected === resume.id || !selected}
+                />
+              ))}
+            </ScrollView>
+            <View>
+              {onChoose && (
+                <Button
+                  title={'Отправить'}
+                  onPress={() => {}}
+                  type={buttonType.purple}
+                  style={{paddingBottom: 1}}
+                  textStyle={{fontSize: 13}}
+                />
+              )}
+              <Button
+                title={'Отмена'}
+                onPress={() => this.openBottomDrawer()}
+                type={buttonType.transparent}
+                textStyle={{color: '#575456', fontSize: 13}}
+              />
+            </View>
+          </Container>
+        </BottomDrawer>
       </View>
     );
   }
 }
-
-const s = StyleSheet.create({
-  mainBlock: {paddingLeft: 7, paddingRight: 7},
-  block: {
-    padding: 15,
-    paddingTop: 25,
-  },
-  header: {
-    flexDirection: 'row',
-  },
-  headerImg: {
-    width: 25,
-    height: 25,
-    resizeMode: 'contain',
-  },
-  companyText: {
-    fontSize: 17,
-  },
-  salaryText: {
-    paddingBottom: 10,
-    paddingTop: 10,
-    fontSize: 17,
-  },
-  experienceText: {
-    fontSize: 14,
-  },
-  bodyGeo: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'flex-start',
-    justifyContent: 'flex-start',
-    height: 25,
-  },
-  geoIcon: {
-    position: 'relative',
-    right: 3,
-    resizeMode: 'contain',
-    width: 20,
-  },
-  geoText: {
-    fontSize: 14,
-  },
-  font: {
-    fontFamily: 'Manrope-Medium',
-  },
-  descText: {
-    fontSize: 12,
-    fontFamily: 'Manrope-Medium',
-  },
-  blockTitle: {
-    fontSize: 17,
-    fontFamily: 'Manrope-Bold',
-    paddingTop: 12,
-    paddingBottom: 10,
-  },
-  videoBlock: {
-    flexDirection: 'row',
-  },
-  videoBlockImg: {
-    width: Width * 0.25,
-    height: Width * 0.25,
-    resizeMode: 'contain',
-    marginRight: 10,
-  },
-});

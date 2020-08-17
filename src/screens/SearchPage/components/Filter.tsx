@@ -1,13 +1,14 @@
 import React from 'react';
 import {
   View,
-  StyleSheet,
   TextInput,
   Image,
   TouchableOpacity,
   StyleProp,
 } from 'react-native';
 import {Icons} from '../../../helpers/Assets';
+import {filterStyle as s} from "../styles/filterStyle";
+import Container from "../../../components/Container";
 
 export interface IFilter {
   onFocus?: () => void;
@@ -46,24 +47,4 @@ export default function Filter({
   );
 }
 
-const s = StyleSheet.create({
-  block: {
-    width: '100%',
-    alignSelf: 'center',
-    borderRadius: 40,
-    borderWidth: 1,
-    borderColor: 'gray',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 15,
-  },
-  inputField: {
-    width: '87%',
-    paddingLeft: 20,
-    paddingRight: 10,
-    fontFamily: 'Manrope-Medium',
-  },
-  filterIcon: {
-    alignSelf: 'flex-end',
-  },
-});
+

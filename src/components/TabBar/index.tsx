@@ -1,32 +1,35 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
-import {Icons} from '../../helpers/Assets';
-import {Width} from "../../helpers/Normalizer";
+import { useNavigation, useRoute  } from '@react-navigation/native';
+import {TAB_MENU} from "../../constants/TabMenu";
+import {tabBarStyle as s} from "./styles";
 
 interface IMenuList {
   title: string;
   icon: any;
   iconActive: any;
+  route: string;
 }
 
 export interface ITabBar {
-  menuList: IMenuList[];
   active?: string;
   onClick?: (menu: string, index?: number) => void;
 }
 
-export default function TabBar({menuList, active, onClick}: ITabBar) {
+export default function TabBar({ active, onClick}: ITabBar) {
+  const navigation = useNavigation()
+  const route = useRoute()
   const isActive = (menu: IMenuList) => {
-    return menu.title === active;
+    return menu.route === route.name;
   };
 
   return (
     <View style={s.container}>
-      {menuList.map((menu: IMenuList, index: number) => (
+      {TAB_MENU.map((menu: IMenuList, index: number) => (
         <TouchableOpacity
           style={s.tab}
           activeOpacity={1}
-          onPress={() => (onClick ? onClick(menu.title, index) : null)}
+          onPress={() => navigation.navigate(menu.route)}
           key={index}>
           <Image
             source={isActive(menu) ? menu.iconActive : menu.icon}
@@ -40,29 +43,3 @@ export default function TabBar({menuList, active, onClick}: ITabBar) {
     </View>
   );
 }
-
-const s = StyleSheet.create({
-  container: {
-    width: Width,
-    backgroundColor: '#F8F2FF',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 10,
-    paddingTop: 15,
-  },
-  tab: {
-    alignSelf: 'center',
-    alignItems: 'center',
-  },
-  tabIcon: {
-    width: 25,
-    height: 25,
-    resizeMode: 'contain'
-  },
-  title: {
-    color: '#868686',
-  },
-  titleActive: {
-    color: '#481380',
-  },
-});

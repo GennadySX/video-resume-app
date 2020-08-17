@@ -1,7 +1,7 @@
 import React from 'react';
-import {StyleProp, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {StyleProp, Text, TouchableOpacity} from 'react-native';
 import ToggleUI from '../toggle';
-import {Width} from '../../../helpers/Normalizer';
+import {toggleButtonStyle as s} from './styles';
 
 export interface IToggleButton {
   title: string;
@@ -26,25 +26,3 @@ export default function ToggleButton({
     </TouchableOpacity>
   );
 }
-
-const s = StyleSheet.create({
-  container: {
-    width: Width * 0.87,
-    backgroundColor: 'rgba(72, 19, 128, 0.02)',
-    borderColor: 'rgba(72, 19, 128, 0.1)',
-    borderWidth: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 8,
-    paddingLeft: 12,
-    paddingRight: 15,
-    marginBottom: 10,
-    borderRadius: 10,
-  },
-  label: {
-    fontFamily: 'Manrope-Medium',
-    color: 'rgba(0,0,0, 0.7)',
-    width: '80%',
-  },
-});

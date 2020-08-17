@@ -1,12 +1,13 @@
 import React from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import BlockTab from './components/BlockTab';
 import Index from '../../components/ui/Title';
 import Card from '../../components/Card';
-import {Height} from '../../helpers/Normalizer';
 import TabBar from '../../components/TabBar';
+import MiniCard from './components/MiniCard';
+import {favoritesScreenStyle as s} from './styles';
 import {TAB_MENU} from '../../constants/TabMenu';
-import MiniCard from "./components/MiniCard";
+
 export interface IFavorites {}
 
 export default class FavoritesScreen extends React.Component<any, any> {
@@ -48,12 +49,11 @@ export default class FavoritesScreen extends React.Component<any, any> {
               <MiniCard />
               <MiniCard />
               <MiniCard />
-              <MiniCard  latest/>
+              <MiniCard latest />
             </ScrollView>
           )}
         </View>
         <TabBar
-          menuList={TAB_MENU}
           active={menu}
           onClick={(title: string) => this.setState({menu: title})}
         />
@@ -61,17 +61,3 @@ export default class FavoritesScreen extends React.Component<any, any> {
     );
   }
 }
-
-const s = StyleSheet.create({
-  block: {
-    padding: 15,
-    paddingTop: 25,
-    height: Height - 90,
-    paddingBottom: 0,
-  },
-  bFilterBlock: {
-    justifyContent: 'center',
-    alignSelf: 'center',
-    alignItems: 'center',
-  },
-});

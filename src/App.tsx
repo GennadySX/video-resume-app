@@ -5,22 +5,22 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Routes} from './routes';
+import {RouteComponents} from './routes';
 import {PersistGate} from 'redux-persist/es/integration/react';
 import {Provider} from 'react-redux';
 import {persistor, store} from './store/store';
+import {RouteActive} from './routes/Routes';
 
 const Stack = createStackNavigator();
 const App = () => {
-
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{headerShown: false}}
-            initialRouteName={'SearchPage'}>
-            {Routes.map((screen: any, index: number) => (
+            initialRouteName={RouteActive}>
+            {RouteComponents.map((screen: any, index: number) => (
               <Stack.Screen
                 key={index}
                 name={screen.name}

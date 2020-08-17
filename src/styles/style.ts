@@ -20,4 +20,17 @@ export const styles = StyleSheet.create({
     color: unActive,
   },
   introScreen: {},
+  textActive: {color: '#33be86'},
+  fontMedium: {
+    fontFamily: 'Manrope-Medium',
+  },
+  fontThin: {
+    fontFamily: 'Manrope-Thin',
+  },
+  fontBold: {
+    fontFamily: 'Manrope-Bold',
+  },
+  fontWhite: {
+    color: '#fafafa'
+  },
 });

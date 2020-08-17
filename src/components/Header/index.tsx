@@ -1,6 +1,7 @@
 import React, {ReactChild, ReactChildren} from 'react';
 import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import {Icons} from '../../helpers/Assets';
+import {headerStyle as s} from './styles';
 import {useNavigation} from '@react-navigation/native';
 
 export interface IHeader {
@@ -31,16 +32,3 @@ export default function Header({
     </View>
   );
 }
-
-const s = StyleSheet.create({
-  block: {
-    marginBottom: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  backImg: {
-    width: 20,
-    height: 20,
-    resizeMode: 'contain',
-  },
-});

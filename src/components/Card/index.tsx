@@ -1,8 +1,11 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import {Assets, Icons} from '../../helpers/Assets';
 import LinearGradient from 'react-native-linear-gradient';
-import {useNavigation} from '@react-navigation/native';
+import {CardStyle as s} from './styles';
+import {styles} from '../../styles/style';
+import Container from "../Container";
+
 export interface ICard {
   latest?: boolean;
   active?: boolean;
@@ -16,7 +19,7 @@ export default function Card(props: ICard) {
   const [feedback, setFeedback] = React.useState(false);
 
   return (
-    <View style={[s.block, props.latest && {marginBottom: 180}]}>
+    <Container style={[s.block, props.latest && {marginBottom: 180}]}>
       {props.new ? (
         <LinearGradient
           colors={['#d3b1ff', 'rgba(233,200,255,0.83)']}
@@ -25,16 +28,16 @@ export default function Card(props: ICard) {
           style={s.blockChild}>
           <View style={s.header}>
             <Text style={[s.cardDate, s.font]}>Сегодня</Text>
-            {!props.disLikeAble &&
-            <TouchableOpacity
+            {!props.disLikeAble && (
+              <TouchableOpacity
                 onPress={() => setActive(!active)}
                 activeOpacity={1}>
-              <Image
+                <Image
                   source={active ? Icons.heartActive : Icons.heart}
                   style={s.headerHeartIcon}
-              />
-            </TouchableOpacity>
-            }
+                />
+              </TouchableOpacity>
+            )}
           </View>
           <View style={s.body}>
             <TouchableOpacity onPress={() => props.onClick()} activeOpacity={1}>
@@ -74,16 +77,16 @@ export default function Card(props: ICard) {
         <View style={s.blockChild}>
           <View style={s.header}>
             <Text style={[s.cardDate, s.font]}>Сегодня</Text>
-            {!props.disLikeAble &&
-            <TouchableOpacity
+            {!props.disLikeAble && (
+              <TouchableOpacity
                 onPress={() => setActive(!active)}
                 activeOpacity={1}>
-              <Image
+                <Image
                   source={active ? Icons.heartActive : Icons.heart}
                   style={s.headerHeartIcon}
-              />
-            </TouchableOpacity>
-            }
+                />
+              </TouchableOpacity>
+            )}
           </View>
           <View style={s.body}>
             <TouchableOpacity onPress={() => props.onClick()} activeOpacity={1}>
@@ -110,7 +113,7 @@ export default function Card(props: ICard) {
               onPress={() => setFeedback(!feedback)}
               activeOpacity={1}>
               {feedback ? (
-                <Text style={[s.footerText, {color: '#33be86'}]}>
+                <Text style={[s.footerText, styles.textActive]}>
                   Вы откликнулись
                 </Text>
               ) : (
@@ -120,100 +123,6 @@ export default function Card(props: ICard) {
           </View>
         </View>
       )}
-    </View>
+    </Container>
   );
 }
-
-const s = StyleSheet.create({
-  block: {
-    marginTop: 15,
-    padding: 2,
-  },
-  blockChild: {
-    flexDirection: 'column',
-    paddingBottom: 7,
-    borderRadius: 10,
-    elevation: 2,
-    backgroundColor: '#fafafa',
-    padding: 17,
-    paddingTop: 10,
-  },
-  font: {
-    fontFamily: 'Manrope-Medium',
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  cardDate: {
-    fontSize: 11,
-    paddingStart: 3,
-    color: 'rgba(39,39,39,0.5)',
-  },
-  headerHeartIcon: {
-    width: 20,
-    height: 20,
-    resizeMode: 'contain',
-  },
-  body: {
-    paddingTop: 7,
-    flexDirection: 'row',
-  },
-  bodyImage: {
-    width: 120,
-    height: 120,
-    resizeMode: 'contain',
-    marginRight: 17,
-  },
-  bodyPart: {
-    paddingLeft: 10,
-  },
-  bodyCardTitle: {
-    fontWeight: '500',
-    fontSize: 15,
-  },
-  companyText: {
-    fontSize: 12,
-    color: 'rgba(39,39,39,0.5)',
-  },
-  salaryText: {
-    paddingTop: 15,
-    paddingBottom: 15,
-    fontSize: 15,
-    fontWeight: 'bold',
-  },
-  experienceText: {
-    fontSize: 11,
-    color: 'rgba(39,39,39,0.5)',
-  },
-  bodyGeo: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'flex-start',
-    justifyContent: 'flex-start',
-    height: 25,
-  },
-  geoIcon: {
-    position: 'relative',
-    right: 3,
-    resizeMode: 'contain',
-    width: 20,
-  },
-  geoText: {
-    fontSize: 11,
-    color: 'rgba(39,39,39,0.5)',
-  },
-  footer: {
-    width: '100%',
-    paddingTop: 7,
-    paddingBottom: 5,
-    justifyContent: 'flex-end',
-  },
-  footerText: {
-    alignSelf: 'flex-end',
-    color: '#481380',
-    fontWeight: 'bold',
-    fontSize: 13,
-  },
-});

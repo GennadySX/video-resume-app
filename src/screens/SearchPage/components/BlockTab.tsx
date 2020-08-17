@@ -1,17 +1,14 @@
 import React from 'react';
-import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {View, TouchableOpacity, Text} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-
-enum tabType {
-  aa,
-  bb,
-}
+import {blockTabStyle as s} from '../styles/blockTabStyle';
+import Container from "../../../components/Container";
 
 export default function BlockTab() {
   const [tab, setTab] = React.useState(false);
 
   return (
-    <View style={s.block}>
+    <Container style={s.block}>
       <TouchableOpacity onPress={() => setTab(false)}>
         <LinearGradient
           style={[s.tab, s.line]}
@@ -38,42 +35,6 @@ export default function BlockTab() {
           <Text style={[s.tabText, tab && s.tabActiveText]}> Поблизости</Text>
         </LinearGradient>
       </TouchableOpacity>
-    </View>
+    </Container>
   );
 }
-
-const s = StyleSheet.create({
-  block: {
-    marginTop: 10,
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  tab: {
-    padding: 10,
-    paddingLeft: 39,
-    paddingRight: 39,
-    backgroundColor: 'rgba(72, 19, 128, 0.07)',
-    borderRadius: 5,
-  },
-  line: {
-    borderRightColor: 'rgba(109,109,109,0.30)',
-    borderRightWidth: 0.5,
-    borderBottomRightRadius: 0,
-    borderTopRightRadius: 0,
-  },
-  outLine: {
-    borderBottomLeftRadius: 0,
-    borderTopLeftRadius: 0,
-  },
-  tabActive: {},
-  tabText: {
-    fontSize: 13,
-    fontFamily: 'Manrope-Medium',
-    color: 'gray',
-  },
-  tabActiveText: {
-    color: '#000000',
-  },
-});

@@ -1,26 +1,30 @@
 import React from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import Filter from './components/Filter';
 import BlockTab from './components/BlockTab';
 import Index from '../../components/ui/Title';
+import Title from '../../components/ui/Title';
 import Card from '../../components/Card';
 import BottomDrawer from '../../components/BottomDrawer';
 import {Height} from '../../helpers/Normalizer';
 import InputUI from '../../components/ui/inputs/input';
-import Title from '../../components/ui/Title';
 import ButtonBadge from '../../components/ui/buttons/badgely';
+import Button, {buttonType} from '../../components/ui/buttons';
 import ToggleButton from '../../components/ui/buttons/ToggleButton';
 import SelectPicker from '../../components/ui/select';
 import TabBar from '../../components/TabBar';
 import {TAB_MENU} from '../../constants/TabMenu';
 import {SearchLayout} from './components/SearchLayout';
+import {searchPageScreenStyle as s} from './styles';
+import Container from '../../components/Container';
+
 export interface ISearchPage {}
 
 export default class SearchPageScreen extends React.Component<any, any> {
   constructor(props: ISearchPage) {
     super(props);
     this.state = {
-      onFilter: false,
+      onFilter: true,
       isToggle: false,
       isSearch: false,
       menu: TAB_MENU[0].title,
@@ -58,6 +62,7 @@ export default class SearchPageScreen extends React.Component<any, any> {
             iconClick={() => this.filterFocus()}
           />
           <BlockTab />
+
           <ScrollView showsVerticalScrollIndicator={false}>
             <Card onClick={() => this.props.navigation.navigate('Vacancy')} />
             <Card onClick={() => this.props.navigation.navigate('Vacancy')} />
@@ -72,8 +77,8 @@ export default class SearchPageScreen extends React.Component<any, any> {
             full
             onClose={() => this.onCloseSheet()}>
             <View style={s.bFilterBlock}>
-              <Title text={'Фильтры'} fontSize={18} />
-              <ScrollView showsVerticalScrollIndicator={false}>
+              <Title text={'Фильтры'} fontSize={18} left />
+              <ScrollView showsVerticalScrollIndicator={false} style={{marginBottom: 100}}>
                 <InputUI
                   fullWidth
                   value={''}
@@ -141,11 +146,27 @@ export default class SearchPageScreen extends React.Component<any, any> {
                   style={{marginBottom: 100}}
                 />
               </ScrollView>
+              <Container
+                shadow
+                style={{marginBottom: 20, position: 'absolute', bottom: 0}}>
+                <Button
+                  title={'Сохранить изменения'}
+                  type={buttonType.purple}
+                  onPress={() => {}}
+                  style={{paddingBottom: 0}}
+                  textStyle={{fontSize: 13}}
+                />
+                <Button
+                  title={'Отмена'}
+                  type={buttonType.transparent}
+                  onPress={() => {}}
+                  textStyle={{color: 'gray', fontSize: 13}}
+                />
+              </Container>
             </View>
           </BottomDrawer>
         </View>
         <TabBar
-          menuList={TAB_MENU}
           active={menu}
           onClick={(title: string) => this.setState({menu: title})}
         />
@@ -153,17 +174,3 @@ export default class SearchPageScreen extends React.Component<any, any> {
     );
   }
 }
-
-const s = StyleSheet.create({
-  block: {
-    padding: 15,
-    paddingTop: 25,
-    height: Height - 90,
-    paddingBottom: 0,
-  },
-  bFilterBlock: {
-    justifyContent: 'center',
-    alignSelf: 'center',
-    alignItems: 'center',
-  },
-});

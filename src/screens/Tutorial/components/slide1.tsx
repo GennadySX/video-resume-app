@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Image, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Image, Text, TouchableOpacity} from 'react-native';
 import Index from '../../../components/ui/Title';
 import {Slide} from '../../../helpers/Assets';
-import {Width} from '../../../helpers/Normalizer';
+import {slide1Style as s} from '../styles/slide1Style';
 
 export default function Slide1() {
   return (
@@ -20,27 +20,3 @@ export default function Slide1() {
     </View>
   );
 }
-
-const s = StyleSheet.create({
-  block: {
-    padding: 20,
-  },
-  text: {
-    fontSize: 14,
-    fontFamily: 'Manrope-Medium',
-  },
-  img: {
-    width: 320,
-    justifyContent: 'center',
-    resizeMode: 'contain',
-  },
-  btnSkip: {
-    padding: 10,
-    alignSelf: 'flex-end',
-    position: 'relative',
-  },
-  btnSkipText: {
-    color: 'gray',
-    fontSize: 16,
-  },
-});

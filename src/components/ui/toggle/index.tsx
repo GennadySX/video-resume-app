@@ -1,7 +1,8 @@
 import React from 'react';
-import {Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {Image, TouchableOpacity} from 'react-native';
 import {Icons} from '../../../helpers/Assets';
 import LinearGradient from 'react-native-linear-gradient';
+import {toggleUIStyle as s} from './styles';
 
 export interface IToggleUI {
   value: boolean;
@@ -30,19 +31,3 @@ export default function ToggleUI({value, onClick}: IToggleUI) {
     </TouchableOpacity>
   );
 }
-
-const s = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    width: 50,
-    borderRadius: 50,
-    alignItems: 'center',
-  },
-  roundBounce: {
-    width: 30,
-    height: 30,
-    position: 'relative',
-    top: 1,
-    resizeMode: 'contain',
-  },
-});

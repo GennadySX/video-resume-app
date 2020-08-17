@@ -1,8 +1,8 @@
 import React, {ReactChild, ReactChildren} from 'react';
-import {Animated, Image, StyleSheet, ViewStyle} from 'react-native';
+import {Animated, Image, ViewStyle} from 'react-native';
 import View = Animated.View;
 import {AssetsBackground} from '../../helpers/Assets';
-import {Width} from '../../helpers/Normalizer';
+import {blockBackgroundStyle as s} from './styles';
 
 export interface IblockBackground {
   children: ReactChildren | ReactChild | any;
@@ -17,17 +17,3 @@ export default function blockBackground({children, style}: IblockBackground) {
     </View>
   );
 }
-
-const s = StyleSheet.create({
-  block: {
-    position: 'relative',
-    zIndex: 99,
-  },
-  background: {
-    position: 'absolute',
-    width: Width,
-    resizeMode: 'contain',
-    height: '140%',
-    zIndex: 1,
-  },
-});

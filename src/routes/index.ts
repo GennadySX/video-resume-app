@@ -1,67 +1,115 @@
 /*
  * GennadySX @2020
  */
-
+import {Routes} from './Routes';
 import AuthScreen from '../screens/Auth';
 import IntroScreen from '../screens/Intro';
 import RegisterScreen from '../screens/Register';
-import TutorialScreen from "../screens/Tutorial";
-import SearchPageScreen from "../screens/SearchPage";
-import VacancyScreen from "../screens/Vacancy";
-import SearchResultScreen from "../screens/SearchResult";
-import CompanyScreen from "../screens/Company";
-import FavoritesScreen from "../screens/Favorites";
-import FeedbackScreen from "../screens/Feedback";
+import TutorialScreen from '../screens/Tutorial';
+import SearchPageScreen from '../screens/SearchPage';
+import VacancyScreen from '../screens/Vacancy';
+import SearchResultScreen from '../screens/SearchResult';
+import CompanyScreen from '../screens/Company';
+import FavoritesScreen from '../screens/Favorites';
+import FeedbackScreen from '../screens/Feedback';
+import ChatScreen from "../screens/Chat";
+import ProfileScreen from "../screens/Profile";
 
-export const Routes = [
+export const RouteComponents = [
   {
-    name: 'Intro',
+    name: Routes.Intro,
     component: IntroScreen,
-    options: {headerShow: false},
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
   },
   {
-    name: 'Auth',
+    name: Routes.Auth,
     component: AuthScreen,
-    options: {headerShow: false},
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
   },
   {
-    name: 'Register',
+    name: Routes.Register,
     component: RegisterScreen,
-    options: {headerShow: false},
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
   },
   {
-    name: 'Tutorial',
+    name: Routes.Tutorial,
     component: TutorialScreen,
-    options: {headerShow: false},
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
   },
   {
-    name: 'SearchPage',
+    name: Routes.SearchPage,
     component: SearchPageScreen,
-    options: {headerShow: false},
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
   },
   {
-    name: 'SearchResult',
+    name: Routes.SearchResult,
     component: SearchResultScreen,
-    options: {headerShow: false},
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
   },
   {
-    name: 'Vacancy',
+    name: Routes.Vacancy,
     component: VacancyScreen,
-    options: {headerShow: false},
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
   },
   {
-    name: 'Company',
+    name: Routes.Company,
     component: CompanyScreen,
-    options: {headerShow: false},
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
   },
   {
-    name: 'Favorites',
+    name: Routes.Favorites,
     component: FavoritesScreen,
-    options: {headerShow: false},
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
   },
   {
-    name: 'Feedback',
+    name: Routes.Feedback,
     component: FeedbackScreen,
-    options: {headerShow: false},
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
+  },
+  {
+    name: Routes.Chat,
+    component: ChatScreen,
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
+  },
+  {
+    name: Routes.Profile,
+    component: ProfileScreen,
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
   },
 ];
