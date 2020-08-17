@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import {Icons} from '../../../helpers/Assets';
 import {filterStyle as s} from "../styles/filterStyle";
-import Container from "../../../components/Container";
 
 export interface IFilter {
   onFocus?: () => void;

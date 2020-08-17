@@ -13,7 +13,7 @@ export interface IPhoneInput {
 }
 
 export default function PhoneInput({onSubmit}: IPhoneInput) {
-  const [number, setNumber] = React.useState('+79991571858');
+  const [number, setNumber] = React.useState('');
 
   return (
     <View style={s.block}>

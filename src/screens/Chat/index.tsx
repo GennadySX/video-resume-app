@@ -1,45 +1,88 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Text, View, Button} from 'react-native';
-export interface IAuthScreeen {}
-import auth from '@react-native-firebase/auth';
-import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
+import {View, ScrollView} from 'react-native';
+import BlockTab from './components/BlockTab';
+import Index from '../../components/ui/Title';
+import Card from './components/SwipeCard';
+import TabBar from '../../components/TabBar';
+import MiniCard from './components/MiniCard';
+import {feedbackScreenStyle as s} from './styles';
+import Search from "./components/Search";
+import ChatPanel from "./components/ChatPanel";
+import {messageList} from "../../json/messageList";
 
-class ChatScreen extends React.Component<any, any> {
-  constructor(props: IAuthScreeen) {
+export interface IChatScreen {}
+
+export default class ChatScreen extends React.Component<any, any> {
+  constructor(props: IChatScreen) {
     super(props);
     this.state = {
-      userInfo: null,
+      onFilter: false,
+      isToggle: false,
+      isSearch: false,
+      tabSection: false,
+      isMessagePanel: false
     };
   }
 
-  componentDidMount(): void {
-    GoogleSignin.configure({
-      webClientId:
-        '581895421213-qfnh61g6vgd1taa014qgpvqhj8f59ujv.apps.googleusercontent.com',
-      scopes: ['openid', 'email', 'profile'],
-      offlineAccess: true,
-    });
+  openMessagePanel() {
+
+      this.setState({isMessagePanel: !this.state.isMessagePanel})
   }
 
-  signIn = async () => {
-    try {
-      const userInfo = await GoogleSignin.signIn();
-      this.setState({userInfo}, () => console.log('state', this.state));
-    } catch (error) {
-      // some other error happened.
-      console.log('err', error);
-    }
-  };
 
   render() {
+    const {menu, tabSection, isMessagePanel} = this.state;
     return (
-      <View>
-        <Text> Test Text</Text>
-        <Button title="Google Sign-In" onPress={() => this.signIn()} />
-      </View>
+        isMessagePanel ?
+            <ChatPanel messageList={messageList} onBack={() => this.openMessagePanel()} /> :
+        <View>
+          <View style={s.block}>
+            <Index text={'Чат'} style={{left: 0, marginBottom: 20}} />
+            <Search />
+            <BlockTab
+                titles={['Активные', 'Архивные']}
+                onClick={(val: boolean) => this.setState({tabSection: val})}
+                selected={false}
+            />
+
+            {!tabSection ? (
+                <ScrollView showsVerticalScrollIndicator={false}>
+                  <Card
+                      new
+                      onClick={() => this.openMessagePanel()}
+                  />
+                  <Card
+                      onClick={() => this.openMessagePanel()}
+                  />
+                  <Card
+                      new
+                      onClick={() => this.openMessagePanel()}
+                      latest
+                  />
+                </ScrollView>
+            ) : (
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    <Card
+                        archive
+                        onClick={() => this.openMessagePanel()}
+                    />
+                    <Card
+                        archive
+                        onClick={() => this.openMessagePanel()}
+                    />
+                    <Card
+                        archive
+                        onClick={() => this.openMessagePanel()}
+                        latest
+                    />
+                </ScrollView>
+            )}
+          </View>
+          <TabBar
+              active={menu}
+              onClick={(title: string) => this.setState({menu: title})}
+          />
+        </View>
     );
   }
 }
-
-export default connect()(ChatScreen);

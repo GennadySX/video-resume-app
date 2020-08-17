@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, View} from 'react-native';
+import {ScrollView, TouchableOpacity, View, Text, StyleSheet, CheckBox} from 'react-native';
 import Filter from './components/Filter';
 import BlockTab from './components/BlockTab';
 import Index from '../../components/ui/Title';
@@ -17,6 +17,7 @@ import {TAB_MENU} from '../../constants/TabMenu';
 import {SearchLayout} from './components/SearchLayout';
 import {searchPageScreenStyle as s} from './styles';
 import Container from '../../components/Container';
+import CheckBoxUI from "../../components/ui/checkbox";
 
 export interface ISearchPage {}
 
@@ -24,11 +25,15 @@ export default class SearchPageScreen extends React.Component<any, any> {
   constructor(props: ISearchPage) {
     super(props);
     this.state = {
-      onFilter: true,
+      onFilter: false,
+      onFilterPopup: false,
       isToggle: false,
       isSearch: false,
-      menu: TAB_MENU[0].title,
+      check1: false,
+      check2: false,
+      check3: false,
     };
+
   }
 
   inputFocus() {
@@ -45,8 +50,29 @@ export default class SearchPageScreen extends React.Component<any, any> {
       console.log('closed sheet', this.state.onFilter),
     );
   }
+
+  onCloseSheetChild() {
+    this.setState({onFilterPopup: false}, () =>
+        console.log('closed child sheet', this.state.onFilter),
+    );
+  }
+
+  clearCheck() {
+    this.setState({
+      check1: false,
+      check2: false,
+      check3: false,
+    })
+  }
+
+  checkIt(isCheck: string) {
+    this.setState({
+      [isCheck]: !this.state[isCheck]
+    })
+  }
+
   render() {
-    const {onFilter, isToggle, menu, isSearch} = this.state;
+    const {onFilter, isToggle, menu, isSearch, onFilterPopup, check1, check2, check3} = this.state;
     return (
       <View>
         <View style={s.block}>
@@ -109,9 +135,9 @@ export default class SearchPageScreen extends React.Component<any, any> {
                   onChangeText={() => 'f'}
                   placeholder={'График'}
                 />
-                <ButtonBadge />
-                <ButtonBadge />
-                <ButtonBadge />
+                <ButtonBadge onClick={() => this.setState({onFilterPopup: true})} />
+                <ButtonBadge onClick={() => this.setState({onFilterPopup: true})} />
+                <ButtonBadge onClick={() => this.setState({onFilterPopup: true})} />
                 <SelectPicker
                   values={[
                     {label: 'JS', value: 'js'},
@@ -166,6 +192,30 @@ export default class SearchPageScreen extends React.Component<any, any> {
             </View>
           </BottomDrawer>
         </View>
+        <BottomDrawer
+            startUp={onFilterPopup}
+            height={Height * 0.9}
+            full
+            onClose={() => this.onCloseSheetChild()}>
+          <View style={xs.header}>
+            <Title text={'Добавить метро'} fontSize={18} style={{marginBottom: 0}} />
+            <TouchableOpacity onPress={() => this.clearCheck()} >
+              <Text style={xs.headerClear}>Очистить все</Text>
+            </TouchableOpacity>
+          </View>
+          <Container>
+            <View style={xs.resultBlock}>
+              <CheckBoxUI checked={check1} title={'Авиастроительный'}
+                onCheck={() => this.checkIt('check1')}
+              />
+              <CheckBoxUI checked={check2} title={'Авиастроительный'}
+                          onCheck={() => this.checkIt('check2')}
+              />
+              <CheckBoxUI checked={check3} title={'Авиастроительный'}
+                          onCheck={() => this.checkIt('check3')}/>
+            </View>
+          </Container>
+        </BottomDrawer>
         <TabBar
           active={menu}
           onClick={(title: string) => this.setState({menu: title})}
@@ -174,3 +224,22 @@ export default class SearchPageScreen extends React.Component<any, any> {
     );
   }
 }
+
+
+const xs = StyleSheet.create({
+  resultBlock: {
+    borderTopColor: 'rgba(39,39,39,0.2)',
+    borderTopWidth: 1,
+    width: '100%',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  headerClear: {
+    color: "rgba(101,99,99,0.66)",
+    fontFamily: 'Manrope-Medium',
+    right: 10
+  }
+})

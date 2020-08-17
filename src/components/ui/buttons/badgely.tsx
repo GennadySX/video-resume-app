@@ -5,7 +5,7 @@ import {Icons} from '../../../helpers/Assets';
 import {buttonBadgeStyle as s} from './styles';
 
 export interface IButtonBadge {
-  onClick?: () => void;
+  onClick: () => void;
   badgeStyle?: any;
   badgeValue?: string;
   title?: string;
@@ -14,7 +14,7 @@ export interface IButtonBadge {
 
 export default function ButtonBadge(props: IButtonBadge) {
   return (
-    <TouchableOpacity onPress={() => {}}>
+    <TouchableOpacity onPress={() => props.onClick()}>
       <LinearGradient
         colors={['#57248d', 'rgba(137,80,198,0.7)']}
         start={{x: 0, y: 1}}

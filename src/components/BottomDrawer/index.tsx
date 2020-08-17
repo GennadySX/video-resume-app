@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import RBSheet from 'react-native-raw-bottom-sheet';
 export interface ISignDrawer {
-  children: React.ReactChild | React.ReactChildren;
+  children: React.ReactChild | React.ReactChildren | any;
   startUp?: boolean;
   onClose?: () => void;
   height?: number;

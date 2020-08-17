@@ -3,7 +3,6 @@ import {Height} from '../../../helpers/Normalizer';
 
 export const favoritesScreenStyle = StyleSheet.create({
   block: {
-    padding: 15,
     paddingTop: 25,
     height: Height - 90,
     paddingBottom: 0,

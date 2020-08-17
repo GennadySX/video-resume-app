@@ -13,4 +13,4 @@ export const Routes: any = {
   Chat: 'Chat',
 };
 
-export const RouteActive: string = Routes.SearchPage;
+export const RouteActive: string = Routes.Intro;

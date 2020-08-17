@@ -35,6 +35,7 @@ export enum Icons {
   filters = require('../assets/img/icons/filters.png'),
   plusWhite = require('../assets/img/icons/plusWhite.png'),
   oval = require('../assets/img/icons/oval.png'),
+  checked = require('../assets/img/icons/checked.png'),
   arrowDownPurple = require('../assets/img/icons/arrowDownPurple.png'),
 }
 
