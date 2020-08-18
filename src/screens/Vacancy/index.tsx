@@ -3,43 +3,21 @@ import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import Card from '../../components/Card';
 import Header from '../../components/Header';
 import Button, {buttonType} from '../../components/ui/buttons';
-import {Assets, Icons} from '../../helpers/Assets';
+import {Assets, AssetsPopup, Icons} from '../../helpers/Assets';
 import {vacancyScreenStyle as s} from './styles';
 import BottomDrawer from '../../components/BottomDrawer';
 import {Height} from '../../helpers/Normalizer';
 import Title from '../../components/ui/Title';
 import Container from '../../components/Container';
 import ResumeCard from './components/ResumeCard';
+import {resumeListJSON} from "../../json/resumeList";
+import {Routes} from "../../routes/Routes";
+import Popup from "../../components/Popup";
+import {DialogContent} from "react-native-popup-dialog";
 
 export interface IVacancy {}
 
-const resumeList = [
-  {
-    id: 1,
-    title: 'Web Developer',
-    link: 'https://example.com/user/resume/1',
-  },
-  {
-    id: 2,
-    title: 'Java Developer',
-    link: 'https://example.com/user/resume/1',
-  },
-  {
-    id: 3,
-    title: 'JS Developer',
-    link: 'https://example.com/user/resume/1',
-  },
-  {
-    id: 4,
-    title: 'Full Stack Developer',
-    link: 'https://example.com/user/resume/1',
-  },
-  {
-    id: 5,
-    title: 'Designer',
-    link: 'https://example.com/user/resume/1',
-  },
-];
+
 
 export default class VacancyScreen extends React.Component<any, any> {
   constructor(props: IVacancy) {
@@ -48,6 +26,7 @@ export default class VacancyScreen extends React.Component<any, any> {
       isBottomDrawer: false,
       onChoose: false,
       selected: null,
+      isSend: false
     };
   }
 
@@ -64,7 +43,7 @@ export default class VacancyScreen extends React.Component<any, any> {
   }
 
   render() {
-    const {isBottomDrawer, onChoose, selected} = this.state;
+    const {isBottomDrawer, onChoose, selected, isSend} = this.state;
     return (
       <View style={s.block}>
         <Header
@@ -82,8 +61,9 @@ export default class VacancyScreen extends React.Component<any, any> {
             </View>
           }
         />
-        <ScrollView showsVerticalScrollIndicator={false} style={s.mainBlock}>
-          <Title text={'Web-дизайнер'} style={{left: 0, marginBottom: 0}} />
+        <ScrollView showsVerticalScrollIndicator={false} >
+          <View style={s.mainBlock}>
+          <Title text={'Web-дизайнер'} style={{marginBottom: 0}} left />
           <Text style={[s.companyText, s.font]}>Компания</Text>
           <Text style={[s.salaryText, s.font]}>от 30000 р.</Text>
           <Text style={[s.experienceText, s.font]}>Опыт от 1 года</Text>
@@ -103,7 +83,7 @@ export default class VacancyScreen extends React.Component<any, any> {
           <Button
             style={{paddingTop: 7, paddingBottom: 5}}
             title={'Подробнее о компании'}
-            onPress={() => {}}
+            onPress={() => this.props.navigation.navigate(Routes.Company)}
             type={buttonType.transparent}
             textStyle={{color: 'gray'}}
           />
@@ -129,13 +109,23 @@ export default class VacancyScreen extends React.Component<any, any> {
           <Text style={[s.blockTitle, {paddingBottom: 0}]}>
             Похожие вакансии
           </Text>
-          <Card onClick={() => this.props.navigation.navigate('Vacancy')} />
-          <Card onClick={() => this.props.navigation.navigate('Vacancy')} />
+          </View>
+
           <Card
+              unPadding
+              onClick={() => this.props.navigation.navigate('Vacancy')} />
+          <Card
+              unPadding
+              onClick={() => this.props.navigation.navigate('Vacancy')} />
+          <Card
+            unPadding
             latest
             onClick={() => this.props.navigation.navigate('Vacancy')}
           />
         </ScrollView>
+
+
+
 
         <BottomDrawer
           full
@@ -148,7 +138,7 @@ export default class VacancyScreen extends React.Component<any, any> {
               horizontal
               showsHorizontalScrollIndicator={false}
               style={{marginBottom: 10}}>
-              {resumeList.map((resume: any, index: number) => (
+              {resumeListJSON.map((resume: any, index: number) => (
                 <ResumeCard
                   value={resume}
                   first={index === 0}
@@ -161,7 +151,7 @@ export default class VacancyScreen extends React.Component<any, any> {
               {onChoose && (
                 <Button
                   title={'Отправить'}
-                  onPress={() => {}}
+                  onPress={() => this.setState({isSend: true}, () => this.openBottomDrawer())}
                   type={buttonType.purple}
                   style={{paddingBottom: 1}}
                   textStyle={{fontSize: 13}}
@@ -176,6 +166,15 @@ export default class VacancyScreen extends React.Component<any, any> {
             </View>
           </Container>
         </BottomDrawer>
+
+        <Popup visible={isSend} onClose={() => this.setState({isSend: false})} >
+          <Container style={s.container}>
+            <Title text={'Резюме отправлено'} left fontSize={18} style={{marginBottom: 10}} />
+            <Text style={s.desc}>Ваше резюме успешно отправлено, его состояние можно отследить в разделе “Отклики”</Text>
+            <Image source={AssetsPopup.vacancy} style={s.img} />
+            <Button title={'Понятно'} onPress={() => this.setState({isSend: false})} type={buttonType.transparent} textStyle={s.btnText}  style={s.btn}/>
+          </Container>
+        </Popup>
       </View>
     );
   }

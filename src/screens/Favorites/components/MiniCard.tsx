@@ -3,6 +3,7 @@ import {View, Text, TouchableOpacity, Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {Icons} from '../../../helpers/Assets';
 import {miniCardStyle as s} from '../styles/miniCardStyle';
+import Container from "../../../components/Container";
 
 export interface IMiniCard {
   latest?: boolean;
@@ -14,7 +15,7 @@ export default function MiniCard(props: IMiniCard) {
   const [feedback, setFeedback] = React.useState(false);
 
   return (
-    <View style={[s.block, props.latest && {marginBottom: 30}]}>
+    <Container style={[s.block, props.latest && {marginBottom: 30}]}>
       <View style={s.blockChild}>
         <View style={s.body}>
           <View style={s.bodyPart}>
@@ -51,6 +52,6 @@ export default function MiniCard(props: IMiniCard) {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </Container>
   );
 }

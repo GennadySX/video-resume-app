@@ -3,7 +3,7 @@
  */
 
 
-export const messageList = [
+export const messageListJSON = [
     {
         text: "Добрый день. Когда сможем созвониться и назначить встречу?",
         me: true

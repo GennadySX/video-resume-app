@@ -7,6 +7,7 @@ import {styles} from '../../styles/style';
 import Container from "../Container";
 
 export interface ICard {
+  unPadding?: boolean;
   latest?: boolean;
   active?: boolean;
   new?: boolean;
@@ -19,7 +20,7 @@ export default function Card(props: ICard) {
   const [feedback, setFeedback] = React.useState(false);
 
   return (
-    <Container style={[s.block, props.latest && {marginBottom: 180}]}>
+    <Container style={[s.block, props.latest && {marginBottom: 180}, props.unPadding && {paddingLeft: 0, paddingRight: 0}]}>
       {props.new ? (
         <LinearGradient
           colors={['#d3b1ff', 'rgba(233,200,255,0.83)']}

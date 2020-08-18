@@ -3,6 +3,8 @@
  */
 
 export enum Icons {
+  addResume = require('../assets/img/icons/add_resume.png'),
+  addVideo = require('../assets/img/icons/add_video.png'),
   back = require('../assets/img/icons/back.png'),
   next = require('../assets/img/icons/right.png'),
   archive = require('../assets/img/icons/archive.png'),
@@ -12,6 +14,7 @@ export enum Icons {
   vk = require('../assets/img/icons/vk.png'),
   ok = require('../assets/img/icons/ok.png'),
   filter = require('../assets/img/icons/filter.png'),
+  more = require('../assets/img/icons/more.png'),
   flag = require('../assets/img/icons/flag.png'),
   heartActive = require('../assets/img/icons/heartActive.png'),
   heartActiveOutline = require('../assets/img/icons/heartActiveOutline.png'),
@@ -51,10 +54,14 @@ export enum Assets {
   cardVideoA = require('../assets/img/card/a.png'),
   cardVideoB = require('../assets/img/card/b.png'),
   cardVideoC = require('../assets/img/card/c.png'),
+  photo = require('../assets/img/card/girl.jpg'),
 }
+
 export enum AssetsBackground {
   roundBackground = require('../assets/img/background/background-l-rounded.png'),
   shadow = require('../assets/img/background/shadow.png'),
-
 }
 
+export enum AssetsPopup {
+  vacancy = require('../assets/img/popup/resume_sent.png'),
+}

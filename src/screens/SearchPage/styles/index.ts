@@ -4,7 +4,6 @@ import {Height} from "../../../helpers/Normalizer";
 export const searchPageScreenStyle = StyleSheet.create({
     block: {
         paddingTop: 25,
-        height: Height - 90,
         paddingBottom: 0,
 
     },

@@ -1,14 +1,23 @@
 import {StyleSheet} from "react-native";
-import {Width} from "../../../helpers/Normalizer";
+import {Height, Width} from "../../../helpers/Normalizer";
 
 export const tabBarStyle = StyleSheet.create({
+    block: {
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+    },
     container: {
-        width: Width,
+        minHeight: Height - 90,
+        maxHeight: Height - 90
+    },
+    tabContainer: {
+        width: '100%',
+        padding: 10,
+        paddingTop: 15,
         backgroundColor: '#F8F2FF',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 10,
-        paddingTop: 15,
+        margin: 0,
     },
     tab: {
         alignSelf: 'center',
@@ -22,7 +31,8 @@ export const tabBarStyle = StyleSheet.create({
     title: {
         color: '#868686',
         fontSize: 13,
-        fontFamily: 'Manrope-Medium'
+        fontFamily: 'Manrope-Medium',
+        marginBottom: 5
     },
     titleActive: {
         color: '#481380',

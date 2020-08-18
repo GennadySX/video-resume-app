@@ -11,6 +11,7 @@ export enum FontType {
 }
 
 interface ITitle {
+  unBottom?: boolean;
   text: string;
   center?: boolean;
   left?: boolean;
@@ -20,9 +21,9 @@ interface ITitle {
   fontType?: FontType
 }
 
-export default function Title({text, style, fontSize, left, fontType, center}: ITitle) {
+export default function Title({text, style, fontSize, left, fontType, center, unBottom}: ITitle) {
   return (
-    <View style={[s.titleBlock, style, left && {paddingLeft: 0}, center && {justifyContent: 'center', width: Width * 0.9}]}>
+    <View style={[s.titleBlock, style, left && {paddingLeft: 0}, center && {justifyContent: 'center', width: Width * 0.9}, unBottom && {marginBottom: 0}]}>
       <Text style={[s.text, {fontSize: fontSize || 27}, {fontFamily: fontType ? fontType :  FontType.bold}, center && {textAlign: 'center'} ]}>{text} </Text>
     </View>
   );

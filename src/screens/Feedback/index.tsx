@@ -25,7 +25,10 @@ export default class FeedbackScreen extends React.Component<any, any> {
   render() {
     const {menu, tabSection} = this.state;
     return (
-      <View>
+        <TabBar
+            active={menu}
+            onClick={(title: string) => this.setState({menu: title})}
+        >
         <View style={s.block}>
           <Index text={'Отклики'} style={{left: 0, marginBottom: 20}} />
           <BlockTab
@@ -63,11 +66,8 @@ export default class FeedbackScreen extends React.Component<any, any> {
             </ScrollView>
           )}
         </View>
-        <TabBar
-          active={menu}
-          onClick={(title: string) => this.setState({menu: title})}
-        />
-      </View>
+
+      </TabBar>
     );
   }
 }

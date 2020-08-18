@@ -11,6 +11,7 @@ export interface IContainer {
   colors?: string[] | any;
   children: ReactChildren | ReactChild | any;
   style?: StyleProp<ViewStyle>;
+  paddingTop?: boolean
 }
 
 export default function Container({
@@ -19,18 +20,19 @@ export default function Container({
   children,
   style,
   unPadding,
-  shadow,
+  shadow, paddingTop
+
 }: IContainer) {
   return linear ? (
     <LinearGradient
       colors={colors}
       start={{x: 0, y: 1}}
       end={{x: 1, y: 0}}
-      style={[s.container, style]}>
+      style={[s.container, style, paddingTop && {paddingTop: 20}]}>
       {children}
     </LinearGradient>
   ) : (
-    <View style={[!unPadding && s.container, style]}>
+    <View style={[!unPadding && s.container, style, paddingTop && {paddingTop: 20}]}>
       {shadow && (
        <Image source={AssetsBackground.shadow} style={s.shadowContent} />
       )}

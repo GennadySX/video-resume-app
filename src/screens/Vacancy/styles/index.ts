@@ -1,8 +1,11 @@
 import {StyleSheet} from 'react-native';
 import {Width} from '../../../helpers/Normalizer';
+import {styles} from "../../../styles/style";
 
 export const vacancyScreenStyle = StyleSheet.create({
-  mainBlock: {paddingLeft: 7, paddingRight: 7},
+  mainBlock: {
+    paddingLeft: 7, paddingRight: 7
+  },
   block: {
     padding: 15,
     paddingTop: 25,
@@ -64,4 +67,31 @@ export const vacancyScreenStyle = StyleSheet.create({
     resizeMode: 'contain',
     marginRight: 10,
   },
+  //Popup
+  container: {
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  desc: {
+    ...styles.fontMedium,
+    fontSize: 13,
+    color: 'rgba(39,39,39,0.4)',
+    marginBottom: 20
+
+  },
+  img: {
+    width: 230,
+    height: 230,
+    marginBottom: 20,
+    resizeMode: 'contain',
+    alignSelf: 'center'
+  },
+  btn: {
+    paddingBottom: 0
+  },
+  btnText: {
+    ...styles.fontMedium,
+    color: 'rgba(72,19,128,0.8)'
+  }
+
 });

@@ -6,6 +6,7 @@ export const resumeCardStyle = StyleSheet.create({
     padding: 12,
     marginRight: 15,
     borderRadius: 7,
+    maxHeight: 65,
   },
   title: {
     ...styles.fontMedium,
