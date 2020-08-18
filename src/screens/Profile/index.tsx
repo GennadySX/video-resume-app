@@ -36,6 +36,8 @@ class ProfileScreen extends React.Component<any, any> {
                     <ButtonIcon icon={Icons.more} onPress={() => {
                     }}/>
                 </Container>
+                <ScrollView>
+
                 <Container style={s.profileImageBlock}>
                     <TouchableOpacity style={s.imgContainer} onPress={() => {
                     }}>
@@ -79,6 +81,8 @@ class ProfileScreen extends React.Component<any, any> {
                         </TouchableOpacity>
                     </View>
                 </Container>
+                </ScrollView>
+
             </TabBar>
 
     );

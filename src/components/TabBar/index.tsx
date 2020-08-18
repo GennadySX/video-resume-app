@@ -26,12 +26,9 @@ export default function TabBar({active, onClick, children}: ITabBar) {
 
     return (
         <View style={s.block}>
-            <ScrollView style={s.container}>
-                <View>
+            <View style={s.container}>
                     {children}
-                </View>
-            </ScrollView>
-
+            </View>
             <View style={s.tabContainer}>
                 {TAB_MENU.map((menu: IMenuList, index: number) => (
                     <TouchableOpacity

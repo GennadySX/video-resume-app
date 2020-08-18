@@ -30,7 +30,7 @@ export default class FeedbackScreen extends React.Component<any, any> {
             onClick={(title: string) => this.setState({menu: title})}
         >
         <View style={s.block}>
-          <Index text={'Отклики'} style={{left: 0, marginBottom: 20}} />
+          <Index text={'Отклики'} style={{left: 0, marginBottom: 20}} left />
           <BlockTab
             titles={['Активные', 'Без ответа']}
             onClick={(val: boolean) => this.setState({tabSection: val})}
