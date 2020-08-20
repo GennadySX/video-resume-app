@@ -14,6 +14,8 @@ import FavoritesScreen from '../screens/Favorites';
 import FeedbackScreen from '../screens/Feedback';
 import ChatScreen from "../screens/Chat";
 import ProfileScreen from "../screens/Profile";
+import SettingsScreen from "../screens/Settings";
+import ProfileEditScreen from "../screens/Profile/screens/ProfileEdit";
 
 export const RouteComponents = [
   {
@@ -107,6 +109,22 @@ export const RouteComponents = [
   {
     name: Routes.Profile,
     component: ProfileScreen,
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
+  },
+  {
+    name: Routes.ProfileEdit,
+    component: ProfileEditScreen,
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
+  },
+  {
+    name: Routes.Settings,
+    component: SettingsScreen,
     options: {
       headerShow: false,
       animationEnabled: false,

@@ -7,6 +7,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {RouteComponents} from './routes';
 import {PersistGate} from 'redux-persist/es/integration/react';
+// @ts-ignore
 import {Provider} from 'react-redux';
 import {persistor, store} from './store/store';
 import {RouteActive} from './routes/Routes';

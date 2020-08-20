@@ -3,16 +3,17 @@ import {View, Text, Image, TouchableOpacity, StyleSheet, ScrollView} from 'react
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {TAB_MENU} from "../../constants/TabMenu";
 import {tabBarStyle as s} from "./styles";
+import {Routes} from "../../routes/Routes";
 
 interface IMenuList {
     title: string;
     icon: any;
     iconActive: any;
-    route: string;
+    route: Routes;
 }
 
 export interface ITabBar {
-    active?: string;
+    active?: Routes;
     onClick?: (menu: string, index?: number) => void;
     children: ReactChildren | ReactChild | ReactChild[];
 }
@@ -20,8 +21,9 @@ export interface ITabBar {
 export default function TabBar({active, onClick, children}: ITabBar) {
     const navigation = useNavigation()
     const route = useRoute()
+
     const isActive = (menu: IMenuList) => {
-        return menu.route === route.name;
+        return active ? menu.route === active : menu.route === route.name;
     };
 
     return (

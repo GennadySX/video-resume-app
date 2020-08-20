@@ -12,29 +12,44 @@ import {Width} from "../../helpers/Normalizer";
 import {styles} from "../../styles/style";
 import ResumeCard from "../Vacancy/components/ResumeCard";
 import {resumeListJSON} from "../../json/resumeList";
+import {Routes} from "../../routes/Routes";
+import ProfileMoreMenu from "./components/MoreMenu";
 
-export interface IAuthScreeen {
+export interface IProfileScreen {
+
 }
 
 class ProfileScreen extends React.Component<any, any> {
-    constructor(props: IAuthScreeen) {
+    constructor(props: IProfileScreen) {
         super(props);
         this.state = {
             userInfo: null,
+            isMore: false
         };
     }
 
     componentDidMount(): void {
     }
 
+    openMore() {
+        this.setState({
+            isMore: !this.state.isMore
+        })
+    }
+
+    componentWillUnmount() {
+        this.setState({
+            isMore: false
+        })
+    }
 
     render() {
+        const {isMore} = this.state
         return (
             <TabBar>
                 <Container paddingTop style={s.header}>
                     <Title text={'Профиль'} left unBottom/>
-                    <ButtonIcon icon={Icons.more} onPress={() => {
-                    }}/>
+                    <ButtonIcon icon={Icons.more} onPress={() => this.openMore()}/>
                 </Container>
                 <ScrollView>
 
@@ -82,10 +97,9 @@ class ProfileScreen extends React.Component<any, any> {
                     </View>
                 </Container>
                 </ScrollView>
-
+                <ProfileMoreMenu active={isMore} onClose={() => this.openMore()} />
             </TabBar>
-
-    );
+        );
     }
 }
 
@@ -167,4 +181,4 @@ const s = StyleSheet.create({
 })
 
 
-export default connect()(ProfileScreen);
+export default ProfileScreen
