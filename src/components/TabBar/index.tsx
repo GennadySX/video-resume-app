@@ -22,6 +22,7 @@ export default function TabBar({active, onClick, children}: ITabBar) {
     const navigation = useNavigation()
     const route = useRoute()
 
+
     const isActive = (menu: IMenuList) => {
         return active ? menu.route === active : menu.route === route.name;
     };

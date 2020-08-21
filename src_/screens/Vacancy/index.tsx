@@ -150,6 +150,7 @@ export default class VacancyScreen extends React.Component<any, any> {
               style={{marginBottom: 10}}>
               {resumeList.map((resume: any, index: number) => (
                 <ResumeCard
+                  key={index}
                   value={resume}
                   first={index === 0}
                   onClick={(item: number) => this.setChoose(item)}

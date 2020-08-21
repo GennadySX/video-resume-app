@@ -30,7 +30,7 @@ export default function ChatPanel(props: IChatPanel) {
                 </Container>
                 <Container style={s.messageListContainer} >
                     {props.messageList.map((message: any, index: number) =>
-                        <View style={[s.messageList, message.me && s.left]} >
+                        <View key={index} style={[s.messageList, message.me && s.left]} >
                             <Text style={s.message} >{message.text}</Text>
                         </View>
                     )}

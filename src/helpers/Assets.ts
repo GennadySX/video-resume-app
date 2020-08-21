@@ -39,6 +39,7 @@ export enum Icons {
   plusWhite = require('../assets/img/icons/plusWhite.png'),
   oval = require('../assets/img/icons/oval.png'),
   checked = require('../assets/img/icons/checked.png'),
+  photoFrame = require('../assets/img/icons/photoFrame1.png'),
   arrowDownPurple = require('../assets/img/icons/arrowDownPurple.png'),
 }
 
@@ -47,7 +48,6 @@ export enum Slide {
   slide2 = require('../assets/img/slide/ab.png'),
   slide3 = require('../assets/img/slide/b.png'),
 }
-
 
 export enum Assets {
   cardAsset = require('../assets/img/card/index.png'),

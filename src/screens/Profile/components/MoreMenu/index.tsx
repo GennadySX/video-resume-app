@@ -26,7 +26,7 @@ export default function ProfileMoreMenu(props: IMoreMenu) {
             <Container >
                 <Title text={'Изменить'} left fontSize={18} unBottom  />
                 <View style={s.block}>
-                        <TouchableOpacity  onPress={() => navigation.navigate(Routes.Settings)} style={s.menuBtn}>
+                        <TouchableOpacity  onPress={() => passScreen(Routes.ProfileEdit)} style={s.menuBtn}>
                             <Text>Редактирование профиля</Text>
                         </TouchableOpacity>
                         <TouchableOpacity  onPress={() => passScreen(Routes.Settings)} style={s.menuBtn}>
