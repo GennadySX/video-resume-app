@@ -2,38 +2,39 @@
  * GennadySX @2020
  */
 
-import {Icons} from '../helpers/Assets';
+import {Icon} from '../helpers/Icons';
 import {Routes} from "../routes/Routes";
+
 
 export const TAB_MENU = [
   {
     title: 'Поиск',
-    icon: Icons.search,
-    iconActive: Icons.searchActiveOutline,
+    icon: Icon.SearchIcon,
+    iconActive: Icon.SearchActiveIcon,
     route: Routes.SearchPage,
   },
   {
     title: 'Отклики',
-    icon: Icons.feedback,
-    iconActive: Icons.feedbackActive,
+    icon: Icon.FeedbackIcon,
+    iconActive: Icon.FeedbackActiveIcon,
     route: Routes.Feedback,
   },
   {
     title: 'Профиль',
-    icon: Icons.profile,
-    iconActive: Icons.profileActive,
+    icon: Icon.ProfileIcon,
+    iconActive: Icon.ProfileActiveIcon,
     route: Routes.Profile,
   },
   {
     title: 'Чат',
-    icon: Icons.chat,
-    iconActive: Icons.chatActive,
+    icon: Icon.ChatIcon,
+    iconActive: Icon.ChatActiveIcon,
     route: Routes.Chat,
   },
   {
     title: 'Избранное',
-    icon: Icons.heart,
-    iconActive: Icons.heartActiveOutline,
+    icon: Icon.LikeIcon,
+    iconActive: Icon.LikeActiveTabIcon,
     route: Routes.Favorites,
   },
 ];
