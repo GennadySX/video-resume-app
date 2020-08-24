@@ -48,7 +48,7 @@ export const swipeCardStyle = StyleSheet.create({
         alignItems: 'center',
     },
     leftActionContainer: {
-        width: 100,
+        width: 105,
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',

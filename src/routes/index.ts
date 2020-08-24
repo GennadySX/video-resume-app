@@ -12,10 +12,17 @@ import SearchResultScreen from '../screens/SearchResult';
 import CompanyScreen from '../screens/Company';
 import FavoritesScreen from '../screens/Favorites';
 import FeedbackScreen from '../screens/Feedback';
-import ChatScreen from "../screens/Chat";
-import ProfileScreen from "../screens/Profile";
-import SettingsScreen from "../screens/Settings";
-import ProfileEditScreen from "../screens/Profile/screens/ProfileEdit";
+import ChatScreen from '../screens/Chat';
+import ProfileScreen from '../screens/Profile';
+import SettingsScreen from '../screens/Settings';
+import ProfileEditScreen from '../screens/Profile/screens/ProfileEdit';
+import ResumeScreen from '../screens/Resume';
+import ResumeEditScreen from "../screens/Resume/screens/ResumeEdit";
+import ResumeTutorialScreen from "../screens/ResumeTutorial";
+import ResumeCreateScreen from "../screens/Resume/screens/ResumeCreate";
+import VideoScreen from "../screens/Video";
+import PremiumScreen from "../screens/Premium";
+import CameraScreen from "../screens/Camera";
 
 export const RouteComponents = [
   {
@@ -125,6 +132,62 @@ export const RouteComponents = [
   {
     name: Routes.Settings,
     component: SettingsScreen,
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
+  },
+  {
+    name: Routes.Resume,
+    component: ResumeScreen,
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
+  },
+  {
+    name: Routes.ResumeCreate,
+    component: ResumeCreateScreen,
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
+  },
+  {
+    name: Routes.ResumeEdit,
+    component: ResumeEditScreen,
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
+  },
+  {
+    name: Routes.ResumeTutorial,
+    component: ResumeTutorialScreen,
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
+  },
+  {
+    name: Routes.VideoScreen,
+    component: VideoScreen,
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
+  },
+  {
+    name: Routes.CameraScreen,
+    component: CameraScreen,
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
+  },
+  {
+    name: Routes.Premium,
+    component: PremiumScreen,
     options: {
       headerShow: false,
       animationEnabled: false,

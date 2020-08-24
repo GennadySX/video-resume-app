@@ -77,12 +77,20 @@ class ProfileScreen extends React.Component<any, any> {
             horizontal
             showsHorizontalScrollIndicator={false}
             style={s.resumeContainer}>
-            <TouchableOpacity onPress={() => {}} style={s.addResumeBtn}>
+            <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate(Routes.ResumeCreate)
+              }
+              style={s.addResumeBtn}>
               <Image source={Icons.addResume} style={s.addResumeIcon} />
             </TouchableOpacity>
-
             {resumeListJSON.map((resume: any, index: number) => (
-              <ResumeCard active value={resume} onClick={() => {}} key={index}/>
+              <ResumeCard
+                active
+                value={resume}
+                onClick={() => this.props.navigation.navigate(Routes.Resume)}
+                key={index}
+              />
             ))}
           </ScrollView>
           <Container>
@@ -93,14 +101,22 @@ class ProfileScreen extends React.Component<any, any> {
               style={{marginBottom: 10}}
             />
             <View style={s.videoBlock}>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate(Routes.VideoScreen)
+                }>
                 <Image source={Assets.cardVideoA} style={s.videoBlockImg} />
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate(Routes.VideoScreen)
+                }>
                 <Image source={Assets.cardVideoB} style={s.videoBlockImg} />
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => {}}
+                onPress={() =>
+                  this.props.navigation.navigate(Routes.ResumeTutorial)
+                }
                 style={{alignItems: 'center'}}>
                 <Image
                   source={Icons.addVideo}

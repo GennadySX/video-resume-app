@@ -4,7 +4,7 @@ import {Image, KeyboardAvoidingView, Platform} from 'react-native';
 import {IntroBackgroundStyle as s} from './styles';
 
 export interface IIntroBackgroundComponent {
-  children?: ReactChild | ReactChildren;
+  children?: ReactChild | ReactChildren | any;
 }
 
 const tl = require('../../assets/img/background/top-left.png');

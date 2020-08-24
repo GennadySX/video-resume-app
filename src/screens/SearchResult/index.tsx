@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 import {Icons} from '../../helpers/Assets';
 import LinearGradient from 'react-native-linear-gradient';
 import {searchResultScreenStyle as s} from './styles';
+import Container from '../../components/Container';
 
 export interface ISearchResult {}
 
@@ -18,27 +19,30 @@ export default class SearchResultScreen extends React.Component<any, any> {
   render() {
     return (
       <View style={s.block}>
-        <Header
-          rightBlock={
-            <View style={s.header}>
-              <TouchableOpacity onPress={() => {}}>
-                <Image source={Icons.filters} style={s.headerImg} />
-              </TouchableOpacity>
-            </View>
-          }
-        />
-        <ScrollView showsVerticalScrollIndicator={false} style={s.mainBlock}>
-          <Index
-            text={'Результаты поиска'}
-            style={{left: 0, marginBottom: 0, width: '100%'}}
+        <Container>
+          <Header
+            rightBlock={
+              <View style={s.header}>
+                <TouchableOpacity onPress={() => {}}>
+                  <Image source={Icons.filters} style={s.headerImg} />
+                </TouchableOpacity>
+              </View>
+            }
           />
-          <Text style={[s.descText, s.font]}>1005 вакансий</Text>
+        </Container>
 
-          <Text style={[s.blockTitle, {paddingBottom: 0}]}>
-            Отдельные вакансии
-          </Text>
+        <ScrollView showsVerticalScrollIndicator={false} style={s.mainBlock}>
+          <Container>
+            <Index text={'Результаты поиска'} fontSize={25} left unBottom />
+            <Text style={[s.descText, s.font]}>1005 вакансий</Text>
+
+            <Text style={[s.blockTitle, {paddingBottom: 0}]}>
+              Отдельные вакансии
+            </Text>
+          </Container>
+
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={() => {}} style={{marginLeft: 20}}>
               <LinearGradient
                 colors={['#9d6bcf', 'rgba(205,158,255,0.83)']}
                 start={{x: 0, y: 1}}

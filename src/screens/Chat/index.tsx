@@ -4,7 +4,6 @@ import BlockTab from './components/BlockTab';
 import Index from '../../components/ui/Title';
 import Card from './components/SwipeCard';
 import TabBar from '../../components/TabBar';
-import MiniCard from './components/MiniCard';
 import {feedbackScreenStyle as s} from './styles';
 import Search from './components/Search';
 import ChatPanel from './components/ChatPanel';

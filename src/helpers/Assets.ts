@@ -6,6 +6,7 @@ export enum Icons {
   addResume = require('../assets/img/icons/add_resume.png'),
   addVideo = require('../assets/img/icons/add_video.png'),
   back = require('../assets/img/icons/back.png'),
+  backWhite = require('../assets/img/icons/backWhite.png'),
   next = require('../assets/img/icons/right.png'),
   archive = require('../assets/img/icons/archive.png'),
   apple = require('../assets/img/icons/apple.png'),
@@ -41,12 +42,19 @@ export enum Icons {
   checked = require('../assets/img/icons/checked.png'),
   photoFrame = require('../assets/img/icons/photoFrame1.png'),
   arrowDownPurple = require('../assets/img/icons/arrowDownPurple.png'),
+  pen = require('../assets/img/icons/edit.png'),
+  star = require('../assets/img/icons/star.png'),
+  close = require('../assets/img/icons/close.png'),
+  activeRounded = require('../assets/img/icons/activeRounded.png'),
+  notActiveOutline = require('../assets/img/icons/outlineNotActive.png'),
 }
 
 export enum Slide {
   slide1 = require('../assets/img/slide/a.png'),
   slide2 = require('../assets/img/slide/ab.png'),
   slide3 = require('../assets/img/slide/b.png'),
+  slideResume1 = require('../assets/img/slide/createResume-1.png'),
+  slideResume2 = require('../assets/img/slide/createResume-2.png'),
 }
 
 export enum Assets {
@@ -54,6 +62,8 @@ export enum Assets {
   cardVideoA = require('../assets/img/card/a.png'),
   cardVideoB = require('../assets/img/card/b.png'),
   cardVideoC = require('../assets/img/card/c.png'),
+  cardVideoV1 = require('../assets/img/card/v1.png'),
+  cardVideoV2 = require('../assets/img/card/v2.png'),
   photo = require('../assets/img/card/girl.jpg'),
 }
 

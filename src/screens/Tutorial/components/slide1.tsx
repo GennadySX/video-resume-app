@@ -4,10 +4,10 @@ import Index from '../../../components/ui/Title';
 import {Slide} from '../../../helpers/Assets';
 import {slide1Style as s} from '../styles/slide1Style';
 
-export default function Slide1() {
+export default function Slide1(props: any) {
   return (
     <View style={s.block}>
-      <TouchableOpacity style={s.btnSkip}>
+      <TouchableOpacity style={s.btnSkip} onPress={() => props.onSkip()}>
         <Text style={s.btnSkipText}>Пропустить</Text>
       </TouchableOpacity>
       <Index text={'Быстрый поиск работы'} style={{left: 0, marginTop: 25}} />

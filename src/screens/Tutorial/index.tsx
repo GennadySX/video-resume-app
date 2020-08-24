@@ -8,6 +8,7 @@ import Slide1 from './components/slide1';
 import Slide2 from './components/slide2';
 import Slide3 from './components/slide3';
 import {tutorialScreenStyle as s} from './styles';
+import {Routes} from "../../routes/Routes";
 
 export interface ITutorialScreen {}
 
@@ -24,9 +25,15 @@ class TutorialScreen extends React.Component<any, any> {
   }
 
   next(index: number) {
-    Promise.resolve(this.swiperRef.scrollTo(index)).then(
-      () => index < 2 && this.setState({swipeIndex: index}),
+    Promise.resolve(this.swiperRef.scrollTo(index)).then(() =>
+      index <= 2
+        ? this.setState({swipeIndex: index})
+        : this.skip(),
     );
+  }
+
+  skip() {
+    this.props.navigation.navigate(Routes.SearchPage)
   }
 
   render() {
@@ -57,25 +64,23 @@ class TutorialScreen extends React.Component<any, any> {
             borderRadius: 50,
           }}
           activeDotColor={'#481380'}
-          nextButton={
-            <TouchableOpacity
-              style={s.nextBtn}
-              onPress={() => this.next(swipeIndex + 1)}>
-              <Image source={Icons.next} />
-            </TouchableOpacity>
-          }>
+          nextButton={<View />}>
           <View style={s.slide1}>
-            <Slide1 />
+            <Slide1 onSkip={() => this.skip()} />
           </View>
           <View style={s.slide2}>
-            <Slide2 />
+            <Slide2 onSkip={() => this.skip()} />
           </View>
           <View style={s.slide3}>
-            <Slide3
-              onClick={() => this.props.navigation.navigate('SearchPage')}
-            />
+            <Slide3 onSkip={() => this.skip()} />
           </View>
         </Swiper>
+        <TouchableOpacity
+          activeOpacity={1}
+          style={s.nextBtn}
+          onPress={() => this.next(swipeIndex + 1)}>
+          <Image source={Icons.next} />
+        </TouchableOpacity>
       </IntroBackground>
     );
   }

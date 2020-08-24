@@ -13,6 +13,13 @@ export enum Routes {
   ProfileEdit = 'ProfileEdit',
   Chat = 'Chat',
   Settings = 'Settings',
+  Resume = 'Resume',
+  ResumeEdit = 'ResumeEdit',
+  ResumeCreate = 'ResumeCreate',
+  ResumeTutorial = 'ResumeTutorial',
+  VideoScreen = 'VideoScreen',
+  CameraScreen = 'CameraScreen',
+  Premium = 'Premium',
 }
 
-export const RouteActive: string = Routes.Intro;
+export const RouteActive: Routes = Routes.Intro;

@@ -30,6 +30,9 @@ export const tutorialScreenStyle = StyleSheet.create({
     fontWeight: 'bold',
   },
   nextBtn: {
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
     marginBottom: 25,
     marginRight: 20,
   },

@@ -20,10 +20,10 @@ export const searchResultScreenStyle = StyleSheet.create({
     color: '#fafafa',
     fontFamily: 'Manrope-Regular',
   },
-  mainBlock: {paddingLeft: 7, paddingRight: 7},
+  mainBlock: {
+  },
   block: {
-    padding: 15,
-    paddingTop: 25,
+    paddingTop: 20,
   },
   header: {
     flexDirection: 'row',

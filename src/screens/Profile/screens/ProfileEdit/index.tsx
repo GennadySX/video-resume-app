@@ -7,6 +7,7 @@ import {
   Image,
   ScrollView,
   StyleSheet,
+  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -17,20 +18,25 @@ import InputUI from '../../../../components/ui/inputs/input';
 import Button, {buttonType} from '../../../../components/ui/buttons';
 import TabBar from '../../../../components/TabBar';
 import {Routes} from '../../../../routes/Routes';
-import {useNavigation} from "@react-navigation/native";
+import {useNavigation} from '@react-navigation/native';
+import BottomDrawer from '../../../../components/BottomDrawer';
+import {styles} from '../../../../styles/style';
 
 export interface IProfileEditScreen {}
 
 export default function ProfileEditScreen(props: IProfileEditScreen) {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
+  const [bottomDrawer, setBottomDrawer] = React.useState(false);
 
   return (
     <TabBar active={Routes.Profile}>
       <Container style={s.block}>
         <Title text={'Редактирование'} left style={s.title} />
-        <ScrollView showsVerticalScrollIndicator={false} >
+        <ScrollView showsVerticalScrollIndicator={false}>
           <Container style={s.avatarContainer}>
-            <TouchableOpacity style={s.avatarBtn} onPress={() => {}}>
+            <TouchableOpacity
+              style={s.avatarBtn}
+              onPress={() => setBottomDrawer(true)}>
               <Image source={Assets.photo} style={s.avatar} />
               <Image source={Icons.photoFrame} style={s.photoFrame} />
             </TouchableOpacity>
@@ -81,6 +87,48 @@ export default function ProfileEditScreen(props: IProfileEditScreen) {
             />
           </View>
         </ScrollView>
+        <BottomDrawer full height={240} startUp={bottomDrawer}>
+          <Container>
+            <Title text={'Добавить фотографию'} left unBottom fontSize={18} />
+            <View style={s.btnContainer}>
+              <TouchableOpacity style={s.btnChoise} onPress={() => {}}>
+                <Text style={s.btnChoiseText}>Сделать фотографию</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[s.btnChoise, {borderTopColor: 'transparent'}]}
+                onPress={() => {}}>
+                <Text style={s.btnChoiseText}>Загрузить из галереи</Text>
+              </TouchableOpacity>
+            </View>
+            <Button
+              title={'Отмена'}
+              onPress={() => setBottomDrawer(false)}
+              type={buttonType.transparent}
+              textStyle={{color: '#858585'}}
+            />
+          </Container>
+        </BottomDrawer>
+        <BottomDrawer full height={240} startUp={bottomDrawer}>
+          <Container>
+            <Title text={'Добавить фотографию'} left unBottom fontSize={18} />
+            <View style={s.btnContainer}>
+              <TouchableOpacity style={s.btnChoise} onPress={() => navigation.navigate(Routes.CameraScreen) }>
+                <Text style={s.btnChoiseText}>Сделать фотографию</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[s.btnChoise, {borderTopColor: 'transparent'}]}
+                onPress={() => {}}>
+                <Text style={s.btnChoiseText}>Загрузить из галереи</Text>
+              </TouchableOpacity>
+            </View>
+            <Button
+              title={'Отмена'}
+              onPress={() => setBottomDrawer(false)}
+              type={buttonType.transparent}
+              textStyle={{color: '#858585'}}
+            />
+          </Container>
+        </BottomDrawer>
       </Container>
     </TabBar>
   );
@@ -111,6 +159,20 @@ const s = StyleSheet.create({
     height: 120,
   },
   inputBlock: {
-    paddingBottom: 55
-  }
+    paddingBottom: 55,
+  },
+  btnContainer: {
+    paddingTop: 20,
+  },
+  btnChoise: {
+    padding: 15,
+    paddingLeft: 0,
+    borderTopColor: 'rgba(133,133,133,0.76)',
+    borderBottomColor: 'rgba(133,133,133,0.76)',
+    borderBottomWidth: 1,
+    borderTopWidth: 1,
+  },
+  btnChoiseText: {
+    ...styles.fontMedium,
+  },
 });
