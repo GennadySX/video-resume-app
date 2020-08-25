@@ -47,6 +47,7 @@ export enum Icons {
   close = require('../assets/img/icons/close.png'),
   activeRounded = require('../assets/img/icons/activeRounded.png'),
   notActiveOutline = require('../assets/img/icons/outlineNotActive.png'),
+  cameraHistory = require('../assets/img/icons/historyVideo.png'),
 }
 
 export enum Slide {
