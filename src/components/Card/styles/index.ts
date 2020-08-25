@@ -1,4 +1,5 @@
 import {StyleSheet} from "react-native";
+import {styles} from "../../../styles/style";
 
 export const CardStyle = StyleSheet.create({
     block: {
@@ -14,6 +15,7 @@ export const CardStyle = StyleSheet.create({
         padding: 17,
         paddingTop: 10,
     },
+
     font: {
         fontFamily: 'Manrope-Medium',
     },
@@ -92,4 +94,30 @@ export const CardStyle = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 13,
     },
+    //Popup
+    container: {
+        paddingLeft: 10,
+        paddingRight: 10,
+    },
+    desc: {
+        ...styles.fontMedium,
+        fontSize: 13,
+        color: 'rgba(39,39,39,0.4)',
+        marginBottom: 20
+
+    },
+    img: {
+        width: 230,
+        height: 230,
+        marginBottom: 20,
+        resizeMode: 'contain',
+        alignSelf: 'center'
+    },
+    btn: {
+        paddingBottom: 0
+    },
+    btnText: {
+        ...styles.fontMedium,
+        color: 'rgba(72,19,128,0.8)'
+    }
 });

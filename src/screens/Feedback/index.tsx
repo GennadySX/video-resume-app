@@ -18,13 +18,13 @@ export default class FeedbackScreen extends React.Component<any, any> {
             onFilter: false,
             isToggle: false,
             isSearch: false,
-            menu: TAB_MENU[1].title,
             tabSection: false,
+
         };
     }
 
     render() {
-        const {menu, tabSection} = this.state;
+        const { tabSection} = this.state;
         return (
             <TabBar>
                 <View style={s.block}>
@@ -32,7 +32,7 @@ export default class FeedbackScreen extends React.Component<any, any> {
                     <BlockTab
                         titles={['Активные', 'Без ответа']}
                         onClick={(val: boolean) => this.setState({tabSection: val})}
-                        selected={false}
+                        selected={tabSection}
                     />
 
                     {!tabSection ? (

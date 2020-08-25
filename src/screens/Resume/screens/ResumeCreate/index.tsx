@@ -15,6 +15,9 @@ import {styles} from '../../../../styles/style';
 import {Width} from '../../../../helpers/Normalizer';
 import {Routes} from '../../../../routes/Routes';
 
+import RoundedGradient from '../../../../assets/svg/roundGradient.svg';
+import RoundedGradientOutline from '../../../../assets/svg/roundGradientOutline.svg';
+
 export interface IResumeCreateScreen {}
 
 export default class ResumeCreateScreen extends React.Component<any, any> {
@@ -41,12 +44,17 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
             style={s.scrollContainer}>
             <Title text={'Создание'} left unBottom />
             <Container style={s.guideBlock}>
-              <Image source={Icons.activeRounded} style={s.guideIcon} />
+              <RoundedGradient width={30} height={30} style={s.guideIcon} />
               <View style={[s.lineNotActive, lastStep && s.lineActive]} />
-              <Image
-                source={lastStep ? Icons.activeRounded : Icons.notActiveOutline}
-                style={s.guideIcon}
-              />
+              {lastStep ? (
+                <RoundedGradient width={30} height={30} style={s.guideIcon} />
+              ) : (
+                <RoundedGradientOutline
+                  width={30}
+                  height={30}
+                  style={s.guideIcon}
+                />
+              )}
             </Container>
 
             <Container style={s.avatarContainer}>
@@ -158,7 +166,9 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
                     </TouchableOpacity>
                   </View>
                   <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate(Routes.ResumeTutorial)}
+                    onPress={() =>
+                      this.props.navigation.navigate(Routes.CameraScreen)
+                    }
                     style={{alignItems: 'center'}}>
                     <Image
                       source={Icons.addVideo}

@@ -1,10 +1,16 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
-import {Assets, Icons} from '../../helpers/Assets';
+import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
+import {Assets, AssetsPopup, Icons} from '../../helpers/Assets';
 import LinearGradient from 'react-native-linear-gradient';
 import {CardStyle as s} from './styles';
 import {styles} from '../../styles/style';
 import Container from "../Container";
+import BottomDrawer from "../BottomDrawer";
+import Title from "../ui/Title";
+import {resumeListJSON} from "../../json/resumeList";
+import ResumeCard from "../../screens/Vacancy/components/ResumeCard";
+import Button, {buttonType} from "../ui/buttons";
+import Popup from "../Popup";
 
 export interface ICard {
   unPadding?: boolean;
@@ -18,8 +24,13 @@ export interface ICard {
 export default function Card(props: ICard) {
   const [active, setActive] = React.useState(false);
   const [feedback, setFeedback] = React.useState(false);
+  const [isBottomDrawer, setIsBottomDrawer] = React.useState(false);
+  const [onChoose, setOnChoose] = React.useState(false);
+  const [selected, setSelected] = React.useState(null);
+  const [isSend, setIsSend] = React.useState(false);
 
   return (
+      <View>
     <Container style={[s.block, props.latest && {marginBottom: 180}, props.unPadding && {paddingLeft: 0, paddingRight: 0}]}>
       {props.new ? (
         <LinearGradient
@@ -111,7 +122,9 @@ export default function Card(props: ICard) {
           </View>
           <View style={s.footer}>
             <TouchableOpacity
-              onPress={() => setFeedback(!feedback)}
+              onPress={() => {
+                setIsBottomDrawer(true);
+              }}
               activeOpacity={1}>
               {feedback ? (
                 <Text style={[s.footerText, styles.textActive]}>
@@ -125,5 +138,78 @@ export default function Card(props: ICard) {
         </View>
       )}
     </Container>
+        <BottomDrawer
+            full
+            height={onChoose ? 280 : 230}
+            startUp={isBottomDrawer}
+            onClose={() => setIsBottomDrawer(false)}>
+          <Container unPadding>
+            <Title text={'Выберите резьюме'} fontSize={18} />
+            <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                style={{marginBottom: 10}}>
+              {resumeListJSON.map((resume: any, index: number) => (
+                  <ResumeCard
+                      key={index}
+                      value={resume}
+                      first={index === 0}
+                      onClick={(item: any) => {
+                        setOnChoose(true);
+                        setSelected(item)
+                      }}
+                      active={selected === resume.id || !selected}
+                  />
+              ))}
+            </ScrollView>
+            <View>
+              {onChoose && (
+                  <Button
+                      title={'Отправить'}
+                      onPress={() => {
+                          setIsSend(true);
+                          setIsBottomDrawer(false);
+                          setFeedback(!feedback);
+
+                      }
+                      }
+                      type={buttonType.purple}
+                      style={{paddingBottom: 1}}
+                      textStyle={{fontSize: 13}}
+                  />
+              )}
+              <Button
+                  title={'Отмена'}
+                  onPress={() => setIsBottomDrawer(false)}
+                  type={buttonType.transparent}
+                  textStyle={{color: '#575456', fontSize: 13}}
+              />
+            </View>
+          </Container>
+        </BottomDrawer>
+
+        <Popup visible={isSend} onClose={() => setIsSend(false)}>
+          <Container style={s.container}>
+            <Title
+                text={'Резюме отправлено'}
+                left
+                fontSize={18}
+                style={{marginBottom: 10}}
+            />
+            <Text style={s.desc}>
+              Ваше резюме успешно отправлено, его состояние можно отследить в
+              разделе “Отклики”
+            </Text>
+            <Image source={AssetsPopup.vacancy} style={s.img} />
+            <Button
+                title={'Понятно'}
+                onPress={() => setIsSend(false)}
+                type={buttonType.transparent}
+                textStyle={s.btnText}
+                style={s.btn}
+            />
+          </Container>
+        </Popup>
+      </View>
   );
 }

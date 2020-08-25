@@ -4,7 +4,6 @@ import {
   Image,
   PermissionsAndroid,
   Platform,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
@@ -20,11 +19,11 @@ import FlashOnIcon from '../../assets/svg/splashOn.svg';
 import TimerIcon from '../../assets/svg/timer.svg';
 
 import {Icons} from '../../helpers/Assets';
-import {Width} from '../../helpers/Normalizer';
-import {styles} from '../../styles/style';
 import BottomDrawer from '../../components/BottomDrawer';
 import Title from '../../components/ui/Title';
 import Button, {buttonType} from '../../components/ui/buttons';
+
+import {cameraScreenStyle as s } from "./styles";
 
 export interface ICameraScreen {
   video?: boolean;
@@ -34,7 +33,7 @@ export default function CameraScreen(props: ICameraScreen) {
   const camera = React.useRef(null);
   const [front, setFront] = React.useState(false);
   const [flash, setFlash] = React.useState(false);
-  const [timerDrawer, setTimerDrawer] = React.useState(true);
+  const [timerDrawer, setTimerDrawer] = React.useState(false);
   const [record, setRecord] = React.useState(false);
 
   const navigation = useNavigation();
@@ -171,75 +170,3 @@ export default function CameraScreen(props: ICameraScreen) {
     </Container>
   );
 }
-
-const s = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: 'black',
-  },
-  header: {
-    position: 'absolute',
-    padding: 30,
-    top: 0,
-    zIndex: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: Width,
-  },
-  headerBack: {
-    width: '15%',
-  },
-  headerBackIcon: {
-    width: 25,
-    height: 25,
-    resizeMode: 'contain',
-  },
-  title: {
-    zIndex: 99,
-    ...styles.fontMedium,
-    color: '#fafafa',
-    alignSelf: 'center',
-    textAlign: 'center',
-    fontSize: 18,
-    width: '60%',
-  },
-  controlsBlock: {
-    position: 'absolute',
-    zIndex: 10,
-    width: Width,
-    padding: 50,
-    bottom: 0,
-    alignSelf: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  headerRightBlock: {
-    flexDirection: 'row',
-    alignSelf: 'flex-end',
-  },
-  preview: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  capture: {
-    alignSelf: 'center',
-    margin: 20,
-  },
-  btnContainer: {
-    borderTopColor: 'rgba(39,39,39,0.61)',
-    borderTopWidth: 1,
-  },
-  timerBtn: {
-    padding: 15,
-    borderBottomColor: 'rgba(39,39,39,0.61)',
-    borderBottomWidth: 1,
-    paddingLeft: 20,
-  },
-  timerBtnTitle: {
-    ...styles.fontMedium,
-  },
-});

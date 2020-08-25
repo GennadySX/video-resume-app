@@ -31,7 +31,7 @@ class ResumeTutorialScreen extends React.Component<any, any> {
   }
 
   skip() {
-    this.props.navigation.navigate(Routes.Profile);
+    this.props.navigation.navigate(Routes.ResumeCreate);
   }
 
   render() {

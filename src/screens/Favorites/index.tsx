@@ -31,7 +31,7 @@ export default class FavoritesScreen extends React.Component<any, any> {
           <BlockTab
             titles={['Вакансии', 'Компании']}
             onClick={(val: boolean) => this.setState({tabSection: val})}
-            selected={true}
+            selected={tabSection}
           />
 
           {!tabSection ? (
