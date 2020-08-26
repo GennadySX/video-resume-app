@@ -95,10 +95,10 @@ export const CardStyle = StyleSheet.create({
         fontSize: 13,
     },
     //Popup
-    container: {
-        paddingLeft: 10,
-        paddingRight: 10,
-    },
+        container: {
+            paddingLeft: 10,
+            paddingRight: 10,
+        },
     desc: {
         ...styles.fontMedium,
         fontSize: 13,

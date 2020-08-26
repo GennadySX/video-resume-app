@@ -13,6 +13,7 @@ import InputUI from '../../../../components/ui/inputs/input';
 import Button, {buttonType} from '../../../../components/ui/buttons';
 import {styles} from '../../../../styles/style';
 import {Width} from '../../../../helpers/Normalizer';
+import {Routes} from "../../../../routes/Routes";
 
 export interface IResumeEdit {}
 
@@ -26,6 +27,7 @@ export default class ResumeEditScreen extends React.Component<any, any> {
 
   render() {
     const {about} = this.state;
+    const {navigation } = this.props
     return (
       <View style={s.block}>
         <Container style={s.header}>
@@ -39,7 +41,7 @@ export default class ResumeEditScreen extends React.Component<any, any> {
             style={s.scrollContainer}>
             <Title text={'Редактирование'} left />
             <Container style={s.avatarContainer}>
-              <TouchableOpacity style={s.avatarBtn} onPress={() => {}}>
+              <TouchableOpacity style={s.avatarBtn} onPress={() => navigation.navigate(Routes.CameraScreen)}>
                 <Image source={Assets.photo} style={s.avatar} />
                 <Image source={Icons.photoFrame} style={s.photoFrame} />
               </TouchableOpacity>
@@ -121,7 +123,7 @@ export default class ResumeEditScreen extends React.Component<any, any> {
                   </TouchableOpacity>
                 </View>
                 <TouchableOpacity
-                  onPress={() => {}}
+                  onPress={() => navigation.navigate(Routes.CameraScreen)}
                   style={{alignItems: 'center'}}>
                   <Image
                     source={Icons.addVideo}

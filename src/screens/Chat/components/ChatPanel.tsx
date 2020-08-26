@@ -16,6 +16,7 @@ import {
 import Container from '../../../components/Container';
 import Header from '../../../components/Header';
 import {Icons} from '../../../helpers/Assets';
+import {IconsSvg} from '../../../helpers/IconsSVG';
 
 interface ImessageList {
   me: boolean;
@@ -98,7 +99,7 @@ export default function ChatPanel(props: IChatPanel) {
           style={s.inMessage}
         />
         <TouchableOpacity style={s.sendBtn} onPress={() => newMessage()}>
-          <Image source={Icons.send} style={s.sendBtnIcon} />
+          {React.createElement(IconsSvg.SendIcon, {style: s.sendBtnIcon})}
         </TouchableOpacity>
       </Container>
     </View>

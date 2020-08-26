@@ -75,4 +75,7 @@ export enum AssetsBackground {
 
 export enum AssetsPopup {
   vacancy = require('../assets/img/popup/resume_sent.png'),
+  liked = require('../assets/img/popup/bookmark_company.png'),
+  premium = require('../assets/img/popup/premium.png'),
 }
+

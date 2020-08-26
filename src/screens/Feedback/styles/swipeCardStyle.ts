@@ -1,4 +1,5 @@
 import {StyleSheet} from "react-native";
+import {styles} from "../../../styles/style";
 
 export const swipeCardStyle = StyleSheet.create({
     block: {
@@ -137,4 +138,10 @@ export const swipeCardStyle = StyleSheet.create({
         opacity: 0.2,
         height: 250,
     },
+    inviteTitle: {
+        ...styles.fontMedium,
+        color: '#bbbbbb',
+        fontWeight: '500',
+        fontSize: 12
+    }
 });

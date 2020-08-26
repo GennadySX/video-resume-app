@@ -18,6 +18,8 @@ export interface IFilter {
   style?: StyleProp<any>;
 }
 
+import {IconsSvg} from "../../../helpers/IconsSVG";
+
 export default function Filter({
   onFocus,
   editable,
@@ -40,7 +42,7 @@ export default function Filter({
         />
       </TouchableOpacity>
       <TouchableOpacity onPress={iconClick}>
-        <Image source={Icons.filter} style={s.filterIcon} />
+        {React.createElement(IconsSvg.FiltersIcon)}
       </TouchableOpacity>
     </View>
   );

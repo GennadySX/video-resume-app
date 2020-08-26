@@ -5,6 +5,7 @@
 import React from "react";
 import {Text, TouchableOpacity, Image, View, StyleSheet} from "react-native";
 import {Icons} from "../../../helpers/Assets";
+import {IconsSvg} from "../../../helpers/IconsSVG";
 
 export interface ICheckBox {
     checked?: boolean;
@@ -21,7 +22,7 @@ export default function CheckBoxUI({checked, title, onCheck}: ICheckBox) {
             }
             <View style={s.container}>
                 {checked &&
-                    <Image source={Icons.checked} style={s.checkedIcon} />
+                   React.createElement(IconsSvg.CheckIcon, {width: 30, height: 30})
                 }
             </View>
         </TouchableOpacity>

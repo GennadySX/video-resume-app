@@ -19,7 +19,7 @@ export const profileScreenStyle = StyleSheet.create({
         height: 135,
         borderRadius: 70,
         padding: 15,
-        borderColor: '#bdbbbb',
+
         borderWidth: 5,
         alignItems: 'center',
         justifyContent: 'center',
@@ -75,4 +75,30 @@ export const profileScreenStyle = StyleSheet.create({
         resizeMode: 'contain',
         marginRight: 10,
     },
+    //Popup
+    container: {
+        paddingLeft: 10,
+        paddingRight: 10,
+    },
+    desc: {
+        ...styles.fontMedium,
+        fontSize: 13,
+        color: 'rgba(39,39,39,0.4)',
+        marginBottom: 20
+
+    },
+    imgPopup: {
+        width: 230,
+        height: 230,
+        marginBottom: 20,
+        resizeMode: 'contain',
+        alignSelf: 'center'
+    },
+    btn: {
+        paddingBottom: 0
+    },
+    btnText: {
+        ...styles.fontMedium,
+        color: 'rgba(72,19,128,0.8)'
+    }
 });

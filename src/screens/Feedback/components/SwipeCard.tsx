@@ -9,6 +9,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {RectButton} from 'react-native-gesture-handler';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import {swipeCardStyle as s} from '../styles/swipeCardStyle';
+import {IconsSvg} from "../../../helpers/IconsSVG";
 
 export interface ICard {
   latest?: boolean;
@@ -17,6 +18,8 @@ export interface ICard {
   onClick: () => void;
   disLikeAble?: boolean;
   feedback?: boolean;
+  flagged?: boolean;
+  inviteTitle?: string;
 }
 
 export default function SwipeCard(props: ICard) {
@@ -64,6 +67,13 @@ export default function SwipeCard(props: ICard) {
                 />
               </TouchableOpacity>
             )}
+            {props.flagged && (
+              <TouchableOpacity
+                onPress={() => setActive(!active)}
+                activeOpacity={1}>
+                {React.createElement(IconsSvg.FlagRedIcon, {width: 17, height: 17})}
+              </TouchableOpacity>
+            )}
           </View>
           <View style={s.body}>
             <TouchableOpacity onPress={() => props.onClick()} activeOpacity={1}>
@@ -94,11 +104,14 @@ export default function SwipeCard(props: ICard) {
             <TouchableOpacity
               onPress={() => setFeedback(!feedback)}
               activeOpacity={1}>
-              {feedback ? (
-                <Text style={[s.footerText, {color: '#D05F5F'}]}>Отказ</Text>
-              ) : (
-                <Text style={s.footerText}>Приглашение</Text>
-              )}
+              {props.inviteTitle ?
+                  <Text style={[s.footerText, s.inviteTitle, {color: 'rgba(128,125,125,0.69)'}]}>{props.inviteTitle}</Text>
+                  : feedback  ? (
+                      <Text style={[s.footerText, {color: '#D05F5F'}]}>Отказ</Text>
+                  ) : (
+                      <Text style={s.footerText}>Приглашение</Text>
+                  )
+              }
             </TouchableOpacity>
           </View>
         </View>

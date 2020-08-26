@@ -1,16 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import {GoogleSignin} from '@react-native-community/google-signin';
+import {Image, ScrollView, StyleSheet, Text, TouchableOpacity, View,} from 'react-native';
 import Container from '../../components/Container';
-import Title from '../../components/ui/Title';
+import Title, {FontType} from '../../components/ui/Title';
 import Header from '../../components/Header';
 import TabBar from '../../components/TabBar';
 import {Assets, Icons} from '../../helpers/Assets';
@@ -57,12 +49,12 @@ class ResumeScreen extends React.Component<any, any> {
         <ScrollView>
           <Container>
             <Title text={'Веб дизайнер'} unBottom left />
-            <Title text={'от 30000 р.'} fontSize={20} left />
-            <Title text={'Иван Иванов'} fontSize={17} left bottom={7} />
-            <Title text={'Опыт от 1 года'} fontSize={17} left bottom={10} />
+            <Title text={'от 30000 р.'} fontSize={20} left  bottom={15} />
+            <Title text={'Иван Иванов'} fontSize={18} fontType={FontType.medium} left bottom={7} />
+            <Title text={'Опыт от 1 года'} fontSize={18} fontType={FontType.medium} left bottom={10} />
             <View style={[s.headerBlock, {right: 3}]}>
               <Image source={Icons.geoBlack} style={s.headerImg} />
-              <Title text={'Казань'} fontSize={16} left unBottom />
+              <Title text={'Казань'} fontSize={16} left unBottom  fontType={FontType.medium}/>
             </View>
           </Container>
           <Container style={s.avatarBlock}>

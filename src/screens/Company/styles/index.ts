@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Width} from '../../../helpers/Normalizer';
+import {styles} from "../../../styles/style";
 
 export const companyScreenStyle = StyleSheet.create({
   mainBlock: {
@@ -72,4 +73,30 @@ export const companyScreenStyle = StyleSheet.create({
     marginTop: 55,
     marginBottom: 20,
   },
+  //Popup
+  container: {
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  desc: {
+    ...styles.fontMedium,
+    fontSize: 13,
+    color: 'rgba(39,39,39,0.4)',
+    marginBottom: 20
+
+  },
+  img: {
+    width: 230,
+    height: 230,
+    marginBottom: 20,
+    resizeMode: 'contain',
+    alignSelf: 'center'
+  },
+  btn: {
+    paddingBottom: 0
+  },
+  btnText: {
+    ...styles.fontMedium,
+    color: 'rgba(72,19,128,0.8)'
+  }
 });

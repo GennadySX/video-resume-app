@@ -4,36 +4,39 @@
 
 import {Icons} from '../helpers/Assets';
 import {Routes} from "../routes/Routes";
+import {IconsSvg} from "../helpers/IconsSVG";
+
 
 export const TAB_MENU = [
   {
     title: 'Поиск',
-    icon: Icons.search,
-    iconActive: Icons.searchActiveOutline,
+    icon: IconsSvg.SearchIcon,
+    iconActive: IconsSvg.SearchActiveIcon,
     route: Routes.SearchPage,
+
   },
   {
     title: 'Отклики',
-    icon: Icons.feedback,
-    iconActive: Icons.feedbackActive,
+    icon: IconsSvg.FeedbackIcon,
+    iconActive: IconsSvg.FeedbackActiveIcon,
     route: Routes.Feedback,
   },
   {
     title: 'Профиль',
-    icon: Icons.profile,
-    iconActive: Icons.profileActive,
+    icon: IconsSvg.ProfileIcon,
+    iconActive: IconsSvg.ProfileActiveIcon,
     route: Routes.Profile,
   },
   {
     title: 'Чат',
-    icon: Icons.chat,
-    iconActive: Icons.chatActive,
+    icon: IconsSvg.ChatIcon,
+    iconActive: IconsSvg.ChatActiveIcon,
     route: Routes.Chat,
   },
   {
     title: 'Избранное',
-    icon: Icons.heart,
-    iconActive: Icons.heartActiveOutline,
+    icon: IconsSvg.LikeIcon,
+    iconActive: IconsSvg.LikeActiveTabIcon,
     route: Routes.Favorites,
   },
 ];
