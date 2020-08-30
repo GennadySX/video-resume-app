@@ -11,12 +11,12 @@ import {useNavigation} from '@react-navigation/native';
 import SlidePremium from '../../assets/svg/slide/premium.svg';
 import CheckMark from '../../assets/svg/checkmark.svg';
 import Button, {buttonType} from '../../components/ui/buttons';
-import {Routes} from "../../routes/Routes";
+import {Routes} from '../../routes/Routes';
 
 export interface IPremiumScreen {}
 
 export default function PremiumScreen(props: IPremiumScreen) {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
   return (
     <IntroBackground>
       <Container style={s.topBlock}>

@@ -23,6 +23,7 @@ import ResumeCreateScreen from "../screens/Resume/screens/ResumeCreate";
 import VideoScreen from "../screens/Video";
 import PremiumScreen from "../screens/Premium";
 import CameraScreen from "../screens/Camera";
+import ErrorPageScreen from "../screens/ErrorPage";
 
 export const RouteComponents = [
   {
@@ -188,6 +189,14 @@ export const RouteComponents = [
   {
     name: Routes.Premium,
     component: PremiumScreen,
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
+  },
+  {
+    name: Routes.Error,
+    component: ErrorPageScreen,
     options: {
       headerShow: false,
       animationEnabled: false,

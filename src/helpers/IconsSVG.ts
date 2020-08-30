@@ -46,6 +46,7 @@ import StarIcon from '../assets/svg/icons/star.svg';
 import StopIcon from '../assets/svg/icons/stop.svg';
 import TimeIcon from '../assets/svg/icons/timer.svg';
 import TurnIcon from '../assets/svg/icons/turn.svg';
+import ErrorPageIcon from '../assets/svg/page/error.svg';
 
 export const IconsSvg = {
   AddResumeIcon,
@@ -96,4 +97,5 @@ export const IconsSvg = {
   StopIcon,
   TimeIcon,
   TurnIcon,
+  ErrorPageIcon,
 };
