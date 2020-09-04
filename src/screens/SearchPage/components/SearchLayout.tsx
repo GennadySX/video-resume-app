@@ -5,6 +5,8 @@ import Filter from './Filter';
 import Title from '../../../components/ui/Title';
 import {searchLayoutStyle as s} from '../styles/searchLayoutStyle';
 import Container from "../../../components/Container";
+import {useNavigation} from '@react-navigation/native';
+import {Routes} from "../../../routes/Routes";
 
 export interface ISearchLayout {
   onClose: () => void;
@@ -12,6 +14,7 @@ export interface ISearchLayout {
 }
 
 export function SearchLayout({onClose, onFilter}: ISearchLayout) {
+  const navigation = useNavigation();
   const [input, setInput] = React.useState('');
   return (
     <View style={s.block}>
@@ -25,10 +28,10 @@ export function SearchLayout({onClose, onFilter}: ISearchLayout) {
         />
         <Title text={'Результаты поиска'} fontSize={20} style={{top: 10}} left/>
         <View style={s.resultBlock}>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={() => navigation.navigate(Routes.Error)}>
             <Text style={s.resultItem}>Web-дизайнер</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={() => navigation.navigate(Routes.Error)}>
             <Text style={s.resultItem}>Web-дизайнер</Text>
           </TouchableOpacity>
         </View>

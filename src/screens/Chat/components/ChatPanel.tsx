@@ -17,6 +17,7 @@ import Container from '../../../components/Container';
 import Header from '../../../components/Header';
 import {Icons} from '../../../helpers/Assets';
 import {IconsSvg} from '../../../helpers/IconsSVG';
+import {Height, Width} from "../../../helpers/Normalizer";
 
 interface ImessageList {
   me: boolean;
@@ -69,6 +70,7 @@ export default function ChatPanel(props: IChatPanel) {
 
   return (
     <View style={s.block}>
+      {React.createElement(IconsSvg.Background_Chat, s.background)}
       <Container style={s.header}>
         <Header
           backClick={() => props.onBack && props.onBack()}
@@ -160,4 +162,11 @@ const s = StyleSheet.create({
     top: 5,
   },
   sendBtnIcon: {},
+  background: {
+    position: 'absolute',
+    zIndex: -1,
+    height: Height - 100,
+    width: Width,
+    bottom: 0,
+  }
 });

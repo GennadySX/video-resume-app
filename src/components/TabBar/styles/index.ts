@@ -7,17 +7,22 @@ export const tabBarStyle = StyleSheet.create({
         justifyContent: 'space-between',
     },
     container: {
-        minHeight: Height - 90,
-        maxHeight: Height - 90
+        minHeight: Height - 115,
+        maxHeight: Height - 115
     },
     tabContainer: {
         width: '100%',
+        height: 115,
+        minHeight: 115,
+        maxHeight: 115,
         padding: 10,
         paddingTop: 15,
+        paddingBottom: 0,
         backgroundColor: '#F8F2FF',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        margin: 0,
+        position: 'relative',
+        zIndex: 10,
     },
     tab: {
         alignSelf: 'center',
@@ -37,4 +42,10 @@ export const tabBarStyle = StyleSheet.create({
     titleActive: {
         color: '#481380',
     },
+    background: {
+        position: 'absolute',
+        zIndex: -1,
+        height: Height,
+        width: Width
+    }
 });

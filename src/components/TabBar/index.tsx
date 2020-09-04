@@ -11,6 +11,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {TAB_MENU} from '../../constants/TabMenu';
 import {tabBarStyle as s} from './styles';
 import {Routes} from '../../routes/Routes';
+import {IconsSvg} from "../../helpers/IconsSVG";
 
 interface IMenuList {
   title: string;
@@ -42,6 +43,7 @@ export default function TabBar({active, onClick, children}: ITabBar) {
   return (
     <View style={s.block}>
       <View style={s.container}>{children}</View>
+      {React.createElement(IconsSvg.Background_Ellipse, s.background)}
       <View style={s.tabContainer}>
         {TAB_MENU.map((menu: IMenuList, index: number) => (
           <TouchableOpacity

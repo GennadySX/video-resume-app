@@ -44,7 +44,9 @@ export const videoScreenStyle = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  play: {},
+  play: {
+    // backgroundColor: 'yellow'
+  },
   playIcon: {
     width: 30,
     height: 30,
@@ -70,13 +72,14 @@ export const videoScreenStyle = StyleSheet.create({
   videoContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginBottom: 70
+    marginBottom: 70,
+    justifyContent: 'space-between',
   },
   videoItem: {
-    marginBottom: 10
+    marginBottom: 15
   },
   videoCardIcon: {
-    width: 110,
+    width: Width * 0.299,
     height: 100,
     resizeMode: 'contain',
   },

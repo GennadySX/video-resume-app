@@ -1,6 +1,7 @@
 import AddResumeIcon from '../assets/svg/icons/addResume.svg';
 import AddVideoIcon from '../assets/svg/icons/addVideo.svg';
 import AppleIcon from '../assets/svg/icons/apple.svg';
+import ArrowDownIcon from '../assets/svg/icons/arrowDown.svg';
 import ArchiveIcon from '../assets/svg/icons/archive.svg';
 import BackIcon from '../assets/svg/icons/back.svg';
 import BackBottomIcon from '../assets/svg/icons/backBottom.svg';
@@ -46,12 +47,17 @@ import StarIcon from '../assets/svg/icons/star.svg';
 import StopIcon from '../assets/svg/icons/stop.svg';
 import TimeIcon from '../assets/svg/icons/timer.svg';
 import TurnIcon from '../assets/svg/icons/turn.svg';
-import ErrorPageIcon from '../assets/svg/page/error.svg';
+import ErrorPageIcon from '../assets/svg/screen/error.svg';
+import Background_Chat from '../assets/svg/background/chat_background.svg';
+import Background_Ellipse from '../assets/svg/background/ellipse3.svg';
+import Background_TutorialBottomRight from '../assets/svg/background/tutorial_bottom-right.svg';
+import Background_TutorialLeftTOP from '../assets/svg/background/tutorial_left-top.svg';
 
 export const IconsSvg = {
   AddResumeIcon,
   AddVideoIcon,
   AppleIcon,
+  ArrowDownIcon,
   ArchiveIcon,
   BackIcon,
   BackBottomIcon,
@@ -98,4 +104,8 @@ export const IconsSvg = {
   TimeIcon,
   TurnIcon,
   ErrorPageIcon,
+  Background_Chat,
+  Background_Ellipse,
+  Background_TutorialBottomRight,
+  Background_TutorialLeftTOP,
 };

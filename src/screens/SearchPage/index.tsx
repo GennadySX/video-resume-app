@@ -25,6 +25,7 @@ import {searchPageScreenStyle as s} from './styles';
 import Container from '../../components/Container';
 import CheckBoxUI from '../../components/ui/checkbox';
 import {Routes} from '../../routes/Routes';
+import SelectModal from '../../components/ui/selectModal';
 
 export interface ISearchPage {}
 
@@ -173,22 +174,15 @@ export default class SearchPageScreen extends React.Component<any, any> {
                 <ButtonBadge
                   onClick={() => this.setState({onFilterPopup: true})}
                 />
-                <SelectPicker
-                  values={[
-                    {label: 'JS', value: 'js'},
-                    {label: 'Python', value: 'py'},
-                    {label: 'PHP', value: 'php'},
-                  ]}
-                  placeholder={'Время публикации'}
-                  onChange={(value) => console.log('val', value)}
+                <SelectModal
+                    placeholder={'Время публикации'}
+                    values={['JS', 'PHP', 'Python']}
+                    onSelected={(item: any) => console.log('selected item', item)}
                 />
-                <SelectPicker
-                  values={[
-                    {label: 'JS', value: 'js'},
-                    {label: 'PHP', value: 'php'},
-                  ]}
-                  placeholder={'Сортировка'}
-                  onChange={(value) => console.log('val', value)}
+                <SelectModal
+                    placeholder={'Сортировка'}
+                    values={['JS', 'PHP', 'Python']}
+                    onSelected={(item: any) => console.log('selected item', item)}
                 />
                 <ToggleButton
                   title={'Без вакансий агенств'}

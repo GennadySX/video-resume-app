@@ -21,14 +21,41 @@ import {Routes} from '../../../../routes/Routes';
 import {useNavigation} from '@react-navigation/native';
 import BottomDrawer from '../../../../components/BottomDrawer';
 import {styles} from '../../../../styles/style';
+import ImagePicker from 'react-native-image-picker';
+import Camera from '../../../../components/Camera';
 
 export interface IProfileEditScreen {}
 
 export default function ProfileEditScreen(props: IProfileEditScreen) {
   const navigation = useNavigation();
   const [bottomDrawer, setBottomDrawer] = React.useState(false);
+  const [img, setImg] = React.useState(Assets.photo);
+  const [isCamera, setCamera] = React.useState(false);
 
-  return (
+  const fromGallery = () => {
+    setBottomDrawer(false);
+    const options = {
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    ImagePicker.launchImageLibrary(options, (response) => {
+      console.log('response picker image', response);
+      setImg({uri: response.uri});
+    });
+  };
+
+
+  const getCameraData = (uri:string) => {
+    setBottomDrawer(false);
+    setImg({uri: uri});
+    setCamera(false);
+  }
+
+  return isCamera ? (
+    <Camera onCaptue={(data: string) => getCameraData(data)} onClose={() => setCamera(false)} />
+  ) : (
     <TabBar active={Routes.Profile}>
       <Container style={s.block}>
         <Title text={'Редактирование'} left style={s.title} />
@@ -37,7 +64,7 @@ export default function ProfileEditScreen(props: IProfileEditScreen) {
             <TouchableOpacity
               style={s.avatarBtn}
               onPress={() => setBottomDrawer(true)}>
-              <Image source={Assets.photo} style={s.avatar} />
+              <Image source={img} style={s.avatar} />
               <Image source={Icons.photoFrame} style={s.photoFrame} />
             </TouchableOpacity>
           </Container>
@@ -91,33 +118,14 @@ export default function ProfileEditScreen(props: IProfileEditScreen) {
           <Container>
             <Title text={'Добавить фотографию'} left unBottom fontSize={18} />
             <View style={s.btnContainer}>
-              <TouchableOpacity style={s.btnChoise} onPress={() => {}}>
+              <TouchableOpacity
+                style={s.btnChoise}
+                onPress={() => setCamera(true)}>
                 <Text style={s.btnChoiseText}>Сделать фотографию</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[s.btnChoise, {borderTopColor: 'transparent'}]}
-                onPress={() => {}}>
-                <Text style={s.btnChoiseText}>Загрузить из галереи</Text>
-              </TouchableOpacity>
-            </View>
-            <Button
-              title={'Отмена'}
-              onPress={() => setBottomDrawer(false)}
-              type={buttonType.transparent}
-              textStyle={{color: '#858585'}}
-            />
-          </Container>
-        </BottomDrawer>
-        <BottomDrawer full height={240} startUp={bottomDrawer}>
-          <Container>
-            <Title text={'Добавить фотографию'} left unBottom fontSize={18} />
-            <View style={s.btnContainer}>
-              <TouchableOpacity style={s.btnChoise} onPress={() => navigation.navigate(Routes.CameraScreen) }>
-                <Text style={s.btnChoiseText}>Сделать фотографию</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[s.btnChoise, {borderTopColor: 'transparent'}]}
-                onPress={() => {}}>
+                onPress={() => fromGallery()}>
                 <Text style={s.btnChoiseText}>Загрузить из галереи</Text>
               </TouchableOpacity>
             </View>

@@ -20,11 +20,7 @@ export default function PhoneInput({onSubmit}: IPhoneInput) {
       <Image source={logoSmall} style={s.logoSmall} />
       <Index text={'Войти'} />
       <TextInputMask
-        onChangeText={(formatted: string, extracted: string) => {
-          setNumber(formatted);
-          //console.log(formatted); // +1 (123) 456-78-90
-          console.log(extracted); // 1234567890
-        }}
+        onChangeText={(formatted: string, extracted: string) => setNumber(extracted)}
         placeholder={'Номер телефона'}
         style={s.textInput}
         value={number}

@@ -23,4 +23,4 @@ export enum Routes {
   Error = 'Error',
 }
 
-export const RouteActive: Routes = Routes.Error;
+export const RouteActive: Routes = Routes.Profile;

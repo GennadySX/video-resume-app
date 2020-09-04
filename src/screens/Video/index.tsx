@@ -7,10 +7,10 @@ import {Assets, Icons} from '../../helpers/Assets';
 import {videoScreenStyle as s} from './styles';
 
 //icons
-import NextSpeedIcon from '../../assets/svg/nextSpeed.svg';
+import NextIcon from '../../assets/svg/nextSpeed.svg';
 import PlayIcon from '../../assets/svg/play.svg';
 import PauseIcon from '../../assets/svg/pause.svg';
-import PrevSpeedIcon from '../../assets/svg/prevSpeed.svg';
+import PrevIcon from '../../assets/svg/prevSpeed.svg';
 import ArrowDown from '../../assets/svg/arrowDown.svg';
 
 //components
@@ -28,6 +28,11 @@ export default function VideoScreen(props: IVideoScreen) {
   const [videoList, setVideoList] = React.useState(false);
 
   const navigation = useNavigation();
+
+  const onChoise = () => {
+    setVideoList(false);
+    videoPlayer.current.seek(0)
+  }
 
   return (
     <View style={s.backgroundVideo}>
@@ -51,8 +56,11 @@ export default function VideoScreen(props: IVideoScreen) {
       <View style={s.controlsBlock}>
         <TouchableOpacity
           style={s.play}
-          onPress={() =>  setSpeed(speed - 0.2)}>
-          <PrevSpeedIcon width={s.icon.width} />
+          onPress={() => {
+            videoPlayer.current.seek(0)
+           // setSpeed(speed - 0.2)
+          }}>
+          <PrevIcon width={s.icon.width} />
         </TouchableOpacity>
         <TouchableOpacity style={s.play} onPress={() => setPause(!pause)}>
           {pause ? (
@@ -63,8 +71,11 @@ export default function VideoScreen(props: IVideoScreen) {
         </TouchableOpacity>
         <TouchableOpacity
           style={s.play}
-          onPress={() =>  setSpeed(speed + 0.2)}>
-          <NextSpeedIcon width={s.icon.width} />
+          onPress={() => {
+            videoPlayer.current.seek(0)
+            //setSpeed(speed + 0.2)
+          }}>
+          <NextIcon width={s.icon.width} />
         </TouchableOpacity>
       </View>
       <TouchableOpacity
@@ -73,7 +84,7 @@ export default function VideoScreen(props: IVideoScreen) {
         <Text style={s.arrowDownText}>Другие видео Ивана</Text>
         <ArrowDown width={s.icon.width} style={s.arrowDownIcon} />
       </TouchableOpacity>
-      <BottomDrawer startUp={videoList} height={320} full>
+      <BottomDrawer startUp={videoList} height={320} full onClose={() => setVideoList(false)}>
         <Container>
           <Title
             text={'Другие видео Ивана'}
@@ -83,22 +94,22 @@ export default function VideoScreen(props: IVideoScreen) {
           />
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={s.videoContainer}>
-              <TouchableOpacity style={s.videoItem} onPress={() => {}}>
+              <TouchableOpacity style={s.videoItem} onPress={onChoise}>
                 <Image source={Assets.cardVideoA} style={s.videoCardIcon} />
               </TouchableOpacity>
-              <TouchableOpacity style={s.videoItem} onPress={() => {}}>
+              <TouchableOpacity style={s.videoItem} onPress={onChoise}>
                 <Image source={Assets.cardVideoA} style={s.videoCardIcon} />
               </TouchableOpacity>
-              <TouchableOpacity style={s.videoItem} onPress={() => {}}>
+              <TouchableOpacity style={s.videoItem} onPress={onChoise}>
                 <Image source={Assets.cardVideoA} style={s.videoCardIcon} />
               </TouchableOpacity>
-              <TouchableOpacity style={s.videoItem} onPress={() => {}}>
+              <TouchableOpacity style={s.videoItem} onPress={onChoise}>
                 <Image source={Assets.cardVideoA} style={s.videoCardIcon} />
               </TouchableOpacity>
-              <TouchableOpacity style={s.videoItem} onPress={() => {}}>
+              <TouchableOpacity style={s.videoItem} onPress={onChoise}>
                 <Image source={Assets.cardVideoA} style={s.videoCardIcon} />
               </TouchableOpacity>
-              <TouchableOpacity style={s.videoItem} onPress={() => {}}>
+              <TouchableOpacity style={s.videoItem} onPress={onChoise}>
                 <Image source={Assets.cardVideoA} style={s.videoCardIcon} />
               </TouchableOpacity>
             </View>

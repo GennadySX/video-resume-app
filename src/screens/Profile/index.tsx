@@ -59,7 +59,7 @@ class ProfileScreen extends React.Component<any, any> {
       <TabBar>
         <Container paddingTop style={s.header}>
           <Title text={'Профиль'} left unBottom />
-          <ButtonIcon icon={Icons.more} onPress={() => this.openMore()} />
+          <ButtonIcon icon={Icons.more} onPress={() => this.openMore()} focused={true} />
         </Container>
         <ScrollView>
           <Container style={s.profileImageBlock}>

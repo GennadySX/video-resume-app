@@ -79,7 +79,7 @@ export default function CameraScreen(props: ICameraScreen) {
     if (Platform.OS === 'android') {
       await checkAndroidPermission();
     }
-    await CameraRoll.saveToCameraRoll(uri, 'photo');
+    await CameraRoll.save(uri);
   };
 
   return (
