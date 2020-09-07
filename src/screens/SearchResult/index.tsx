@@ -7,6 +7,8 @@ import {Icons} from '../../helpers/Assets';
 import LinearGradient from 'react-native-linear-gradient';
 import {searchResultScreenStyle as s} from './styles';
 import Container from '../../components/Container';
+import TabBar from "../../components/TabBar";
+import {Routes} from "../../routes/Routes";
 
 export interface ISearchResult {}
 
@@ -17,9 +19,10 @@ export default class SearchResultScreen extends React.Component<any, any> {
   }
 
   render() {
+    const {navigation} =  this.props
     return (
-      <View style={s.block}>
-        <Container>
+      <TabBar >
+        <Container style={s.block}>
           <Header
             rightBlock={
               <View style={s.header}>
@@ -42,9 +45,9 @@ export default class SearchResultScreen extends React.Component<any, any> {
           </Container>
 
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <TouchableOpacity onPress={() => {}} style={{marginLeft: 20}}>
+            <TouchableOpacity onPress={() => navigation.navigate(Routes.Vacancy)} style={{marginLeft: 20}}>
               <LinearGradient
-                colors={['#9d6bcf', 'rgba(205,158,255,0.83)']}
+                colors={['#b083dc', 'rgba(234,223,245,0.83)']}
                 start={{x: 0, y: 1}}
                 end={{x: 1, y: 0}}
                 style={s.typeBlock}>
@@ -54,7 +57,7 @@ export default class SearchResultScreen extends React.Component<any, any> {
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {}}>
               <LinearGradient
-                colors={['#9d6bcf', 'rgba(205,158,255,0.83)']}
+                  colors={['#b083dc', 'rgba(234,223,245,0.83)']}
                 start={{x: 0, y: 1}}
                 end={{x: 1, y: 0}}
                 style={s.typeBlock}>
@@ -64,10 +67,30 @@ export default class SearchResultScreen extends React.Component<any, any> {
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {}}>
               <LinearGradient
-                colors={['#9d6bcf', 'rgba(205,158,255,0.83)']}
+                  colors={['#b083dc', 'rgba(234,223,245,0.83)']}
                 start={{x: 0, y: 1}}
                 end={{x: 1, y: 0}}
                 style={s.typeBlock}>
+                <Text style={[s.typeBlockTitle, s.font]}>Web-дизайнер</Text>
+                <Text style={s.typeBlockListCount}>145 вакансий</Text>
+              </LinearGradient>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {}}>
+              <LinearGradient
+                  colors={['#b083dc', 'rgba(234,223,245,0.83)']}
+                  start={{x: 0, y: 1}}
+                  end={{x: 1, y: 0}}
+                  style={s.typeBlock}>
+                <Text style={[s.typeBlockTitle, s.font]}>Web-дизайнер</Text>
+                <Text style={s.typeBlockListCount}>145 вакансий</Text>
+              </LinearGradient>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {}}>
+              <LinearGradient
+                  colors={['#b083dc', 'rgba(234,223,245,0.83)']}
+                  start={{x: 0, y: 1}}
+                  end={{x: 1, y: 0}}
+                  style={s.typeBlock}>
                 <Text style={[s.typeBlockTitle, s.font]}>Web-дизайнер</Text>
                 <Text style={s.typeBlockListCount}>145 вакансий</Text>
               </LinearGradient>
@@ -80,7 +103,7 @@ export default class SearchResultScreen extends React.Component<any, any> {
             onClick={() => this.props.navigation.navigate('Vacancy')}
           />
         </ScrollView>
-      </View>
+      </TabBar>
     );
   }
 }

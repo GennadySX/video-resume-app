@@ -73,13 +73,13 @@ export const videoScreenStyle = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginBottom: 70,
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
   },
   videoItem: {
     marginBottom: 15
   },
   videoCardIcon: {
-    width: Width * 0.299,
+    width: Width * 0.28,
     height: 100,
     resizeMode: 'contain',
   },

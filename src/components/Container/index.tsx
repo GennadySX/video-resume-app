@@ -2,16 +2,17 @@ import React, {ReactChild, ReactChildren} from 'react';
 import {StyleProp, View, ViewStyle, Text, Image} from 'react-native';
 import {containerStyle as s} from './styles';
 import LinearGradient from 'react-native-linear-gradient';
-import {Assets, AssetsBackground} from "../../helpers/Assets";
+import {Assets, AssetsBackground} from '../../helpers/Assets';
 
 export interface IContainer {
   unPadding?: boolean;
   linear?: boolean;
   shadow?: boolean;
+  shadowTop?: boolean;
   colors?: string[] | any;
   children: ReactChildren | ReactChild | any;
   style?: StyleProp<ViewStyle>;
-  paddingTop?: boolean
+  paddingTop?: boolean;
 }
 
 export default function Container({
@@ -20,8 +21,9 @@ export default function Container({
   children,
   style,
   unPadding,
-  shadow, paddingTop
-
+  shadow,
+  shadowTop,
+  paddingTop,
 }: IContainer) {
   return linear ? (
     <LinearGradient
@@ -32,9 +34,20 @@ export default function Container({
       {children}
     </LinearGradient>
   ) : (
-    <View style={[!unPadding && s.container, style, paddingTop && {paddingTop: 20}]}>
+    <View
+      style={[
+        !unPadding && s.container,
+        style,
+        paddingTop && {paddingTop: 20},
+      ]}>
+      {shadowTop && (
+        <Image
+          source={AssetsBackground.shadow}
+          style={(s.shadowContent, s.shadowTop)}
+        />
+      )}
       {shadow && (
-       <Image source={AssetsBackground.shadow} style={s.shadowContent} />
+        <Image source={AssetsBackground.shadow} style={s.shadowContent} />
       )}
       {children}
     </View>

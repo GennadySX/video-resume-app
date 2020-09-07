@@ -39,7 +39,7 @@ class TutorialScreen extends React.Component<any, any> {
   render() {
     const {swipeIndex} = this.state;
     return (
-      <IntroBackground>
+      <IntroBackground hiddenDot >
         <Swiper
           ref={(ref: any) => (this.swiperRef = ref)}
           loop={false}
@@ -50,17 +50,17 @@ class TutorialScreen extends React.Component<any, any> {
           prevButton={<View />}
           paginationStyle={{
             position: 'relative',
-            left: -120,
+            left: -140,
             bottom: 50,
           }}
           dotStyle={{
-            width: 14,
-            height: 14,
+            width: 10,
+            height: 10,
             borderRadius: 50,
           }}
           activeDotStyle={{
-            width: 14,
-            height: 14,
+            width: 10,
+            height: 10,
             borderRadius: 50,
           }}
           activeDotColor={'#481380'}
@@ -79,7 +79,7 @@ class TutorialScreen extends React.Component<any, any> {
           activeOpacity={1}
           style={s.nextBtn}
           onPress={() => this.next(swipeIndex + 1)}>
-          <Image source={Icons.next} />
+          <Image source={Icons.next}  style={{resizeMode: 'contain', width: 25, height: 25}} />
         </TouchableOpacity>
       </IntroBackground>
     );

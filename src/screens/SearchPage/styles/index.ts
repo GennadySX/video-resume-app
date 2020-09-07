@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-import {Height} from "../../../helpers/Normalizer";
+import {Height, Width} from "../../../helpers/Normalizer";
 
 export const searchPageScreenStyle = StyleSheet.create({
     block: {

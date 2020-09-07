@@ -47,6 +47,7 @@ import StarIcon from '../assets/svg/icons/star.svg';
 import StopIcon from '../assets/svg/icons/stop.svg';
 import TimeIcon from '../assets/svg/icons/timer.svg';
 import TurnIcon from '../assets/svg/icons/turn.svg';
+import HeartActiveFullIcon from '../assets/svg/icons/heartActiveFull.svg';
 import ErrorPageIcon from '../assets/svg/screen/error.svg';
 import Background_Chat from '../assets/svg/background/chat_background.svg';
 import Background_Ellipse from '../assets/svg/background/ellipse3.svg';
@@ -88,6 +89,7 @@ export const IconsSvg = {
   NextPlayIcon,
   PlayIcon,
   PlusIcon,
+  HeartActiveFullIcon,
   PrevPlayIcon,
   ProfileIcon,
   ProfileActiveIcon,

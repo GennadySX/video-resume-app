@@ -1,6 +1,6 @@
 import React from 'react';
-import {Image, View, Text} from 'react-native';
-import Index from '../../../components/ui/Title';
+import {Image, View, Text, KeyboardAvoidingView, Platform} from 'react-native';
+import Title from '../../../components/ui/Title';
 import Button, {buttonType} from '../../../components/ui/buttons';
 import {confirmStyle as s} from '../styles/confirmStyle';
 
@@ -26,9 +26,12 @@ export default function ConfirmCode({onSubmit}: IConfirmCode) {
   });
 
   return (
-    <View style={s.block}>
+    <KeyboardAvoidingView
+      style={s.block}
+      enabled={true}
+      behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
       <Image source={logoSmall} style={s.logoSmall} />
-      <Index text={'Подтверждение номера'} />
+      <Title text={'Подтверждение номера'} left />
       <Text style={s.textDescription}>
         Введите код, который мы отправили Вам на номер + 7 (9**) *** - ** - 21
       </Text>
@@ -62,6 +65,6 @@ export default function ConfirmCode({onSubmit}: IConfirmCode) {
         textStyle={{color: 'gray', fontSize: 14}}
         style={{marginTop: 10}}
       />
-    </View>
+    </KeyboardAvoidingView>
   );
 }

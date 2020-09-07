@@ -24,8 +24,8 @@ export default function BlockTab(props: IBlockTab) {
           style={[s.tab, s.line]}
           colors={
             !tab
-              ? ['rgba(133,37,221,0.14)', 'rgba(255,226,255,0.72)']
-              : ['rgba(133,37,221,0.04)', 'rgba(255,226,255,0.44)']
+                ? ['rgba(133,37,221,0.14)', 'rgba(241,231,241,0.72)']
+                : ['rgba(222,192,250,0.02)', 'rgba(241,222,241,0.44)']
           }
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}>
@@ -44,8 +44,8 @@ export default function BlockTab(props: IBlockTab) {
           style={[s.tab, s.outLine]}
           colors={
             tab
-              ? ['rgba(133,37,221,0.14)', 'rgba(255,226,255,0.72)']
-              : ['rgba(133,37,221,0.02)', 'rgba(255,226,255,0.44)']
+                ? ['rgba(133,37,221,0.14)', 'rgba(241,231,241,0.72)']
+                : ['rgba(222,192,250,0.02)', 'rgba(241,222,241,0.44)']
           }
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}>

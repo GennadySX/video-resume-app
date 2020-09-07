@@ -8,7 +8,7 @@ export interface IButtonBadge {
   onClick: () => void;
   badgeStyle?: any;
   badgeValue?: string;
-  title?: string;
+  title: string;
   icon?: any;
 }
 
@@ -21,7 +21,7 @@ export default function ButtonBadge(props: IButtonBadge) {
         end={{x: 1, y: 0}}
         style={s.dropBtn}>
         <Image source={Icons.plusWhite} style={s.btnIcon} />
-        <Text style={s.btnTitle}>Добавить метро</Text>
+        <Text style={s.btnTitle}>{props.title}</Text>
         <Text style={s.badge}>1</Text>
       </LinearGradient>
     </TouchableOpacity>

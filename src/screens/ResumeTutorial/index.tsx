@@ -26,7 +26,7 @@ class ResumeTutorialScreen extends React.Component<any, any> {
 
   next(index: number) {
     Promise.resolve(this.swiperRef.scrollTo(index)).then(() =>
-      index <= 2 ? this.setState({swipeIndex: index}) : this.skip(),
+      index < 2 ? this.setState({swipeIndex: index}) : this.skip(),
     );
   }
 

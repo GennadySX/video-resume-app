@@ -1,6 +1,6 @@
 import React from 'react';
-import {Image, View} from 'react-native';
-import Index from '../../../components/ui/Title';
+import {Image, KeyboardAvoidingView, Platform, View} from 'react-native';
+import Title from '../../../components/ui/Title';
 import Button, {buttonType} from '../../../components/ui/buttons';
 import InputUI from '../../../components/ui/inputs/input';
 import {baseInputStyle as s} from '../styles/baseInputStyle';
@@ -17,9 +17,12 @@ export default function BaseInput({onSubmit}: IBaseInput) {
   const [email, setEmail] = React.useState('');
 
   return (
-    <View style={s.block}>
+      <KeyboardAvoidingView
+          style={s.block}
+          enabled={true}
+          behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
       <Image source={logoSmall} style={s.logoSmall} />
-      <Index text={'Основные данные'} />
+      <Title text={'Основные данные'} left />
       <InputUI
         value={firstname}
         onChangeText={(e: string) => setFirstname(e)}
@@ -48,6 +51,6 @@ export default function BaseInput({onSubmit}: IBaseInput) {
         type={buttonType.transparent}
         textStyle={{color: 'gray', fontSize: 14}}
       />
-    </View>
+    </KeyboardAvoidingView>
   );
 }

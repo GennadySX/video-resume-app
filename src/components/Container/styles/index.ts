@@ -9,8 +9,12 @@ export const containerStyle = StyleSheet.create({
     shadowContent: {
         position: 'absolute',
         top: -50,
+        left: -50,
         height: 150,
-        width: Width-50,
-        resizeMode: 'cover',
+        width: Width+50,
+        resizeMode: 'stretch',
+    },
+    shadowTop: {
+
     }
 });

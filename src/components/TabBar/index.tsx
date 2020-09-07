@@ -25,9 +25,10 @@ export interface ITabBar {
   active?: Routes;
   onClick?: (menu: string, index?: number) => void;
   children: ReactChildren | ReactChild | ReactChild[];
+  background?: boolean;
 }
 
-export default function TabBar({active, onClick, children}: ITabBar) {
+export default function TabBar({active, onClick, children, background}: ITabBar) {
   const navigation = useNavigation();
   const route = useRoute();
 
@@ -43,7 +44,7 @@ export default function TabBar({active, onClick, children}: ITabBar) {
   return (
     <View style={s.block}>
       <View style={s.container}>{children}</View>
-      {React.createElement(IconsSvg.Background_Ellipse, s.background)}
+      {background && React.createElement(IconsSvg.Background_Ellipse, s.background)}
       <View style={s.tabContainer}>
         {TAB_MENU.map((menu: IMenuList, index: number) => (
           <TouchableOpacity

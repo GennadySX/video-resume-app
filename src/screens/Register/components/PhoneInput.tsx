@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
-import Index from '../../../components/ui/Title';
+import Title from '../../../components/ui/Title';
 import Button, {buttonType} from '../../../components/ui/buttons';
 import TextInputMask from 'react-native-text-input-mask';
 import auth from '@react-native-firebase/auth';
@@ -18,7 +18,7 @@ export default function PhoneInput({onSubmit}: IPhoneInput) {
   return (
     <View style={s.block}>
       <Image source={logoSmall} style={s.logoSmall} />
-      <Index text={'Войти'} />
+      <Title left text={'Войти'} />
       <TextInputMask
         onChangeText={(formatted: string, extracted: string) => setNumber(extracted)}
         placeholder={'Номер телефона'}

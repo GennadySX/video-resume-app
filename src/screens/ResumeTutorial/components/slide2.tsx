@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
-import Index from '../../../components/ui/Title';
+import Title from '../../../components/ui/Title';
 import {Slide} from '../../../helpers/Assets';
 import {slide2Style as s} from '../styles/slide2Style';
 
@@ -10,7 +10,7 @@ export default function Slide2(props: any) {
       <TouchableOpacity style={s.btnSkip} onPress={() => props.onSkip()}>
         <Text style={s.btnSkipText}>Пропустить</Text>
       </TouchableOpacity>
-      <Index text={'Создание видео-резюме'} style={s.title} />
+      <Title text={'Создание видео-резюме'} style={s.title} left />
       <Text style={s.text}>
           Заполни необходимую информацию, запиши небольшие видеоролики с рассказом о себе, твоём опыте и требованиях и жди отклики от работодателей
       </Text>

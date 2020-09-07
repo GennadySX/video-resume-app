@@ -7,7 +7,7 @@ export const filterStyle = StyleSheet.create({
         alignSelf: 'center',
         borderRadius: 40,
         borderWidth: 1,
-        borderColor: 'gray',
+        borderColor: '#bbbbbb',
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 15,

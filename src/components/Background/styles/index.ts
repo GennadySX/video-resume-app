@@ -27,8 +27,10 @@ export const IntroBackgroundStyle = StyleSheet.create({
   },
   tl: {
     left: 0,
-    height: Width * 0.3,
-    width: Width * 0.25,
+    top: -40,
+    height: Width * 0.4,
+    width: Width * 0.29,
+    resizeMode: 'stretch',
   },
   tr: {
     top: '10%',

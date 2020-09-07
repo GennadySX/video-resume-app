@@ -11,8 +11,9 @@ import {resumeListJSON} from '../../json/resumeList';
 import ResumeCard from '../../screens/Vacancy/components/ResumeCard';
 import Button, {buttonType} from '../ui/buttons';
 import Popup from '../Popup';
-import {useNavigation} from "@react-navigation/native";
-import {Routes} from "../../routes/Routes";
+import {useNavigation} from '@react-navigation/native';
+import {Routes} from '../../routes/Routes';
+import {IconsSvg} from '../../helpers/IconsSVG';
 
 export interface ICard {
   unPadding?: boolean;
@@ -34,9 +35,10 @@ export default function Card(props: ICard) {
   const navigation = useNavigation();
 
   const passScreen = (screen: Routes) => {
-      Promise.resolve(setLikedPopup(!likedPopup)).then(() =>navigation.navigate(screen) )
-  }
-
+    Promise.resolve(setLikedPopup(!likedPopup)).then(() =>
+      navigation.navigate(screen),
+    );
+  };
 
   return (
     <View>
@@ -57,14 +59,18 @@ export default function Card(props: ICard) {
               {!props.disLikeAble && (
                 <TouchableOpacity
                   onPress={() => {
-                      setLikedPopup(!likedPopup);
                     setActive(!active);
+                    if (!active) {
+                      setLikedPopup(!likedPopup);
+                    }
                   }}
                   activeOpacity={1}>
-                  <Image
-                    source={active ? Icons.heartActive : Icons.heart}
-                    style={s.headerHeartIcon}
-                  />
+                  {(
+                    React.createElement(
+                        active ?  IconsSvg.HeartActiveFullIcon : IconsSvg.LikeIcon,
+                      s.headerHeartIcon,
+                    )
+                  )}
                 </TouchableOpacity>
               )}
             </View>
@@ -111,8 +117,10 @@ export default function Card(props: ICard) {
               {!props.disLikeAble && (
                 <TouchableOpacity
                   onPress={() => {
+                    setActive(!active);
+                    if (!active) {
                       setLikedPopup(!likedPopup);
-                      setActive(!active)
+                    }
                   }}
                   activeOpacity={1}>
                   <Image

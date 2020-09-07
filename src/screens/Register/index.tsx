@@ -72,7 +72,7 @@ class RegisterScreen extends React.Component<any, any> {
   render() {
     const {confirm, number, baseInput} = this.state;
     return (
-      <IntroBackground>
+      <IntroBackground hiddenDot>
         {!number ? (
           <PhoneInput
             onSubmit={(number: string) => this.signInWithPhoneNumber(number)}

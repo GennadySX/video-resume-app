@@ -14,9 +14,10 @@ import {Routes} from '../../routes/Routes';
 import ProfileMoreMenu from './components/MoreMenu';
 
 import {profileScreenStyle as s} from './styles';
-import Button, {buttonType} from "../../components/ui/buttons";
-import {styles} from "../../styles/style";
-import Popup from "../../components/Popup";
+import Button, {buttonType} from '../../components/ui/buttons';
+import {styles} from '../../styles/style';
+import Popup from '../../components/Popup';
+import {PREMIUM_ACCOUNT, PREMIUM_OFF} from "../../store/actions/profileAction";
 
 export interface IProfileScreen {}
 
@@ -26,12 +27,13 @@ class ProfileScreen extends React.Component<any, any> {
     this.state = {
       userInfo: null,
       isMore: false,
-      active: false,
-      popup: false
+      popup: true,
     };
   }
 
-  componentDidMount(): void {}
+  componentDidMount() {
+    console.log('props: ', this.props)
+  }
 
   openMore() {
     this.setState({
@@ -51,23 +53,35 @@ class ProfileScreen extends React.Component<any, any> {
     });
   }
 
-
-
   render() {
-    const {isMore, active, popup} = this.state;
+    const {isMore,  popup} = this.state;
+    const { premium } = this.props
     return (
-      <TabBar>
+      <TabBar background>
         <Container paddingTop style={s.header}>
           <Title text={'Профиль'} left unBottom />
-          <ButtonIcon icon={Icons.more} onPress={() => this.openMore()} focused={true} />
+          <ButtonIcon
+            icon={Icons.more}
+            onPress={() => this.openMore()}
+            focused={true}
+          />
         </Container>
         <ScrollView>
           <Container style={s.profileImageBlock}>
-            <TouchableOpacity style={[s.imgContainer, {borderColor: active ? 'rgba(125,90,160,0.62)' : '#bdbbbb'} ]} onPress={() => this.setState({active: !active}, () => !active && this.setLikedPopup())}>
+            <TouchableOpacity
+              style={[
+                s.imgContainer,
+                {borderColor: premium ? 'rgba(125,90,160,0.62)' : '#bdbbbb'},
+              ]}
+              onPress={() => this.props.navigation.navigate(Routes.Premium)}>
               <Image source={Assets.photo} style={s.img} />
             </TouchableOpacity>
             <LinearGradient
-              colors={ active ?  ['rgba(142,62,193,0.74)', 'rgb(241,240,240)'] : ['#b9b9bf', 'rgba(182,180,180,0.84)']}
+              colors={
+                premium
+                  ? ['rgba(142,62,193,0.74)', 'rgb(241,240,240)']
+                  : ['#b9b9bf', 'rgba(182,180,180,0.84)']
+              }
               start={{x: 0, y: 1}}
               end={{x: 1, y: 0}}
               style={s.status}>
@@ -85,7 +99,7 @@ class ProfileScreen extends React.Component<any, any> {
             style={s.resumeContainer}>
             <TouchableOpacity
               onPress={() =>
-                this.props.navigation.navigate(Routes.ResumeCreate)
+                this.props.navigation.navigate(Routes.ResumeTutorial)
               }
               style={s.addResumeBtn}>
               <Image source={Icons.addResume} style={s.addResumeIcon} />
@@ -136,13 +150,13 @@ class ProfileScreen extends React.Component<any, any> {
           </Container>
         </ScrollView>
         <ProfileMoreMenu active={isMore} onClose={() => this.openMore()} />
-        <Popup visible={popup} onClose={() => this.setLikedPopup()}>
+        <Popup visible={premium && popup} onClose={() => this.setLikedPopup()}>
           <Container style={s.container}>
             <Title
-                text={'Premium-аккаунт активирован'}
-                left
-                fontSize={18}
-                style={{marginBottom: 10}}
+              text={'Premium-аккаунт активирован'}
+              left
+              fontSize={18}
+              style={{marginBottom: 10}}
             />
             <Text style={s.desc}>
               Теперь Ваше резюме заметят больше работодателей
@@ -150,11 +164,11 @@ class ProfileScreen extends React.Component<any, any> {
             <Image source={AssetsPopup.premium} style={s.imgPopup} />
 
             <Button
-                title={'Хорошо'}
-                onPress={() => this.setLikedPopup()}
-                type={buttonType.transparent}
-                textStyle={[s.btnText, {...styles.fontBold}]}
-                style={s.btn}
+              title={'Хорошо'}
+              onPress={() => this.setState({popup: false})}
+              type={buttonType.transparent}
+              textStyle={[s.btnText, {...styles.fontBold}]}
+              style={s.btn}
             />
           </Container>
         </Popup>
@@ -163,4 +177,16 @@ class ProfileScreen extends React.Component<any, any> {
   }
 }
 
-export default ProfileScreen;
+const mapStateToProps = ({profile}: any) => {
+  return {
+    premium: profile.premium,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    setPremium: () => dispatch({type: PREMIUM_OFF}),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);

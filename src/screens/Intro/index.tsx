@@ -39,7 +39,7 @@ class IntroScreen extends React.Component<any, any> {
               textStyle={{color: 'gray'}}
             />
           </View>
-          <BottomDrawer startUp={this.state.isPanel}>
+          <BottomDrawer startUp={this.state.isPanel} >
             <SocialAuth onClose={() => this.setState({isPanel: false})} />
           </BottomDrawer>
         </View>

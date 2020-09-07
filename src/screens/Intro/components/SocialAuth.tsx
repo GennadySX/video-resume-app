@@ -4,7 +4,9 @@ import {Icons} from '../../../helpers/Assets';
 import {View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {GoogleSignin} from '@react-native-community/google-signin';
-import {setStorage, Storage} from '../../../helpers/Storage';
+import {Storage} from '../../../helpers/Storage';
+import Title from '../../../components/ui/Title';
+import {Routes} from '../../../routes/Routes';
 
 export interface ISocialAuth {
   onClose: () => void;
@@ -13,7 +15,7 @@ export interface ISocialAuth {
 export function SocialAuth(props: ISocialAuth) {
   const navigation = useNavigation();
 
-  const [user, setUser] = React.useState<any>();
+  //const [user, setUser] = React.useState<any>();
 
   const init = () => {
     GoogleSignin.configure({
@@ -25,9 +27,9 @@ export function SocialAuth(props: ISocialAuth) {
   };
   init();
 
-  const closeIt = () =>
+  const closeIt = (screen?: Routes) =>
     Promise.resolve(props.onClose()).then(() =>
-      navigation.navigate('Register'),
+      navigation.navigate(screen || 'Register'),
     );
 
   const signIn = async () => {
@@ -45,6 +47,7 @@ export function SocialAuth(props: ISocialAuth) {
 
   return (
     <View>
+      <Title text={'Войти'} bottom={15} />
       <Button
         onPress={closeIt}
         title={'С помощью номера телефона'}
@@ -78,10 +81,16 @@ export function SocialAuth(props: ISocialAuth) {
         shadow
       />
       <Button
-        onPress={() => {}}
+        onPress={() => closeIt(Routes.Error)}
         title={'Apple ID'}
         type={buttonType.black}
         icon={Icons.apple}
+      />
+      <Button
+        onPress={() => closeIt(Routes.SearchPage)}
+        title={'Продолжить без входа'}
+        type={buttonType.transparent}
+        textStyle={{color: 'gray'}}
       />
     </View>
   );

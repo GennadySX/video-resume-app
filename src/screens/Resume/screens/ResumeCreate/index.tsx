@@ -3,6 +3,7 @@ import {
   Image,
   ScrollView,
   StyleSheet,
+  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -17,6 +18,9 @@ import {Routes} from '../../../../routes/Routes';
 
 import RoundedGradient from '../../../../assets/svg/roundGradient.svg';
 import RoundedGradientOutline from '../../../../assets/svg/roundGradientOutline.svg';
+import BottomDrawer from '../../../../components/BottomDrawer';
+import Camera from '../../../../components/Camera';
+import ImagePicker from 'react-native-image-picker';
 
 export interface IResumeCreateScreen {}
 
@@ -26,15 +30,46 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
     this.state = {
       about: null,
       lastStep: false,
+      bottomDrawer: false,
+      isCamera: false,
+      img: Assets.photo,
     };
   }
 
+  fromGallery = () => {
+    this.setState({bottomDrawer: false});
+    const options = {
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    ImagePicker.launchImageLibrary(options, (response) => {
+      console.log('response picker image', response);
+      this.setState({img: {uri: response.uri}});
+    });
+  };
+
+  getCameraData = (uri: string) => {
+    this.setState({
+      bottomDrawer: false,
+      img: {uri: uri},
+      isCamera: false,
+    });
+  };
+
   render() {
-    const {about, lastStep} = this.state;
-    return (
+    const {about, lastStep, isCamera, img, bottomDrawer} = this.state;
+    return isCamera ? (
+      <Camera
+        onCaptue={(data: string) => this.getCameraData(data)}
+        onClose={() => this.setState({isCamera: false})}
+      />
+    ) : (
       <View style={s.block}>
         <Container style={s.header}>
-          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate(Routes.Profile)}>
             <Image source={Icons.close} style={s.closeIcon} />
           </TouchableOpacity>
         </Container>
@@ -44,22 +79,48 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
             style={s.scrollContainer}>
             <Title text={'Создание'} left unBottom />
             <Container style={s.guideBlock}>
-              <RoundedGradient width={30} height={30} style={s.guideIcon} />
-              <View style={[s.lineNotActive, lastStep && s.lineActive]} />
-              {lastStep ? (
-                <RoundedGradient width={30} height={30} style={s.guideIcon} />
-              ) : (
-                <RoundedGradientOutline
+              <TouchableOpacity
+                style={{alignSelf: 'center'}}
+                onPress={() => this.setState({lastStep: false})}
+                activeOpacity={1}>
+                <RoundedGradient
                   width={30}
                   height={30}
-                  style={s.guideIcon}
+                  style={[s.guideIcon, {alignSelf: 'center'}]}
                 />
-              )}
+                <Text style={styles.fontMedium}>Информация</Text>
+              </TouchableOpacity>
+              <View style={[s.lineNotActive, lastStep && s.lineActive]} />
+              <TouchableOpacity
+                style={{alignSelf: 'center', top: 5}}
+                onPress={() => this.setState({lastStep: true})}
+                activeOpacity={1}>
+                {lastStep ? (
+                  <RoundedGradient
+                    width={30}
+                    height={30}
+                    style={[s.guideIcon, {alignSelf: 'center'}]}
+                  />
+                ) : (
+                  <RoundedGradientOutline
+                    width={30}
+                    height={30}
+                    style={[s.guideIcon, {alignSelf: 'center'}]}
+                  />
+                )}
+                <Text
+                  style={[
+                    styles.fontMedium,
+                    {width: 110, textAlign: 'center'},
+                  ]}>
+                  Добавление видео
+                </Text>
+              </TouchableOpacity>
             </Container>
 
             <Container style={s.avatarContainer}>
-              <TouchableOpacity style={s.avatarBtn} onPress={() => {}}>
-                <Image source={Assets.photo} style={s.avatar} />
+              <TouchableOpacity style={s.avatarBtn} onPress={() => this.setState({bottomDrawer: true})} activeOpacity={1}>
+                <Image source={img} style={s.avatar} />
                 {!lastStep && (
                   <Image source={Icons.photoFrame} style={s.photoFrame} />
                 )}
@@ -188,6 +249,29 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
               </View>
             )}
           </ScrollView>
+          <BottomDrawer full height={240} startUp={bottomDrawer}>
+            <Container>
+              <Title text={'Добавить фотографию'} left unBottom fontSize={18} />
+              <View style={s.btnContainer}>
+                <TouchableOpacity
+                  style={s.btnChoise}
+                  onPress={() => this.setState({isCamera: true})}>
+                  <Text style={s.btnChoiseText}>Сделать фотографию</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={[s.btnChoise, {borderTopColor: 'transparent'}]}
+                  onPress={() => this.fromGallery()}>
+                  <Text style={s.btnChoiseText}>Загрузить из галереи</Text>
+                </TouchableOpacity>
+              </View>
+              <Button
+                title={'Отмена'}
+                onPress={() => this.setState({bottomDrawer: true})}
+                type={buttonType.transparent}
+                textStyle={{color: '#858585'}}
+              />
+            </Container>
+          </BottomDrawer>
         </Container>
       </View>
     );
@@ -293,6 +377,7 @@ const s = StyleSheet.create({
     alignSelf: 'center',
     marginLeft: 10,
     marginRight: 10,
+    bottom: 10,
   },
   lineActive: {
     backgroundColor: 'rgba(116, 45, 210, 0.3)',

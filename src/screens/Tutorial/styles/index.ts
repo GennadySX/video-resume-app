@@ -31,7 +31,7 @@ export const tutorialScreenStyle = StyleSheet.create({
   },
   nextBtn: {
     position: 'absolute',
-    bottom: 10,
+    bottom: 15,
     right: 10,
     marginBottom: 25,
     marginRight: 20,

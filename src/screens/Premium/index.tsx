@@ -6,16 +6,21 @@ import Container from '../../components/Container';
 import {styles} from '../../styles/style';
 import Title from '../../components/ui/Title';
 import {useNavigation} from '@react-navigation/native';
-
 //icons
 import SlidePremium from '../../assets/svg/slide/premium.svg';
 import CheckMark from '../../assets/svg/checkmark.svg';
 import Button, {buttonType} from '../../components/ui/buttons';
 import {Routes} from '../../routes/Routes';
+import {useDispatch, useSelector} from 'react-redux';
+import {PREMIUM_ACCOUNT} from '../../store/actions/profileAction';
 
 export interface IPremiumScreen {}
 
 export default function PremiumScreen(props: IPremiumScreen) {
+  const dispatch = useDispatch();
+
+  const premium: boolean = useSelector(({profile}: any) => profile.premium);
+
   const navigation = useNavigation();
   return (
     <IntroBackground>
@@ -41,9 +46,12 @@ export default function PremiumScreen(props: IPremiumScreen) {
         </Text>
       </Container>
       <Button
-        title={'Попробовать'}
-        onPress={() => navigation.navigate(Routes.Profile)}
-        type={buttonType.purple}
+        title={premium ? 'Отключить режим премиума' : 'Попробовать'}
+        onPress={() => {
+          dispatch({type: PREMIUM_ACCOUNT, premium: true});
+          navigation.navigate(Routes.Profile, {active: true});
+        }}
+        type={premium ? buttonType.lightred : buttonType.purple}
         style={s.btnSubmit}
       />
     </IntroBackground>

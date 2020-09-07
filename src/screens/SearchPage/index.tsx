@@ -1,25 +1,22 @@
 import React from 'react';
 import {
   ScrollView,
+  StyleSheet,
+  Text,
   TouchableOpacity,
   View,
-  Text,
-  StyleSheet,
-  CheckBox,
 } from 'react-native';
 import Filter from './components/Filter';
 import BlockTab from './components/BlockTab';
 import Title from '../../components/ui/Title';
 import Card from '../../components/Card';
 import BottomDrawer from '../../components/BottomDrawer';
-import {Height} from '../../helpers/Normalizer';
+import {Height, Width} from '../../helpers/Normalizer';
 import InputUI from '../../components/ui/inputs/input';
 import ButtonBadge from '../../components/ui/buttons/badgely';
 import Button, {buttonType} from '../../components/ui/buttons';
 import ToggleButton from '../../components/ui/buttons/ToggleButton';
-import SelectPicker from '../../components/ui/select';
 import TabBar from '../../components/TabBar';
-import {TAB_MENU} from '../../constants/TabMenu';
 import {SearchLayout} from './components/SearchLayout';
 import {searchPageScreenStyle as s} from './styles';
 import Container from '../../components/Container';
@@ -131,10 +128,15 @@ export default class SearchPageScreen extends React.Component<any, any> {
             full
             onClose={() => this.onCloseSheet()}>
             <View style={s.bFilterBlock}>
-              <Title text={'Фильтры'} fontSize={18} left />
+              <Title text={'Фильтры'} fontSize={18} bottom={15} />
               <ScrollView
                 showsVerticalScrollIndicator={false}
-                style={{marginBottom: 100}}>
+                style={{
+                  marginBottom: 100,
+                  width: Width,
+                  paddingRight: 20,
+                  paddingLeft: 20,
+                }}>
                 <InputUI
                   fullWidth
                   value={''}
@@ -166,23 +168,26 @@ export default class SearchPageScreen extends React.Component<any, any> {
                   placeholder={'График'}
                 />
                 <ButtonBadge
+                  title={'Добавить метро'}
                   onClick={() => this.setState({onFilterPopup: true})}
                 />
                 <ButtonBadge
+                  title={'Добавить профобласть'}
                   onClick={() => this.setState({onFilterPopup: true})}
                 />
                 <ButtonBadge
+                  title={'Добавить отрасль'}
                   onClick={() => this.setState({onFilterPopup: true})}
                 />
                 <SelectModal
-                    placeholder={'Время публикации'}
-                    values={['JS', 'PHP', 'Python']}
-                    onSelected={(item: any) => console.log('selected item', item)}
+                  placeholder={'Время публикации'}
+                  values={['JS', 'PHP', 'Python']}
+                  onSelected={(item: any) => console.log('selected item', item)}
                 />
                 <SelectModal
-                    placeholder={'Сортировка'}
-                    values={['JS', 'PHP', 'Python']}
-                    onSelected={(item: any) => console.log('selected item', item)}
+                  placeholder={'Сортировка'}
+                  values={['JS', 'PHP', 'Python']}
+                  onSelected={(item: any) => console.log('selected item', item)}
                 />
                 <ToggleButton
                   title={'Без вакансий агенств'}
@@ -203,7 +208,7 @@ export default class SearchPageScreen extends React.Component<any, any> {
               </ScrollView>
               <Container
                 shadow
-                style={{marginBottom: 20, position: 'absolute', bottom: 0}}>
+                style={{marginBottom: 30, position: 'absolute', bottom: 0}}>
                 <Button
                   title={'Сохранить изменения'}
                   type={buttonType.purple}
@@ -225,6 +230,7 @@ export default class SearchPageScreen extends React.Component<any, any> {
           startUp={onFilterPopup}
           height={Height * 0.9}
           full
+          duration={500}
           onClose={() => this.onCloseSheetChild()}>
           <View style={xs.header}>
             <Title
@@ -232,11 +238,13 @@ export default class SearchPageScreen extends React.Component<any, any> {
               fontSize={18}
               style={{marginBottom: 0}}
             />
-            <TouchableOpacity onPress={() => this.clearCheck()}>
-              <Text style={xs.headerClear}>Очистить все</Text>
-            </TouchableOpacity>
+            {(check1 || check2 || check3) && (
+              <TouchableOpacity onPress={() => this.clearCheck()}>
+                <Text style={xs.headerClear}>Очистить все</Text>
+              </TouchableOpacity>
+            )}
           </View>
-          <Container>
+          <Container style={{minHeight: (check1 || check2 || check3) ? 495 : 550}}>
             <View style={xs.resultBlock}>
               <CheckBoxUI
                 checked={check1}
@@ -255,6 +263,19 @@ export default class SearchPageScreen extends React.Component<any, any> {
               />
             </View>
           </Container>
+          {(check1 || check2 || check3) && (
+          <Button
+              title={'Сохранить изменение'}
+              onPress={() => this.setState({onFilterPopup: false})}
+              type={buttonType.purple}
+              style={{paddingBottom: 0}}
+          /> )}
+          <Button
+            title={'Отмена'}
+            onPress={() => this.setState({onFilterPopup: false})}
+            type={buttonType.transparent}
+            textStyle={{color: 'gray'}}
+          />
         </BottomDrawer>
       </TabBar>
     );

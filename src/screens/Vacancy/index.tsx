@@ -1,5 +1,12 @@
 import React from 'react';
-import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Card from '../../components/Card';
 import Header from '../../components/Header';
 import Button, {buttonType} from '../../components/ui/buttons';
@@ -12,6 +19,8 @@ import ResumeCard from './components/ResumeCard';
 import {resumeListJSON} from '../../json/resumeList';
 import {Routes} from '../../routes/Routes';
 import Popup from '../../components/Popup';
+import {styles} from '../../styles/style';
+import TabBar from "../../components/TabBar";
 
 export interface IVacancy {}
 
@@ -21,6 +30,7 @@ export default class VacancyScreen extends React.Component<any, any> {
     this.state = {
       isBottomDrawer: false,
       headerLike: false,
+      likedPopup: false,
       onChoose: false,
       selected: null,
       isSend: false,
@@ -39,10 +49,28 @@ export default class VacancyScreen extends React.Component<any, any> {
     }
   }
 
+  setLikedPopup() {
+    this.setState({
+      likedPopup: !this.state.likedPopup,
+    });
+  }
+
+  passScreen() {
+    this.props.navigation.navigate(Routes.Favorites);
+  }
+
   render() {
-    const {isBottomDrawer, onChoose, selected, isSend, headerLike} = this.state;
+    const {
+      isBottomDrawer,
+      onChoose,
+      selected,
+      isSend,
+      headerLike,
+      likedPopup,
+    } = this.state;
     return (
-      <View style={s.block}>
+      <TabBar >
+        <View style={s.block} >
         <Header
           rightBlock={
             <View style={s.header}>
@@ -53,7 +81,7 @@ export default class VacancyScreen extends React.Component<any, any> {
                 />
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => this.setState({headerLike: !headerLike})}>
+                  onPress={() => this.setState({headerLike: !headerLike, likedPopup: !headerLike }, )}>
                 <Image
                   source={headerLike ? Icons.heartActive : Icons.like}
                   style={s.headerImg}
@@ -97,13 +125,13 @@ export default class VacancyScreen extends React.Component<any, any> {
             </View>
             <Text style={s.blockTitle}>Видео</Text>
             <View style={s.videoBlock}>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate(Routes.VideoScreen)}>
                 <Image source={Assets.cardVideoA} style={s.videoBlockImg} />
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate(Routes.VideoScreen)}>
                 <Image source={Assets.cardVideoB} style={s.videoBlockImg} />
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate(Routes.VideoScreen)}>
                 <Image source={Assets.cardVideoC} style={s.videoBlockImg} />
               </TouchableOpacity>
             </View>
@@ -192,7 +220,37 @@ export default class VacancyScreen extends React.Component<any, any> {
             />
           </Container>
         </Popup>
-      </View>
+
+        <Popup visible={likedPopup} onClose={() => this.setLikedPopup()}>
+          <Container style={s.container}>
+            <Title
+              text={'Вакансия в Избранном'}
+              left
+              fontSize={18}
+              style={{marginBottom: 10}}
+            />
+            <Text style={s.desc}>
+              Добавляя профессию в Избранное, можно отслеживать за их новыми
+              вакансиями
+            </Text>
+            <Image source={AssetsPopup.liked} style={s.img} />
+            <Button
+              title={'Перейти в Избранное'}
+              onPress={() => this.passScreen()}
+              type={buttonType.purple}
+              style={s.btn}
+            />
+            <Button
+              title={'Закрыть'}
+              onPress={() => this.setLikedPopup()}
+              type={buttonType.transparent}
+              textStyle={[s.btnText, {...styles.fontBold}]}
+              style={s.btn}
+            />
+          </Container>
+        </Popup>
+        </View>
+      </TabBar>
     );
   }
 }

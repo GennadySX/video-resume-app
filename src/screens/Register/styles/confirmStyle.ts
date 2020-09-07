@@ -38,7 +38,7 @@ export const confirmStyle = StyleSheet.create({
   //
   root: {flex: 1, padding: 20},
   title: {textAlign: 'center', fontSize: 30},
-  codeFieldRoot: {marginTop: 20},
+  codeFieldRoot: {marginTop: 0},
   cell: {
     width: 40,
     height: 35,
