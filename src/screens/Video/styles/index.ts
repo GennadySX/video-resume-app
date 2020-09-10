@@ -73,7 +73,7 @@ export const videoScreenStyle = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginBottom: 70,
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
   },
   videoItem: {
     marginBottom: 15

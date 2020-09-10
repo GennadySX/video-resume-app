@@ -13,7 +13,7 @@ import Title from '../../../../components/ui/Title';
 import InputUI from '../../../../components/ui/inputs/input';
 import Button, {buttonType} from '../../../../components/ui/buttons';
 import {styles} from '../../../../styles/style';
-import {Width} from '../../../../helpers/Normalizer';
+import {Width, Height} from '../../../../helpers/Normalizer';
 import {Routes} from '../../../../routes/Routes';
 
 import RoundedGradient from '../../../../assets/svg/roundGradient.svg';
@@ -29,7 +29,7 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
     super(props);
     this.state = {
       about: null,
-      lastStep: false,
+      lastStep: true,
       bottomDrawer: false,
       isCamera: false,
       img: Assets.photo,
@@ -119,7 +119,10 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
             </Container>
 
             <Container style={s.avatarContainer}>
-              <TouchableOpacity style={s.avatarBtn} onPress={() => this.setState({bottomDrawer: true})} activeOpacity={1}>
+              <TouchableOpacity
+                style={s.avatarBtn}
+                onPress={() => this.setState({bottomDrawer: true})}
+                activeOpacity={1}>
                 <Image source={img} style={s.avatar} />
                 {!lastStep && (
                   <Image source={Icons.photoFrame} style={s.photoFrame} />
@@ -340,8 +343,8 @@ const s = StyleSheet.create({
   },
   videoBlockStar: {
     position: 'absolute',
-    left: 5,
-    top: 5,
+    left: 7,
+    top: Height * 0.01,
   },
   videoBlockStarIcon: {
     width: 20,
@@ -349,8 +352,8 @@ const s = StyleSheet.create({
   },
   videoBlockBasket: {
     position: 'absolute',
-    left: 5,
-    bottom: 15,
+    left: 7,
+    bottom: Height * 0.02,
   },
   videoBlockBasketIcon: {
     width: 20,

@@ -28,7 +28,7 @@ export default function BottomDrawer({
 }: ISignDrawer) {
   let RBSheetX: {open: () => void; close(): void} | null = null;
 
-  const [heightLayout, setHeightLayout] = React.useState(null);
+  const [heightLayout, setHeightLayout] = React.useState(height ?? 500);
 
   useEffect(() => {
     if (startUp && RBSheetX) {
@@ -36,16 +36,16 @@ export default function BottomDrawer({
     } else if (startUp === false && RBSheetX) {
       RBSheetX.close();
     }
-  }, [ startUp, heightLayout, RBSheetX ]);
+  }, [startUp, heightLayout, RBSheetX ]);
 
   return (
     <RBSheet
       ref={(ref: any) => {
         RBSheetX = ref;
       }}
-      height={height || heightLayout || 500}
-      openDuration={duration || 500}
-      closeDuration={closeDuration || 500}
+      height={height ?? heightLayout}
+      openDuration={duration || 300}
+      closeDuration={closeDuration || 300}
       closeOnDragDown={true}
       onClose={() => (startUp && onClose ? onClose() : {})}
       customStyles={{
