@@ -21,6 +21,7 @@ export enum Routes {
   CameraScreen = 'CameraScreen',
   Premium = 'Premium',
   Error = 'Error',
+  EditVideoScreen = 'EditVideoScreen',
 }
 
 export const RouteActive: Routes = Routes.Intro;

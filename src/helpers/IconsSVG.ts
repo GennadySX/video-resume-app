@@ -31,6 +31,7 @@ import LineGrayIcon from '../assets/svg/icons/lineGray.svg';
 import NextIcon from '../assets/svg/icons/next.svg';
 import NextPlayIcon from '../assets/svg/icons/nextSpeed.svg';
 import PlayIcon from '../assets/svg/icons/play.svg';
+import Play2Icon from '../assets/svg/icons/playII.svg';
 import PlusIcon from '../assets/svg/icons/plus.svg';
 import PrevPlayIcon from '../assets/svg/icons/prevSpeed.svg';
 import ProfileIcon from '../assets/svg/icons/profile.svg';
@@ -88,6 +89,7 @@ export const IconsSvg = {
   NextIcon,
   NextPlayIcon,
   PlayIcon,
+  Play2Icon,
   PlusIcon,
   HeartActiveFullIcon,
   PrevPlayIcon,

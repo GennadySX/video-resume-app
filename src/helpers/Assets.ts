@@ -66,6 +66,7 @@ export enum Assets {
   cardVideoV1 = require('../assets/img/card/v1.png'),
   cardVideoV2 = require('../assets/img/card/v2.png'),
   photo = require('../assets/img/card/girl.jpg'),
+  videEdit = require('../assets/img/card/videoEdit.png'),
 }
 
 export enum AssetsBackground {

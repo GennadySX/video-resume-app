@@ -24,6 +24,7 @@ import VideoScreen from "../screens/Video";
 import PremiumScreen from "../screens/Premium";
 import CameraScreen from "../screens/Camera";
 import ErrorPageScreen from "../screens/ErrorPage";
+import EditVideoScreen from "../screens/Resume/screens/EditVideo";
 
 export const RouteComponents = [
   {
@@ -197,6 +198,14 @@ export const RouteComponents = [
   {
     name: Routes.Error,
     component: ErrorPageScreen,
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
+  },
+  {
+    name: Routes.EditVideoScreen,
+    component: EditVideoScreen,
     options: {
       headerShow: false,
       animationEnabled: false,
