@@ -132,7 +132,7 @@ export default function Card(props: ICard) {
             </View>
             <View style={s.body}>
               <TouchableOpacity
-                onPress={() => props.onClick()}
+                onPress={() => navigation.navigate(Routes.VideoScreen)}
                 activeOpacity={1}>
                 <Image source={Assets.cardAsset} style={s.bodyImage} />
               </TouchableOpacity>

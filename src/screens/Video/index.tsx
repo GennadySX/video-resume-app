@@ -40,7 +40,7 @@ export default function VideoScreen(props: IVideoScreen) {
         <TouchableOpacity style={s.headerBack} onPress={() => navigation.goBack()}>
           <Image source={Icons.backWhite} style={s.headerBackIcon} />
         </TouchableOpacity>
-        <Text style={s.title}>Название видео или вакансии</Text>
+        <Text style={s.title}>О компании</Text>
         <View />
       </View>
       <Video
