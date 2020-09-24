@@ -36,7 +36,7 @@ export default function BottomDrawer({
     } else if (startUp === false && RBSheetX) {
       RBSheetX.close();
     }
-  }, [startUp, heightLayout, RBSheetX ]);
+  });
 
   return (
     <RBSheet
@@ -56,14 +56,12 @@ export default function BottomDrawer({
           padding: 0,
         },
         container: {
-          borderTopStartRadius: 10,
-          borderTopEndRadius: 10,
+          borderTopStartRadius: 20,
+          borderTopEndRadius: 20,
         },
       }}>
       <View
-        onLayout={({nativeEvent}: nativeEventLayout) =>
-          setHeightLayout(nativeEvent.layout.height + 40)
-        }>
+        onLayout={({nativeEvent}: nativeEventLayout) => !height && setHeightLayout(nativeEvent.layout.height + 40)}>
         {children}
       </View>
     </RBSheet>

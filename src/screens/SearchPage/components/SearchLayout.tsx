@@ -26,7 +26,7 @@ export function SearchLayout({onClose, onFilter}: ISearchLayout) {
           onChange={setInput}
           iconClick={() => onFilter()}
         />
-        <Title text={'Результаты поиска'} fontSize={20} style={{top: 10}} left/>
+        <Title text={'Недавние'} fontSize={20} style={{top: 10}} left/>
         <View style={s.resultBlock}>
           <TouchableOpacity onPress={() => navigation.navigate(Routes.Error)}>
             <Text style={s.resultItem}>Web-дизайнер</Text>

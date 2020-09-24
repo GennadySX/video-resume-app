@@ -38,6 +38,7 @@ export const swipeCardStyle = StyleSheet.create({
         position: 'relative',
         top: 20,
         width: 205,
+        maxHeight: 125,
     },
     leftActionChild: {
         position: 'relative',

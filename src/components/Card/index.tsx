@@ -176,7 +176,7 @@ export default function Card(props: ICard) {
         startUp={isBottomDrawer}
         onClose={() => setIsBottomDrawer(false)}>
         <Container unPadding>
-          <Title text={'Выберите резьюме'} fontSize={18} />
+          <Title text={'Выберите резюме'} fontSize={18} />
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}

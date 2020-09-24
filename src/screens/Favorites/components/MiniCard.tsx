@@ -4,6 +4,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Icons} from '../../../helpers/Assets';
 import {miniCardStyle as s} from '../styles/miniCardStyle';
 import Container from "../../../components/Container";
+import {useNavigation} from '@react-navigation/native';
+import {Routes} from "../../../routes/Routes";
 
 export interface IMiniCard {
   latest?: boolean;
@@ -13,13 +15,13 @@ export interface IMiniCard {
 
 export default function MiniCard(props: IMiniCard) {
   const [feedback, setFeedback] = React.useState(false);
-
+  const navigation = useNavigation();
   return (
     <Container style={[s.block, props.latest && {marginBottom: 30}]}>
       <View style={s.blockChild}>
         <View style={s.body}>
           <View style={s.bodyPart}>
-            <TouchableOpacity onPress={() => {}} activeOpacity={1}>
+            <TouchableOpacity onPress={() => navigation.navigate(Routes.Company)} activeOpacity={1}>
               <Text style={[s.bodyCardTitle, s.font]}>Google</Text>
             </TouchableOpacity>
             <Text style={[s.vacancyText, s.font]}>1200  вакансий</Text>

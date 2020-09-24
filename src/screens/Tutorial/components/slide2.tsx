@@ -3,6 +3,7 @@ import {View, Image, Text, TouchableOpacity} from 'react-native';
 import Title from '../../../components/ui/Title';
 import {Slide} from '../../../helpers/Assets';
 import {slide2Style as s} from '../styles/slide2Style';
+import {Width} from "../../../helpers/Normalizer";
 
 export default function Slide2(props: any) {
   return (
@@ -12,7 +13,8 @@ export default function Slide2(props: any) {
       </TouchableOpacity>
       <Title text={'Собеседования в телефоне'} style={s.title} left />
       <Text style={s.text}>
-        Соискатели загружают свои видео-резюме для работодателей, а работодатели
+        Соискатели загружают свои видео-резюме
+        для работодателей, а работодатели
         размещают видео-вакансии. С подходящими кандидатами проводят
         видео-собеседования
       </Text>

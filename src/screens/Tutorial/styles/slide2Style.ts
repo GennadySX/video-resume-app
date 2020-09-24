@@ -1,4 +1,5 @@
 import {StyleSheet} from "react-native";
+import {Width} from "../../../helpers/Normalizer";
 
 export const slide2Style = StyleSheet.create({
     block: {
@@ -6,7 +7,7 @@ export const slide2Style = StyleSheet.create({
     },
     title: {left: 0, marginTop: 25, position: 'relative', top: 10},
     text: {
-        fontSize: 14,
+        fontSize: 13,
         fontFamily: 'Manrope-Medium',
     },
     img: {

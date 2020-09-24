@@ -17,6 +17,10 @@ export default class ErrorPageScreen extends React.Component<any, any> {
         this.state = {};
     }
 
+    toBack() {
+        this.props.navigation.goBack()
+    }
+
     render() {
         return (
             <TabBar>
@@ -28,8 +32,7 @@ export default class ErrorPageScreen extends React.Component<any, any> {
                     <Text style={[s.center, s.desc]}>Невозможно открыть данную страницу</Text>
                     <Button
                         title={'Вернуться назад'}
-                        onPress={() => {
-                        }}
+                        onPress={() => this.toBack()}
                         type={buttonType.white}
                         shadow
                         style={{marginBottom: 40}}

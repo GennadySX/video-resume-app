@@ -33,13 +33,13 @@ class IntroScreen extends React.Component<any, any> {
               style={s.bottomButton}
             />
             <Button
-              onPress={() => this.props.navigation.navigate(Routes.SearchPage)}
+              onPress={() => this.props.navigation.navigate(Routes.Tutorial)}
               title={'Продолжить без входа'}
               type={buttonType.transparent}
               textStyle={{color: 'gray'}}
             />
           </View>
-          <BottomDrawer startUp={this.state.isPanel} >
+          <BottomDrawer startUp={this.state.isPanel} full >
             <SocialAuth onClose={() => this.setState({isPanel: false})} />
           </BottomDrawer>
         </View>

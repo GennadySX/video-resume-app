@@ -21,6 +21,7 @@ import RoundedGradientOutline from '../../../../assets/svg/roundGradientOutline.
 import BottomDrawer from '../../../../components/BottomDrawer';
 import Camera from '../../../../components/Camera';
 import ImagePicker from 'react-native-image-picker';
+import {resumeCreateScreenStyle as s } from "./styles";
 
 export interface IResumeCreateScreen {}
 
@@ -80,7 +81,7 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
             <Title text={'Создание'} left unBottom />
             <Container style={s.guideBlock}>
               <TouchableOpacity
-                style={{alignSelf: 'center'}}
+                style={s.guideBlockLeft}
                 onPress={() => this.setState({lastStep: false})}
                 activeOpacity={1}>
                 <RoundedGradient
@@ -92,7 +93,7 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
               </TouchableOpacity>
               <View style={[s.lineNotActive, lastStep && s.lineActive]} />
               <TouchableOpacity
-                style={{alignSelf: 'center', top: 5}}
+                style={s.guideBlockRight}
                 onPress={() => this.setState({lastStep: true})}
                 activeOpacity={1}>
                 {lastStep ? (
@@ -281,108 +282,3 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
   }
 }
 
-const s = StyleSheet.create({
-  block: {
-    paddingTop: 25,
-  },
-  header: {
-    paddingBottom: 10,
-  },
-  closeIcon: {
-    width: 25,
-    height: 25,
-    alignSelf: 'flex-end',
-    right: 10,
-  },
-  avatarContainer: {
-    justifyContent: 'center',
-    alignSelf: 'center',
-    marginBottom: 25,
-  },
-  avatarBtn: {},
-  avatar: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    alignSelf: 'center',
-  },
-  scrollContainer: {
-    paddingBottom: 50,
-  },
-  photoFrame: {
-    position: 'absolute',
-    width: 120,
-    height: 120,
-  },
-  inputBlock: {
-    paddingBottom: 20,
-  },
-  btnContainer: {
-    paddingTop: 20,
-  },
-  btnChoise: {
-    padding: 15,
-    paddingLeft: 0,
-    borderTopColor: 'rgba(133,133,133,0.76)',
-    borderBottomColor: 'rgba(133,133,133,0.76)',
-    borderBottomWidth: 1,
-    borderTopWidth: 1,
-  },
-  btnChoiseText: {
-    ...styles.fontMedium,
-  },
-  videoBlock: {
-    flexDirection: 'row',
-    marginBottom: 20,
-  },
-  videoBlockImg: {
-    width: Width * 0.25,
-    height: Width * 0.25,
-    resizeMode: 'contain',
-    marginRight: 10,
-  },
-  videoBlockStar: {
-    position: 'absolute',
-    left: 7,
-    top: Height * 0.01,
-  },
-  videoBlockStarIcon: {
-    width: 20,
-    height: 20,
-  },
-  videoBlockBasket: {
-    position: 'absolute',
-    left: 7,
-    bottom: Height * 0.02,
-  },
-  videoBlockBasketIcon: {
-    width: 20,
-    height: 20,
-    resizeMode: 'contain',
-  },
-  saveButton: {
-    paddingBottom: 120,
-  },
-  guideBlock: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    paddingTop: 20,
-    paddingBottom: 20,
-  },
-  guideIcon: {
-    width: 35,
-    height: 35,
-  },
-  lineNotActive: {
-    width: Width * 0.3,
-    height: 2,
-    backgroundColor: 'gray',
-    alignSelf: 'center',
-    marginLeft: 10,
-    marginRight: 10,
-    bottom: 10,
-  },
-  lineActive: {
-    backgroundColor: 'rgba(116, 45, 210, 0.3)',
-  },
-});

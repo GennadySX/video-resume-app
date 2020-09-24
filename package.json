@@ -7,6 +7,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "build:android": "cd android && .\\gradlew assembleRelease && start app\\build\\outputs\\apk\\release",
+    "clean:android": "cd android && .\\gradlew clean",
     "test": "jest",
     "lint": "eslint ."
   },
@@ -29,6 +30,7 @@
     "react-native-camera": "^3.37.0",
     "react-native-confirmation-code-field": "^6.5.0",
     "react-native-dropdown-picker": "^3.1.11",
+    "react-native-fbsdk": "^2.0.0",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-image-picker": "^2.3.3",
     "react-native-ionicons": "^4.6.5",
@@ -43,6 +45,7 @@
     "react-native-text-input-mask": "^2.0.0",
     "react-native-vector-icons": "^7.0.0",
     "react-native-video": "^5.1.0-alpha8",
+    "react-native-vkontakte-login": "^1.0.1",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",

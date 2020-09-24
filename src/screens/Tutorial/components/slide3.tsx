@@ -10,7 +10,7 @@ export default function Slide3(props: any) {
       <TouchableOpacity style={s.btnSkip} onPress={() => props.onSkip()}>
         <Text style={s.btnSkipText}>Пропустить</Text>
       </TouchableOpacity>
-      <Title text={'Работа в короткие сроки'} style={s.title} left />
+      <Title text={'Работа в короткие сроки'} style={s.title} left fontSize={24} />
       <Text style={s.text}>
         Экономия времени позволяет найти работу в короткие сроки
       </Text>

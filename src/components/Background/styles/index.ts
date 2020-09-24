@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Width} from '../../../helpers/Normalizer';
+import {Height, Width} from '../../../helpers/Normalizer';
 
 export const blockBackgroundStyle = StyleSheet.create({
   block: {
@@ -24,6 +24,7 @@ export const IntroBackgroundStyle = StyleSheet.create({
   },
   backImage: {
     position: 'absolute',
+    bottom: 0
   },
   tl: {
     left: 0,

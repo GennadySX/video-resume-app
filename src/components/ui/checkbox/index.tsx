@@ -26,6 +26,7 @@ export default function CheckBoxUI({checked, title, onCheck}: ICheckBox) {
             width: 30,
             height: 30,
             bottom: 0.5,
+            right: 1,
           })}
       </View>
     </TouchableOpacity>

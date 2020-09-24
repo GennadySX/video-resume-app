@@ -5,7 +5,12 @@ export const slide3Style = StyleSheet.create({
     block: {
         padding: 25,
     },
-    title: {left: 0, marginTop: 25, position: 'relative', top: 25},
+    title: {
+        left: 0,
+        marginTop: 25,
+        position: 'relative',
+        top: 25
+    },
     text: {
         fontSize: 14,
         fontFamily: 'Manrope-Medium',

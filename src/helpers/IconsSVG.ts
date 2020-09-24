@@ -54,6 +54,8 @@ import Background_Chat from '../assets/svg/background/chat_background.svg';
 import Background_Ellipse from '../assets/svg/background/ellipse3.svg';
 import Background_TutorialBottomRight from '../assets/svg/background/tutorial_bottom-right.svg';
 import Background_TutorialLeftTOP from '../assets/svg/background/tutorial_left-top.svg';
+import Background_RegisterBottom from '../assets/svg/background/register_bottom.svg';
+import LogoMINI from '../assets/svg/logo.svg';
 
 export const IconsSvg = {
   AddResumeIcon,
@@ -78,6 +80,7 @@ export const IconsSvg = {
   FiltersDarkIcon,
   FlagIcon,
   FlagRedIcon,
+  LogoMINI,
   GeoIcon,
   GeoDarkIcon,
   GoogleIcon,
@@ -112,4 +115,5 @@ export const IconsSvg = {
   Background_Ellipse,
   Background_TutorialBottomRight,
   Background_TutorialLeftTOP,
+  Background_RegisterBottom,
 };

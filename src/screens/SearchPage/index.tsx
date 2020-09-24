@@ -33,6 +33,8 @@ export default class SearchPageScreen extends React.Component<any, any> {
       onFilter: false,
       onFilterPopup: false,
       isToggle: false,
+      isToggle1: false,
+      isToggle2: false,
       isSearch: false,
       check1: false,
       check2: false,
@@ -89,6 +91,8 @@ export default class SearchPageScreen extends React.Component<any, any> {
     const {
       onFilter,
       isToggle,
+      isToggle1,
+      isToggle2,
       menu,
       isSearch,
       onFilterPopup,
@@ -150,10 +154,15 @@ export default class SearchPageScreen extends React.Component<any, any> {
                   placeholder={'Город'}
                 />
                 <InputUI
-                  fullWidth
-                  value={''}
-                  onChangeText={() => 'f'}
-                  placeholder={'Зарплата'}
+                    fullWidth
+                    value={''}
+                    onChangeText={() => 'f'}
+                    placeholder={'Должность'}
+                />
+                <SelectModal
+                    placeholder={'Зарплата'}
+                    values={['30 000 руб', '50 000 руб', '70 000 руб']}
+                    onSelected={(item: any) => console.log('selected item', item)}
                 />
                 <InputUI
                   fullWidth
@@ -196,13 +205,13 @@ export default class SearchPageScreen extends React.Component<any, any> {
                 />
                 <ToggleButton
                   title={'Только с указанной зарплатой'}
-                  onClick={() => this.setState({isToggle: !isToggle})}
-                  value={isToggle}
+                  onClick={() => this.setState({isToggle1: !isToggle1})}
+                  value={isToggle1}
                 />
                 <ToggleButton
                   title={'Доступные для соискателей от 14 лет'}
-                  onClick={() => this.setState({isToggle: !isToggle})}
-                  value={isToggle}
+                  onClick={() => this.setState({isToggle2: !isToggle2})}
+                  value={isToggle2}
                   style={{marginBottom: 100}}
                 />
               </ScrollView>

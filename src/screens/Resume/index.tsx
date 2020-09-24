@@ -1,16 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Image, ScrollView, StyleSheet, Text, TouchableOpacity, View,} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Container from '../../components/Container';
 import Title, {FontType} from '../../components/ui/Title';
 import Header from '../../components/Header';
 import TabBar from '../../components/TabBar';
 import {Assets, Icons} from '../../helpers/Assets';
 import {Routes} from '../../routes/Routes';
-import {styles} from '../../styles/style';
-import {Width} from '../../helpers/Normalizer';
-
-export interface IResumeScreen {}
+import {resumeScreenStyle as s} from './styles';
 
 export interface IResumeScreen {}
 
@@ -21,10 +25,6 @@ class ResumeScreen extends React.Component<any, any> {
       userInfo: null,
     };
   }
-
-  componentDidMount(): void {}
-
-
 
   render() {
     return (
@@ -39,7 +39,10 @@ class ResumeScreen extends React.Component<any, any> {
                     style={[s.headerImg, {marginRight: 15}]}
                   />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate(Routes.ResumeEdit)}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate(Routes.ResumeEdit)
+                  }>
                   <Image source={Icons.pen} style={s.headerImg} />
                 </TouchableOpacity>
               </View>
@@ -49,12 +52,30 @@ class ResumeScreen extends React.Component<any, any> {
         <ScrollView>
           <Container>
             <Title text={'Веб дизайнер'} unBottom left />
-            <Title text={'от 30000 р.'} fontSize={20} left  bottom={15} />
-            <Title text={'Иван Иванов'} fontSize={18} fontType={FontType.medium} left bottom={7} />
-            <Title text={'Опыт от 1 года'} fontSize={18} fontType={FontType.medium} left bottom={10} />
+            <Title text={'от 30000 р.'} fontSize={20} left bottom={15} />
+            <Title
+              text={'Иван Иванов'}
+              fontSize={18}
+              fontType={FontType.medium}
+              left
+              bottom={7}
+            />
+            <Title
+              text={'Опыт от 1 года'}
+              fontSize={18}
+              fontType={FontType.medium}
+              left
+              bottom={10}
+            />
             <View style={[s.headerBlock, {right: 3}]}>
               <Image source={Icons.geoBlack} style={s.headerImg} />
-              <Title text={'Казань'} fontSize={16} left unBottom  fontType={FontType.medium}/>
+              <Title
+                text={'Казань'}
+                fontSize={16}
+                left
+                unBottom
+                fontType={FontType.medium}
+              />
             </View>
           </Container>
           <Container style={s.avatarBlock}>
@@ -91,46 +112,5 @@ class ResumeScreen extends React.Component<any, any> {
     );
   }
 }
-
-const s = StyleSheet.create({
-  container: {
-    marginBottom: 15,
-  },
-  header: {
-    padding: 20,
-    paddingBottom: 0,
-  },
-  headerBlock: {
-    flexDirection: 'row',
-  },
-  headerImg: {
-    width: 25,
-    height: 25,
-    resizeMode: 'contain',
-    bottom: 2,
-  },
-  avatarBlock: {
-    paddingTop: 20,
-    marginBottom: 20,
-  },
-  avatar: {
-    alignSelf: 'center',
-    width: 140,
-    height: 140,
-    resizeMode: 'cover',
-    borderRadius: 70,
-  },
-  aboutText: {
-    ...styles.fontMedium,
-    fontSize: 15,
-    paddingBottom: 7,
-  },
-  videoBlockImg: {
-    width: Width * 0.25,
-    height: Width * 0.25,
-    resizeMode: 'contain',
-    marginRight: 10,
-  },
-});
 
 export default connect()(ResumeScreen);

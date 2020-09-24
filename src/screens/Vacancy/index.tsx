@@ -161,7 +161,7 @@ export default class VacancyScreen extends React.Component<any, any> {
           startUp={isBottomDrawer}
           onClose={() => this.openBottomDrawer()}>
           <Container unPadding>
-            <Title text={'Выберите резьюме'} fontSize={18} />
+            <Title text={'Выберите резюме'} fontSize={18} />
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}

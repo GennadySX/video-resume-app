@@ -5,7 +5,7 @@ import React from 'react'
 // @ts-ignore
 import {connect} from 'react-redux'
 
-import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import TabBar from "../../components/TabBar";
 import Container from "../../components/Container";
 import Header from "../../components/Header";
@@ -36,6 +36,11 @@ class SettingsScreen extends React.Component<any, any> {
         })
     }
 
+    signOut() {
+        this.props.navigation.navigate(Routes.Intro)
+    }
+
+
     render() {
         const {imLooking} = this.state
         return (
@@ -44,7 +49,7 @@ class SettingsScreen extends React.Component<any, any> {
                     <Header backClick={() => this.props.navigation.navigate(Routes.Profile)}/>
                     <Title text={'Настройки'} left/>
                 </Container>
-                <View style={s.block}>
+                <ScrollView style={s.block}>
                     <Container>
                         <View style={s.resultBlock}>
                             <CheckBoxUI checked={imLooking} title={'Я ищу работу'}
@@ -53,8 +58,7 @@ class SettingsScreen extends React.Component<any, any> {
                             <CheckBoxUI checked={!imLooking} title={'Я не ищу работу'}
                                         onCheck={() =>  this.lookingActive()}/>
                         </View>
-                        <Text style={s.descBlock}>При нажатии на “Я не ищу работу” все резюме и профиль будут скрыты от
-                            работодателей</Text>
+                        <Text style={s.descBlock}>При нажатии на “Я не ищу работу” все резюме и профиль будут скрыты от работодателей</Text>
 
                         <TouchableOpacity onPress={() => {}} style={[s.btn, s.btnCountry]} >
                             <Text style={s.btnText}>Страна поиска</Text>
@@ -64,8 +68,8 @@ class SettingsScreen extends React.Component<any, any> {
                             <Text style={s.btnText}>О приложении</Text>
                         </TouchableOpacity>
                     </Container>
-                        <Button style={{marginTop: 20}} title={'Выйти из аккаунта'} onPress={() => {}} type={buttonType.white} textStyle={{color: '#481380'}} shadow />
-                </View>
+                        <Button style={{marginTop: 20}} title={'Выйти из аккаунта'} onPress={() => this.signOut()} type={buttonType.white} textStyle={{color: '#481380'}} shadow />
+                </ScrollView>
             </TabBar>
         );
     }

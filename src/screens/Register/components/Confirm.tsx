@@ -10,6 +10,7 @@ import {
   useBlurOnFulfill,
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
+import {IconsSvg} from "../../../helpers/IconsSVG";
 
 const logoSmall = require('../../../assets/img/logoSmall.png');
 const CELL_COUNT = 6;
@@ -30,7 +31,7 @@ export default function ConfirmCode({onSubmit}: IConfirmCode) {
       style={s.block}
       enabled={true}
       behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
-      <Image source={logoSmall} style={s.logoSmall} />
+      {React.createElement(IconsSvg.LogoMINI, {...s.logoSmall})}
       <Title text={'Подтверждение номера'} left />
       <Text style={s.textDescription}>
         Введите код, который мы отправили Вам на номер + 7 (9**) *** - ** - 21

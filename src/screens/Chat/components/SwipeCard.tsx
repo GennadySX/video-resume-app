@@ -20,6 +20,10 @@ export interface ICard {
   close?: boolean;
 }
 
+interface nativeEventLayout {
+  nativeEvent: {layout: any}; //для оптимизации памяти
+}
+
 const message = 'Добрый день, когда мы сможем созвониться?';
 
 export default function SwipeCard(props: ICard) {
@@ -37,19 +41,17 @@ export default function SwipeCard(props: ICard) {
     }
   });
 
+  const [heightLayout, setHeightLayout] = React.useState(109);
   const renderLeftActions = (
     text: string,
     progress: any,
     dragX: any,
     archive?: boolean,
+    height?: number,
   ) => {
     return (
       <RectButton
-        style={[
-          s.leftAction,
-          text.toString().length > 45 ? {height: '110%'} : {height: '98%'},
-          {width: archive ? 215 : 110}
-        ]}
+        style={[s.leftAction, {height: height}, {width: archive ? 215 : 110}]}
         onPress={() => {}}>
         <LinearGradient
           colors={['rgba(133,37,221,0.14)', 'rgba(255,226,255,0.72)']}
@@ -60,11 +62,13 @@ export default function SwipeCard(props: ICard) {
             <>
               <TouchableOpacity
                 onPress={() => {}}
+                activeOpacity={1}
                 style={s.leftActionContainer}>
                 <Image source={Icons.basket} style={s.leftActionIcon} />
                 <Text style={s.leftActionText}>Удалить</Text>
               </TouchableOpacity>
               <TouchableOpacity
+                activeOpacity={1}
                 onPress={() => {}}
                 style={s.leftActionContainer}>
                 <Image source={Icons.archive} style={s.leftActionIcon} />
@@ -73,6 +77,7 @@ export default function SwipeCard(props: ICard) {
             </>
           ) : (
             <TouchableOpacity
+              activeOpacity={1}
               onPress={() => {}}
               style={[s.leftActionContainer, {paddingLeft: 20}]}>
               <Image source={Icons.archive} style={s.leftActionIcon} />
@@ -89,10 +94,22 @@ export default function SwipeCard(props: ICard) {
       <Swipeable
         ref={is}
         renderLeftActions={(progress: any, dragX: any) =>
-          renderLeftActions(message, progress, dragX, props.archive)
+          renderLeftActions(
+            message,
+            progress,
+            dragX,
+            props.archive,
+            heightLayout,
+          )
         }>
-        <TouchableOpacity style={[s.block]} onPress={() => props.onClick()}>
-          <View style={[s.blockChild, {paddingBottom:  props.archive ? 19 : 15}]}>
+        <TouchableOpacity
+          style={[s.block]}
+          onPress={() => props.onClick()}
+          onLayout={({nativeEvent}: nativeEventLayout) =>
+            setHeightLayout(nativeEvent.layout.height + 25)
+          }>
+          <View
+            style={[s.blockChild, {paddingBottom: props.archive ? 19 : 15}]}>
             <View style={[s.header]}>
               <Title
                 text={'Компания'}

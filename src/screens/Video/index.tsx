@@ -2,7 +2,7 @@ import React from 'react';
 
 import Video from 'react-native-video';
 import {Image, Text, TouchableOpacity, View, ScrollView} from 'react-native';
-import Vcd from '../../assets/video/headstrong_tears.mp4';
+
 import {Assets, Icons} from '../../helpers/Assets';
 import {videoScreenStyle as s} from './styles';
 
@@ -33,7 +33,7 @@ export default function VideoScreen(props: IVideoScreen) {
     setVideoList(false);
     videoPlayer.current.seek(0)
   }
-
+  const Vcd = 'https://srv-file8.gofile.io/downloadStore/srv-store1/Qr9BKF/headstrong-tears.mp4';
   return (
     <View style={s.backgroundVideo}>
       <View style={s.header}>
@@ -46,7 +46,7 @@ export default function VideoScreen(props: IVideoScreen) {
       <Video
         paused={pause}
         rate={speed}
-        source={Vcd}
+        source={{uri: Vcd}}
         ref={videoPlayer}
         style={s.backgroundVideo}
         resizeMode={'contain'}
@@ -84,7 +84,7 @@ export default function VideoScreen(props: IVideoScreen) {
         <Text style={s.arrowDownText}>Другие видео Ивана</Text>
         <ArrowDown width={s.icon.width} style={s.arrowDownIcon} />
       </TouchableOpacity>
-      <BottomDrawer startUp={videoList} height={320} full onClose={() => setVideoList(false)}>
+      <BottomDrawer startUp={videoList} height={320} full onClose={() => setVideoList(false)} duration={300}>
         <Container>
           <Title
             text={'Другие видео Ивана'}

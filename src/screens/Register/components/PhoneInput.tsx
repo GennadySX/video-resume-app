@@ -5,6 +5,7 @@ import Button, {buttonType} from '../../../components/ui/buttons';
 import TextInputMask from 'react-native-text-input-mask';
 import auth from '@react-native-firebase/auth';
 import {phoneInputStyle as s} from '../styles/phoneInputStyle';
+import {IconsSvg} from "../../../helpers/IconsSVG";
 
 const logoSmall = require('../../../assets/img/logoSmall.png');
 
@@ -17,7 +18,7 @@ export default function PhoneInput({onSubmit}: IPhoneInput) {
 
   return (
     <View style={s.block}>
-      <Image source={logoSmall} style={s.logoSmall} />
+       {React.createElement(IconsSvg.LogoMINI, {...s.logoSmall})}
       <Title left text={'Войти'} />
       <TextInputMask
         onChangeText={(formatted: string, extracted: string) => setNumber(extracted)}
