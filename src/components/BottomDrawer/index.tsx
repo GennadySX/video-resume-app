@@ -4,7 +4,7 @@ import {View} from 'react-native';
 export interface ISignDrawer {
   children: React.ReactChild | React.ReactChildren | any;
   startUp?: boolean;
-  onClose?: () => void;
+  onClose?: (val: boolean) => void;
   height?: number;
   duration?: number;
   closeDuration?: number;
@@ -47,7 +47,7 @@ export default function BottomDrawer({
       openDuration={duration || 300}
       closeDuration={closeDuration || 300}
       closeOnDragDown={true}
-      onClose={() => (startUp && onClose ? onClose() : {})}
+      onClose={() => (startUp && onClose ? onClose(false) : {})}
       customStyles={{
         wrapper: {
           padding: full ? 0 : padding || 10,

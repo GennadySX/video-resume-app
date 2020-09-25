@@ -10,6 +10,7 @@ import {Routes} from '../../../routes/Routes';
 import VKLogin from 'react-native-vkontakte-login';
 import {VKAPI} from '../../../constants/API';
 import auth from '@react-native-firebase/auth';
+// @ts-ignore
 import {LoginManager, AccessToken} from 'react-native-fbsdk';
 export interface ISocialAuth {
   onClose: () => void;
@@ -114,12 +115,6 @@ export function SocialAuth(props: ISocialAuth) {
         type={buttonType.blue}
         icon={Icons.facebook}
         textStyle={{top: 2}}
-      />
-      <Button
-        onPress={() => closeIt(Routes.Error)}
-        title={'Одноклассники'}
-        type={buttonType.orange}
-        icon={Icons.ok}
       />
       <Button
         onPress={() => signIn()}

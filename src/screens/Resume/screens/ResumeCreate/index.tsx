@@ -34,6 +34,7 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
       bottomDrawer: false,
       isCamera: false,
       img: Assets.photo,
+      mainVideo: true,
     };
   }
 
@@ -59,8 +60,10 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
     });
   };
 
+
+
   render() {
-    const {about, lastStep, isCamera, img, bottomDrawer} = this.state;
+    const {about, lastStep, isCamera, img, bottomDrawer, mainVideo} = this.state;
     return isCamera ? (
       <Camera
         onCaptue={(data: string) => this.getCameraData(data)}
@@ -192,16 +195,15 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
                   style={{marginBottom: 10}}
                 />
                 <View style={s.videoBlock}>
-                  <View>
+                  <TouchableOpacity activeOpacity={1}   onPress={() => this.setState({mainVideo: true})} >
                     <Image
                       source={Assets.cardVideoV1}
                       style={s.videoBlockImg}
                     />
-                    <TouchableOpacity
-                      onPress={() => {}}
+                    <View
                       style={s.videoBlockStar}>
-                      <Image source={Icons.star} style={s.videoBlockStarIcon} />
-                    </TouchableOpacity>
+                      {mainVideo && <Image source={Icons.star} style={s.videoBlockStarIcon}/> }
+                    </View>
                     <TouchableOpacity
                       onPress={() => {}}
                       style={s.videoBlockBasket}>
@@ -210,17 +212,16 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
                         style={s.videoBlockBasketIcon}
                       />
                     </TouchableOpacity>
-                  </View>
-                  <View>
+                  </TouchableOpacity>
+                  <TouchableOpacity activeOpacity={1}   onPress={() => this.setState({mainVideo: false})} >
                     <Image
                       source={Assets.cardVideoV1}
                       style={s.videoBlockImg}
                     />
-                    <TouchableOpacity
-                      onPress={() => {}}
+                    <View
                       style={s.videoBlockStar}>
-                      <Image source={Icons.star} style={s.videoBlockStarIcon} />
-                    </TouchableOpacity>
+                      {!mainVideo && <Image source={Icons.star} style={s.videoBlockStarIcon}/> }
+                    </View>
                     <TouchableOpacity
                       onPress={() => {}}
                       style={s.videoBlockBasket}>
@@ -229,7 +230,7 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
                         style={s.videoBlockBasketIcon}
                       />
                     </TouchableOpacity>
-                  </View>
+                  </TouchableOpacity>
                   <TouchableOpacity
                     onPress={() =>
                       this.props.navigation.navigate(Routes.CameraScreen)

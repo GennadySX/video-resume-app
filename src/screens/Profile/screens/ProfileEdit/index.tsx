@@ -97,7 +97,7 @@ export default function ProfileEditScreen(props: IProfileEditScreen) {
               fullWidth
               value={''}
               onChangeText={() => 'f'}
-              placeholder={'Телефон номера'}
+              placeholder={'Номер телефона'}
             />
 
             <Button
@@ -114,7 +114,7 @@ export default function ProfileEditScreen(props: IProfileEditScreen) {
             />
           </View>
         </ScrollView>
-        <BottomDrawer full height={240} startUp={bottomDrawer}>
+        <BottomDrawer full height={240} startUp={bottomDrawer} onClose={setBottomDrawer}>
           <Container>
             <Title text={'Добавить фотографию'} left unBottom fontSize={18} />
             <View style={s.btnContainer}>

@@ -42,11 +42,13 @@ export default class FeedbackScreen extends React.Component<any, any> {
                 onClick={() => this.props.navigation.navigate('Vacancy')}
               />
               <Card
+                flagged={false}
                 feedback
                 disLikeAble
                 onClick={() => this.props.navigation.navigate('Vacancy')}
               />
               <Card
+                flagged={false}
                 feedback
                 disLikeAble
                 onClick={() => this.props.navigation.navigate('Vacancy')}

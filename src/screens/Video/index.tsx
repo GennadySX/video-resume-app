@@ -31,14 +31,17 @@ export default function VideoScreen(props: IVideoScreen) {
 
   const onChoise = () => {
     setVideoList(false);
-    videoPlayer.current.seek(0)
-  }
+    videoPlayer.current.seek(0);
+  };
   //const Vcd = 'https://srv-file9.gofile.io/downloadStore/srv-store4/kRBvzB/y2mate.com%20-%20COSTA%20RICA%20IN%204K%2060fps%20HDR%20(ULTRA%20HD)_1080pFHR.mp4';
-  const Vcd = 'https://srv-file6.gofile.io/downloadStore/srv-store1/mU05wZ/COSTA%20RICA%20IN%204K%2060fps%20HDR%20(ULTRA%20HD).mp4';
+  const Vcd =
+    'https://www33.zippyshare.com/d/1aEN07JV/21/COSTA%20RICA%20IN%204K%2060fps%20HDR%20%28ULTRA%20HD%29.mp4';
   return (
     <View style={s.backgroundVideo}>
       <View style={s.header}>
-        <TouchableOpacity style={s.headerBack} onPress={() => navigation.goBack()}>
+        <TouchableOpacity
+          style={s.headerBack}
+          onPress={() => navigation.goBack()}>
           <Image source={Icons.backWhite} style={s.headerBackIcon} />
         </TouchableOpacity>
         <Text style={s.title}>О компании</Text>
@@ -58,8 +61,8 @@ export default function VideoScreen(props: IVideoScreen) {
         <TouchableOpacity
           style={s.play}
           onPress={() => {
-            videoPlayer.current.seek(0)
-           // setSpeed(speed - 0.2)
+            videoPlayer.current.seek(0);
+            // setSpeed(speed - 0.2)
           }}>
           <PrevIcon width={s.icon.width} />
         </TouchableOpacity>
@@ -73,7 +76,7 @@ export default function VideoScreen(props: IVideoScreen) {
         <TouchableOpacity
           style={s.play}
           onPress={() => {
-            videoPlayer.current.seek(0)
+            videoPlayer.current.seek(0);
             //setSpeed(speed + 0.2)
           }}>
           <NextIcon width={s.icon.width} />
@@ -85,7 +88,12 @@ export default function VideoScreen(props: IVideoScreen) {
         <Text style={s.arrowDownText}>Другие видео Ивана</Text>
         <ArrowDown width={s.icon.width} style={s.arrowDownIcon} />
       </TouchableOpacity>
-      <BottomDrawer startUp={videoList} height={320} full onClose={() => setVideoList(false)} duration={300}>
+      <BottomDrawer
+        startUp={videoList}
+        height={320}
+        full
+        onClose={() => setVideoList(false)}
+        duration={300}>
         <Container>
           <Title
             text={'Другие видео Ивана'}

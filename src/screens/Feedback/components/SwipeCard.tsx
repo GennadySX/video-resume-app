@@ -24,6 +24,7 @@ export interface ICard {
 
 export default function SwipeCard(props: ICard) {
   const [active, setActive] = React.useState(false);
+  const [flagged, setFlagged] = React.useState(false || props.flagged);
   const [feedback, setFeedback] = React.useState(!props.feedback);
 
   const renderLeftActions = (progress: any, dragX: any) => {
@@ -67,11 +68,12 @@ export default function SwipeCard(props: ICard) {
                 />
               </TouchableOpacity>
             )}
-            {props.flagged && (
+            {props.flagged !== null && (
               <TouchableOpacity
-                onPress={() => setActive(!active)}
-                activeOpacity={1}>
-                {React.createElement(IconsSvg.FlagRedIcon, { width: 15, height: 15})}
+                onPress={() => setFlagged(!flagged)}
+                activeOpacity={1}
+                style={{width: 15, height: 15}}>
+                {flagged && React.createElement(IconsSvg.FlagRedIcon, { width: 15, height: 15})}
               </TouchableOpacity>
             )}
           </View>
