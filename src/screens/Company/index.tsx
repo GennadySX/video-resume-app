@@ -1,21 +1,9 @@
 import React from 'react';
-import {
-  Image,
-  ImageBackground,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, ImageBackground, ScrollView, Text, TouchableOpacity, View,} from 'react-native';
 import Title from '../../components/ui/Title';
 import Card from '../../components/Card';
 import Header from '../../components/Header';
-import {
-  Assets,
-  AssetsBackground,
-  AssetsPopup,
-  Icons,
-} from '../../helpers/Assets';
+import {Assets, AssetsBackground, AssetsPopup, Icons,} from '../../helpers/Assets';
 import {Width} from '../../helpers/Normalizer';
 import {companyScreenStyle as s} from './styles';
 import Container from '../../components/Container';
@@ -24,6 +12,8 @@ import {Routes} from '../../routes/Routes';
 import {styles} from '../../styles/style';
 import Popup from '../../components/Popup';
 import TabBar from '../../components/TabBar';
+// @ts-ignore
+import Share from 'react-native-share';
 
 export interface ICompany {}
 
@@ -42,9 +32,24 @@ export default class CompanyScreen extends React.Component<any, any> {
     });
   }
 
-  passScreen() {
-    this.props.navigation.navigate(Routes.Favorites);
+  passScreen(screen?: Routes, params?: any ) {
+    this.props.navigation.navigate(screen || Routes.Favorites, params);
   }
+
+  share = async () => {
+    const shareOptions = {
+      title: 'GennadySX',
+      email: 'the@gennadysx.com',
+      social: Share.Social.EMAIL,
+      failOnCancel: false,
+    };
+
+    try {
+      await Share.open(shareOptions);
+    } catch (error) {
+      console.log('Error =>', error);
+    }
+  };
 
   render() {
     const {headerLike, likedPopup} = this.state;
@@ -57,7 +62,7 @@ export default class CompanyScreen extends React.Component<any, any> {
           <Header
             rightBlock={
               <View style={s.header}>
-                <TouchableOpacity onPress={() => {}}>
+                <TouchableOpacity onPress={() => this.share()}>
                   <Image
                     source={Icons.share}
                     style={[s.headerImg, {marginRight: 15}]}
@@ -117,9 +122,12 @@ export default class CompanyScreen extends React.Component<any, any> {
                   <Image source={Assets.cardVideoA} style={s.videoBlockImg} />
                 </TouchableOpacity>
               </View>
-              <Text style={[s.blockTitle, {paddingBottom: 0}]}>
-                Вакансии компании
-              </Text>
+              <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}} >
+                <Text style={[s.blockTitle, {paddingBottom: 0}]}> Вакансии компании </Text>
+                <TouchableOpacity activeOpacity={1} onPress={() => this.passScreen(Routes.VacancyList, {title: 'Google'}) }>
+                  <Text style={[s.blockTitle, {paddingBottom: 0, fontSize: 15, color: 'gray', ...styles.fontMedium}]}>Подробнее </Text>
+                </TouchableOpacity>
+              </View>
             </View>
             <Card
               unPadding

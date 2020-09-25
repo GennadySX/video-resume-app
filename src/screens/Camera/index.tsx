@@ -23,22 +23,26 @@ import BottomDrawer from '../../components/BottomDrawer';
 import Title from '../../components/ui/Title';
 import Button, {buttonType} from '../../components/ui/buttons';
 
-import {cameraScreenStyle as s } from "./styles";
+import {cameraScreenStyle as s} from './styles';
+import ImagePicker from 'react-native-image-picker';
 
 export interface ICameraScreen {
   video?: boolean;
 }
 
 export default function CameraScreen(props: ICameraScreen) {
-  const camera = React.useRef(null);
+  const camera: any = React.useRef(null);
   const [front, setFront] = React.useState(false);
   const [flash, setFlash] = React.useState(false);
   const [timerDrawer, setTimerDrawer] = React.useState(false);
+  const [timer, setTimer] = React.useState(0);
+  const [timerTitle, setTimerTitle] = React.useState(false);
   const [record, setRecord] = React.useState(false);
 
   const navigation = useNavigation();
 
   const takePicture = async () => {
+    console.log('taked');
     if (camera) {
       const options = {quality: 0.5, base64: true};
       const data = await camera.current.takePictureAsync(options);
@@ -81,6 +85,41 @@ export default function CameraScreen(props: ICameraScreen) {
     }
     await CameraRoll.save(uri);
   };
+  const isTimer = (sec: number) => {
+    setTimer(sec);
+    setTimerDrawer(false);
+  };
+
+  const fromGallery = () => {
+    const options = {
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    ImagePicker.launchImageLibrary(options, (response) => {
+      console.log('response picker image', response);
+      save(response.uri);
+    });
+  };
+
+  const countDown = () => {
+    let c = timer;
+    setTimerTitle(true);
+    const d = setInterval(() => {
+      incTimer(c, d);
+      c--;
+    }, 1000);
+  };
+
+  const incTimer = (c: number, d: any) => {
+    if (c <= 0) {
+      takePicture();
+      setTimerTitle(false);
+      clearInterval(d);
+    }
+    setTimer(c);
+  };
 
   return (
     <Container style={s.container}>
@@ -119,13 +158,18 @@ export default function CameraScreen(props: ICameraScreen) {
           <TouchableOpacity
             style={{marginRight: 20}}
             onPress={() => setFlash(!flash)}>
-            {flash ? <FlashOnIcon width={28} height={28} /> : <FlashIcon width={28} height={28} />}
+            {flash ? (
+              <FlashOnIcon width={28} height={28} />
+            ) : (
+              <FlashIcon width={28} height={28} />
+            )}
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setTimerDrawer(true)}>
             <TimerIcon width={28} height={28} />
           </TouchableOpacity>
         </View>
         <View />
+        {timer && timerTitle && <Text style={s.timerTitle}> {timer} </Text>}
       </Container>
 
       <Container style={s.controlsBlock}>
@@ -133,11 +177,13 @@ export default function CameraScreen(props: ICameraScreen) {
           <TurnIcon width={25} height={25} />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={takePicture} style={s.capture}>
+        <TouchableOpacity
+          onPress={() => (timer ? countDown() : takePicture())}
+          style={s.capture}>
           <CaptureIcon width={70} height={70} />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {}} style={s.capture}>
+        <TouchableOpacity onPress={() => fromGallery()} style={s.capture}>
           <Image source={Icons.cameraHistory} />
         </TouchableOpacity>
       </Container>
@@ -149,13 +195,13 @@ export default function CameraScreen(props: ICameraScreen) {
         <View>
           <Title text={'Таймер'} fontSize={18} bottom={20} />
           <View style={s.btnContainer}>
-            <TouchableOpacity onPress={() => {}} style={s.timerBtn}>
+            <TouchableOpacity onPress={() => isTimer(3)} style={s.timerBtn}>
               <Text style={s.timerBtnTitle}>3 секунды</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}} style={s.timerBtn}>
+            <TouchableOpacity onPress={() => isTimer(10)} style={s.timerBtn}>
               <Text style={s.timerBtnTitle}>10 секунд</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}} style={s.timerBtn}>
+            <TouchableOpacity onPress={() => isTimer(0)} style={s.timerBtn}>
               <Text style={s.timerBtnTitle}>Выключен</Text>
             </TouchableOpacity>
           </View>

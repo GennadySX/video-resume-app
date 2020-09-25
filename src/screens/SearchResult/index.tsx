@@ -9,31 +9,34 @@ import {searchResultScreenStyle as s} from './styles';
 import Container from '../../components/Container';
 import TabBar from "../../components/TabBar";
 import {Routes} from "../../routes/Routes";
+import FilterShield from "../SearchPage/components/FilterShield";
 
 export interface ISearchResult {}
 
 export default class SearchResultScreen extends React.Component<any, any> {
   constructor(props: ISearchResult) {
     super(props);
-    this.state = {};
+    this.state = {
+      onFilter: false
+    };
   }
 
   render() {
     const {navigation} =  this.props
+    const {onFilter} =  this.state
     return (
       <TabBar >
         <Container style={s.block}>
           <Header
             rightBlock={
               <View style={s.header}>
-                <TouchableOpacity onPress={() => {}}>
+                <TouchableOpacity onPress={() => this.setState({onFilter: true})}>
                   <Image source={Icons.filters} style={s.headerImg} />
                 </TouchableOpacity>
               </View>
             }
           />
         </Container>
-
         <ScrollView showsVerticalScrollIndicator={false} style={s.mainBlock}>
           <Container>
             <Index text={'Результаты поиска'} fontSize={25} left unBottom />
@@ -45,17 +48,17 @@ export default class SearchResultScreen extends React.Component<any, any> {
           </Container>
 
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <TouchableOpacity onPress={() => navigation.navigate(Routes.Vacancy)} style={{marginLeft: 20}}>
+            <TouchableOpacity onPress={() => navigation.navigate(Routes.VacancyList, {title: 'Web-дизайнер'})}>
               <LinearGradient
                 colors={['#b083dc', 'rgba(234,223,245,0.83)']}
                 start={{x: 0, y: 1}}
                 end={{x: 1, y: 0}}
-                style={s.typeBlock}>
+                style={[s.typeBlock, {marginLeft: 20}]}>
                 <Text style={[s.typeBlockTitle, s.font]}>Web-дизайнер</Text>
                 <Text style={s.typeBlockListCount}>145 вакансий</Text>
               </LinearGradient>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={() => navigation.navigate(Routes.VacancyList, {title: 'Web-дизайнер'})}>
               <LinearGradient
                   colors={['#b083dc', 'rgba(234,223,245,0.83)']}
                 start={{x: 0, y: 1}}
@@ -65,7 +68,7 @@ export default class SearchResultScreen extends React.Component<any, any> {
                 <Text style={s.typeBlockListCount}>145 вакансий</Text>
               </LinearGradient>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={() => navigation.navigate(Routes.VacancyList, {title: 'Web-дизайнер'})}>
               <LinearGradient
                   colors={['#b083dc', 'rgba(234,223,245,0.83)']}
                 start={{x: 0, y: 1}}
@@ -75,7 +78,7 @@ export default class SearchResultScreen extends React.Component<any, any> {
                 <Text style={s.typeBlockListCount}>145 вакансий</Text>
               </LinearGradient>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={() => navigation.navigate(Routes.VacancyList, {title: 'Web-дизайнер'})}>
               <LinearGradient
                   colors={['#b083dc', 'rgba(234,223,245,0.83)']}
                   start={{x: 0, y: 1}}
@@ -85,7 +88,7 @@ export default class SearchResultScreen extends React.Component<any, any> {
                 <Text style={s.typeBlockListCount}>145 вакансий</Text>
               </LinearGradient>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={() => navigation.navigate(Routes.VacancyList, {title: 'Web-дизайнер'})}>
               <LinearGradient
                   colors={['#b083dc', 'rgba(234,223,245,0.83)']}
                   start={{x: 0, y: 1}}
@@ -103,6 +106,7 @@ export default class SearchResultScreen extends React.Component<any, any> {
             onClick={() => this.props.navigation.navigate('Vacancy')}
           />
         </ScrollView>
+        <FilterShield onFilter={onFilter} onCloseSheet={() => this.setState({onFilter: false})} />
       </TabBar>
     );
   }

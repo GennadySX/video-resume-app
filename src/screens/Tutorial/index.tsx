@@ -8,11 +8,12 @@ import Slide1 from './components/slide1';
 import Slide2 from './components/slide2';
 import Slide3 from './components/slide3';
 import {tutorialScreenStyle as s} from './styles';
-import {Routes} from "../../routes/Routes";
+import {Routes} from '../../routes/Routes';
 
 export interface ITutorialScreen {}
 
 class TutorialScreen extends React.Component<any, any> {
+  public swiperRef: any;
   constructor(props: ITutorialScreen) {
     super(props);
     this.state = {
@@ -26,20 +27,18 @@ class TutorialScreen extends React.Component<any, any> {
 
   next(index: number) {
     Promise.resolve(this.swiperRef.scrollTo(index)).then(() =>
-      index <= 2
-        ? this.setState({swipeIndex: index})
-        : this.skip(),
+      index <= 2 ? this.setState({swipeIndex: index}) : this.skip(),
     );
   }
 
   skip() {
-    this.props.navigation.navigate(Routes.SearchPage)
+    this.props.navigation.navigate(Routes.SearchPage);
   }
 
   render() {
     const {swipeIndex} = this.state;
     return (
-      <IntroBackground hiddenDot >
+      <IntroBackground hiddenDot>
         <Swiper
           ref={(ref: any) => (this.swiperRef = ref)}
           loop={false}
@@ -47,6 +46,7 @@ class TutorialScreen extends React.Component<any, any> {
           buttonWrapperStyle={s.btnWrapper}
           style={s.wrapper}
           index={swipeIndex}
+          onIndexChanged={(index: number) => this.setState({swipeIndex: index})}
           prevButton={<View />}
           paginationStyle={{
             position: 'relative',
@@ -79,7 +79,10 @@ class TutorialScreen extends React.Component<any, any> {
           activeOpacity={1}
           style={s.nextBtn}
           onPress={() => this.next(swipeIndex + 1)}>
-          <Image source={Icons.next}  style={{resizeMode: 'contain', width: 25, height: 25}} />
+          <Image
+            source={Icons.next}
+            style={{resizeMode: 'contain', width: 25, height: 25}}
+          />
         </TouchableOpacity>
       </IntroBackground>
     );

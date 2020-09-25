@@ -36,10 +36,11 @@ export default class FavoritesScreen extends React.Component<any, any> {
 
           {!tabSection ? (
             <ScrollView showsVerticalScrollIndicator={false}>
-              <Card onClick={() => this.props.navigation.navigate('Vacancy')} />
-              <Card onClick={() => this.props.navigation.navigate('Vacancy')} />
+              <Card  onClick={() => this.props.navigation.navigate('Vacancy')} liked />
+              <Card onClick={() => this.props.navigation.navigate('Vacancy')} liked />
               <Card
                 onClick={() => this.props.navigation.navigate('Vacancy')}
+                liked
                 latest
               />
             </ScrollView>

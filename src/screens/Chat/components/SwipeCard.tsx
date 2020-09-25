@@ -33,7 +33,7 @@ export default function SwipeCard(props: ICard) {
     }
     return text;
   };
-  let is = React.useRef(null);
+  let is: any = React.useRef(null);
 
   React.useEffect(() => {
     if (is && is.current) {

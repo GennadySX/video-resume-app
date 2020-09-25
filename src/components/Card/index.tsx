@@ -19,13 +19,14 @@ export interface ICard {
   unPadding?: boolean;
   latest?: boolean;
   active?: boolean;
+  liked?: boolean;
   new?: boolean;
   onClick: () => void;
   disLikeAble?: boolean;
 }
 
 export default function Card(props: ICard) {
-  const [active, setActive] = React.useState(false);
+  const [active, setActive] = React.useState(props.liked || false);
   const [feedback, setFeedback] = React.useState(false);
   const [isBottomDrawer, setIsBottomDrawer] = React.useState(false);
   const [onChoose, setOnChoose] = React.useState(false);
@@ -98,7 +99,7 @@ export default function Card(props: ICard) {
             </View>
             <View style={s.footer}>
               <TouchableOpacity
-                onPress={() => setFeedback(!feedback)}
+                onPress={() =>  feedback ? setFeedback(false) : setIsBottomDrawer(true)}
                 activeOpacity={1}>
                 {feedback ? (
                   <Text style={[s.footerText, {color: '#33be86'}]}>
@@ -155,7 +156,7 @@ export default function Card(props: ICard) {
             <View style={s.footer}>
               <TouchableOpacity
                 onPress={() => {
-                  setIsBottomDrawer(true);
+                  feedback ? setFeedback(false) : setIsBottomDrawer(true)
                 }}
                 activeOpacity={1}>
                 {feedback ? (

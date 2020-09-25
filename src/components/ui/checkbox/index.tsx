@@ -25,7 +25,7 @@ export default function CheckBoxUI({checked, title, onCheck}: ICheckBox) {
           React.createElement(IconsSvg.CheckIcon, {
             width: 30,
             height: 30,
-            bottom: 0.5,
+            bottom: 1,
             right: 1,
           })}
       </View>

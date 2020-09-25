@@ -270,7 +270,7 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
               </View>
               <Button
                 title={'Отмена'}
-                onPress={() => this.setState({bottomDrawer: true})}
+                onPress={() => this.setState({bottomDrawer: false})}
                 type={buttonType.transparent}
                 textStyle={{color: '#858585'}}
               />

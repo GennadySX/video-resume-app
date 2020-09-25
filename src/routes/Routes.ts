@@ -6,6 +6,7 @@ export enum Routes {
   SearchPage = 'SearchPage',
   SearchResult = 'SearchResult',
   Vacancy = 'Vacancy',
+  VacancyList = 'VacancyList',
   Company = 'Company',
   Favorites = 'Favorites',
   Feedback = 'Feedback',
@@ -24,4 +25,4 @@ export enum Routes {
   EditVideoScreen = 'EditVideoScreen',
 }
 
-export const RouteActive: Routes = Routes.Intro;
+export const RouteActive: Routes = Routes.ProfileEdit;

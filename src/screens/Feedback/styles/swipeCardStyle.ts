@@ -8,11 +8,11 @@ export const swipeCardStyle = StyleSheet.create({
     },
     blockChild: {
         flexDirection: 'column',
-        paddingBottom: 7,
         borderRadius: 10,
         elevation: 2,
         backgroundColor: '#fafafa',
         padding: 17,
+        paddingBottom: 7,
         paddingTop: 10,
     },
     font: {

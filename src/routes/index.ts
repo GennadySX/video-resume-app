@@ -17,14 +17,15 @@ import ProfileScreen from '../screens/Profile';
 import SettingsScreen from '../screens/Settings';
 import ProfileEditScreen from '../screens/Profile/screens/ProfileEdit';
 import ResumeScreen from '../screens/Resume';
-import ResumeEditScreen from "../screens/Resume/screens/ResumeEdit";
-import ResumeTutorialScreen from "../screens/ResumeTutorial";
-import ResumeCreateScreen from "../screens/Resume/screens/ResumeCreate";
-import VideoScreen from "../screens/Video";
-import PremiumScreen from "../screens/Premium";
-import CameraScreen from "../screens/Camera";
-import ErrorPageScreen from "../screens/ErrorPage";
-import EditVideoScreen from "../screens/Resume/screens/EditVideo";
+import ResumeEditScreen from '../screens/Resume/screens/ResumeEdit';
+import ResumeTutorialScreen from '../screens/ResumeTutorial';
+import ResumeCreateScreen from '../screens/Resume/screens/ResumeCreate';
+import VideoScreen from '../screens/Video';
+import PremiumScreen from '../screens/Premium';
+import CameraScreen from '../screens/Camera';
+import ErrorPageScreen from '../screens/ErrorPage';
+import EditVideoScreen from '../screens/Resume/screens/EditVideo';
+import VacancyListScreen from '../screens/VacancyList';
 
 export const RouteComponents = [
   {
@@ -78,6 +79,14 @@ export const RouteComponents = [
   {
     name: Routes.Vacancy,
     component: VacancyScreen,
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
+  },
+  {
+    name: Routes.VacancyList,
+    component: VacancyListScreen,
     options: {
       headerShow: false,
       animationEnabled: false,

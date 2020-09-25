@@ -33,7 +33,8 @@ export default function VideoScreen(props: IVideoScreen) {
     setVideoList(false);
     videoPlayer.current.seek(0)
   }
-  const Vcd = 'https://srv-file8.gofile.io/downloadStore/srv-store1/Qr9BKF/headstrong-tears.mp4';
+  //const Vcd = 'https://srv-file9.gofile.io/downloadStore/srv-store4/kRBvzB/y2mate.com%20-%20COSTA%20RICA%20IN%204K%2060fps%20HDR%20(ULTRA%20HD)_1080pFHR.mp4';
+  const Vcd = 'https://srv-file6.gofile.io/downloadStore/srv-store1/mU05wZ/COSTA%20RICA%20IN%204K%2060fps%20HDR%20(ULTRA%20HD).mp4';
   return (
     <View style={s.backgroundVideo}>
       <View style={s.header}>

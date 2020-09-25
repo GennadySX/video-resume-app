@@ -1,4 +1,5 @@
 import React from 'react';
+// @ts-ignore
 import {connect} from 'react-redux';
 import {View, Image, TouchableOpacity} from 'react-native';
 import IntroBackground from '../../components/Background/introBackground';
@@ -6,13 +7,13 @@ import Swiper from 'react-native-swiper';
 import {Icons} from '../../helpers/Assets';
 import Slide1 from './components/slide1';
 import Slide2 from './components/slide2';
-import Slide3 from './components/slide3';
 import {tutorialScreenStyle as s} from './styles';
 import {Routes} from '../../routes/Routes';
 
 export interface IResumeTutorialScreen {}
 
 class ResumeTutorialScreen extends React.Component<any, any> {
+  public swiperRef: any;
   constructor(props: IResumeTutorialScreen) {
     super(props);
     this.state = {
@@ -43,6 +44,7 @@ class ResumeTutorialScreen extends React.Component<any, any> {
           loop={false}
           showsButtons={true}
           buttonWrapperStyle={s.btnWrapper}
+          onIndexChanged={(index: number) => this.setState({swipeIndex: index})}
           style={s.wrapper}
           index={swipeIndex}
           prevButton={<View />}

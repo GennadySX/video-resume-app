@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-import {Width} from "../../../helpers/Normalizer";
+import {Height, Width} from "../../../helpers/Normalizer";
 import {styles} from "../../../styles/style";
 
 export const cameraScreenStyle = StyleSheet.create({
@@ -72,4 +72,13 @@ export const cameraScreenStyle = StyleSheet.create({
     timerBtnTitle: {
         ...styles.fontMedium,
     },
+    timerTitle: {
+        ...styles.fontMedium,
+        position: 'absolute',
+        top: Height * 0.35,
+        alignSelf: 'center',
+        left: '50%',
+        fontSize: 75,
+        color: '#ae73ea'
+    }
 });

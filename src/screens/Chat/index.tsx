@@ -41,7 +41,7 @@ export default class ChatScreen extends React.Component<any, any> {
         onClick={(title: string) => this.setState({menu: title})}>
         <View style={{height: Height}}>
           <View style={s.block}>
-            <Index text={'Чат'} style={{left: 0, marginBottom: 20}} />
+            <Index text={'Чат'} style={{left: 0, marginBottom: 20}} left />
             <Search />
             <BlockTab
               titles={['Активные', 'Архивные']}

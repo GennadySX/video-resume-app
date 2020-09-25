@@ -54,7 +54,7 @@ export default function SwipeCard(props: ICard) {
   return (
     <Swipeable renderLeftActions={renderLeftActions}>
       <View style={[s.block, props.latest && {marginBottom: 180}]}>
-        <View style={s.blockChild}>
+        <View style={[s.blockChild, props.disLikeAble && {paddingBottom: 10}]}>
           <View style={s.header}>
             <Text style={[s.cardDate, s.font]}>Сегодня</Text>
             {!props.disLikeAble && (
@@ -71,7 +71,7 @@ export default function SwipeCard(props: ICard) {
               <TouchableOpacity
                 onPress={() => setActive(!active)}
                 activeOpacity={1}>
-                {React.createElement(IconsSvg.FlagRedIcon, {width: 17, height: 17})}
+                {React.createElement(IconsSvg.FlagRedIcon, { width: 15, height: 15})}
               </TouchableOpacity>
             )}
           </View>
