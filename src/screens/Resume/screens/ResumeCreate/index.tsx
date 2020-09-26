@@ -30,7 +30,7 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
     super(props);
     this.state = {
       about: null,
-      lastStep: true,
+      lastStep: false,
       bottomDrawer: false,
       isCamera: false,
       img: Assets.photo,
