@@ -7,18 +7,19 @@ export const slide3Style = StyleSheet.create({
     },
     title: {
         left: 0,
-        marginTop: 25,
+        marginTop: 5,
         position: 'relative',
-        top: 25
+        top: -30,
     },
     text: {
         fontSize: 14,
         fontFamily: 'Manrope-Medium',
         position: 'relative',
-        top: 15,
+        top: -30,
     },
     img: {
-        width: 300,
+        width: Width * 0.8,
+        height: Width * 0.7,
         justifyContent: 'center',
         alignSelf: 'center',
         resizeMode: 'contain',
@@ -26,7 +27,7 @@ export const slide3Style = StyleSheet.create({
     btnSkip: {
         alignSelf: 'flex-end',
         position: 'relative',
-        top: 10,
+        top: -45,
     },
     btnSkipText: {
         color: 'gray',

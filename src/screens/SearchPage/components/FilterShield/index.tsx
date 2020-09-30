@@ -19,6 +19,7 @@ import Button, {buttonType} from '../../../../components/ui/buttons';
 import CheckBoxUI from '../../../../components/ui/checkbox';
 import {Routes} from '../../../../routes/Routes';
 import {useNavigation} from '@react-navigation/native';
+import ScrollShadow from "../../../../components/ScrollShadow";
 
 export interface IFilterShield {
   onFilter: boolean;
@@ -57,7 +58,8 @@ export default function FilterShield({onFilter, onCloseSheet}: IFilterShield) {
         onClose={() => onCloseSheet(false)}>
         <View style={s.bFilterBlock}>
           <Title text={'Фильтры'} fontSize={18} bottom={15} />
-          <ScrollView
+          <ScrollShadow
+            whitely
             showsVerticalScrollIndicator={false}
             style={{
               marginBottom: 100,
@@ -71,11 +73,10 @@ export default function FilterShield({onFilter, onCloseSheet}: IFilterShield) {
               onChangeText={() => 'f'}
               placeholder={'Компания'}
             />
-            <InputUI
-              fullWidth
-              value={''}
-              onChangeText={() => 'f'}
-              placeholder={'Город'}
+            <SelectModal
+                placeholder={'Город'}
+                values={['Москва', 'Екатеринбург', 'Казань']}
+                onSelected={(item: any) => console.log('selected item', item)}
             />
             <InputUI
               fullWidth
@@ -123,11 +124,6 @@ export default function FilterShield({onFilter, onCloseSheet}: IFilterShield) {
               onSelected={(item: any) => console.log('selected item', item)}
             />
             <ToggleButton
-              title={'Без вакансий агенств'}
-              onClick={() => setToggle(!isToggle)}
-              value={isToggle}
-            />
-            <ToggleButton
               title={'Только с указанной зарплатой'}
               onClick={() => setToggle1(!isToggle1)}
               value={isToggle1}
@@ -138,10 +134,10 @@ export default function FilterShield({onFilter, onCloseSheet}: IFilterShield) {
               value={isToggle2}
               style={{marginBottom: 100}}
             />
-          </ScrollView>
+          </ScrollShadow>
           <Container
             shadow
-            style={{marginBottom: 30, position: 'absolute', bottom: 0}}>
+            style={{marginBottom: 65, position: 'absolute', bottom: 0}}>
             <Button
               title={'Сохранить изменения'}
               type={buttonType.purple}

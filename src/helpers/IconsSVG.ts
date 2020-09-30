@@ -55,7 +55,10 @@ import Background_Ellipse from '../assets/svg/background/ellipse3.svg';
 import Background_TutorialBottomRight from '../assets/svg/background/tutorial_bottom-right.svg';
 import Background_TutorialLeftTOP from '../assets/svg/background/tutorial_left-top.svg';
 import Background_RegisterBottom from '../assets/svg/background/register_bottom.svg';
+import Background_IntroBottom from '../assets/svg/background/intro_bottom.svg';
 import LogoMINI from '../assets/svg/logo.svg';
+import Premium from '../assets/svg/slide/premium.svg';
+import TopGradient from '../assets/svg/top_gradient.svg';
 
 export const IconsSvg = {
   AddResumeIcon,
@@ -116,4 +119,7 @@ export const IconsSvg = {
   Background_TutorialBottomRight,
   Background_TutorialLeftTOP,
   Background_RegisterBottom,
+  Background_IntroBottom,
+  Premium,
+  TopGradient,
 };

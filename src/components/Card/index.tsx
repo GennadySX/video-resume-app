@@ -51,7 +51,7 @@ export default function Card(props: ICard) {
         ]}>
         {props.new ? (
           <LinearGradient
-            colors={['#d3b1ff', 'rgba(233,200,255,0.83)']}
+            colors={['#dbc3f6', 'rgba(250,249,252,0.83)']}
             start={{x: 0, y: 1}}
             end={{x: 1, y: 0}}
             style={s.blockChild}>

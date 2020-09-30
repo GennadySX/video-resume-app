@@ -9,6 +9,7 @@ import Search from './components/Search';
 import ChatPanel from './components/ChatPanel';
 import {messageListJSON} from '../../json/messageList';
 import {Height} from '../../helpers/Normalizer';
+import ScrollShadow from "../../components/ScrollShadow";
 
 export interface IChatScreen {}
 
@@ -50,11 +51,11 @@ export default class ChatScreen extends React.Component<any, any> {
             />
 
             {!tabSection ? (
-              <ScrollView showsVerticalScrollIndicator={false}>
+              <ScrollShadow showsVerticalScrollIndicator={false}>
                 <Card new onClick={() => this.openMessagePanel()} />
                 <Card onClick={() => this.openMessagePanel()} />
                 <Card new onClick={() => this.openMessagePanel()} latest />
-              </ScrollView>
+              </ScrollShadow>
             ) : (
               <ScrollView showsVerticalScrollIndicator={false}>
                 <Card archive onClick={() => this.openMessagePanel()} />

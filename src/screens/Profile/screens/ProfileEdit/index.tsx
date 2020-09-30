@@ -23,6 +23,7 @@ import BottomDrawer from '../../../../components/BottomDrawer';
 import {styles} from '../../../../styles/style';
 import ImagePicker from 'react-native-image-picker';
 import Camera from '../../../../components/Camera';
+import ScrollShadow from "../../../../components/ScrollShadow";
 
 export interface IProfileEditScreen {}
 
@@ -59,7 +60,7 @@ export default function ProfileEditScreen(props: IProfileEditScreen) {
     <TabBar active={Routes.Profile}>
       <Container style={s.block}>
         <Title text={'Редактирование'} left style={s.title} />
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollShadow showsVerticalScrollIndicator={false}>
           <Container style={s.avatarContainer}>
             <TouchableOpacity
               style={s.avatarBtn}
@@ -97,6 +98,12 @@ export default function ProfileEditScreen(props: IProfileEditScreen) {
               fullWidth
               value={''}
               onChangeText={() => 'f'}
+              placeholder={'Город'}
+            />
+            <InputUI
+              fullWidth
+              value={''}
+              onChangeText={() => 'f'}
               placeholder={'Номер телефона'}
             />
 
@@ -113,7 +120,7 @@ export default function ProfileEditScreen(props: IProfileEditScreen) {
               textStyle={{color: '#808080'}}
             />
           </View>
-        </ScrollView>
+        </ScrollShadow>
         <BottomDrawer full height={240} startUp={bottomDrawer} onClose={setBottomDrawer}>
           <Container>
             <Title text={'Добавить фотографию'} left unBottom fontSize={18} />

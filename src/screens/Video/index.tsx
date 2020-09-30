@@ -18,6 +18,7 @@ import BottomDrawer from '../../components/BottomDrawer';
 import Container from '../../components/Container';
 import Title from '../../components/ui/Title';
 import {useNavigation} from '@react-navigation/native';
+import ScrollShadow from "../../components/ScrollShadow";
 
 export interface IVideoScreen {}
 
@@ -101,7 +102,7 @@ export default function VideoScreen(props: IVideoScreen) {
             fontSize={18}
             style={{top: 10, left: 10}}
           />
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollShadow showsVerticalScrollIndicator={false}>
             <View style={s.videoContainer}>
               <TouchableOpacity style={s.videoItem} onPress={onChoise}>
                 <Image source={Assets.cardVideoA} style={s.videoCardIcon} />
@@ -122,7 +123,7 @@ export default function VideoScreen(props: IVideoScreen) {
                 <Image source={Assets.cardVideoA} style={s.videoCardIcon} />
               </TouchableOpacity>
             </View>
-          </ScrollView>
+          </ScrollShadow>
         </Container>
       </BottomDrawer>
     </View>

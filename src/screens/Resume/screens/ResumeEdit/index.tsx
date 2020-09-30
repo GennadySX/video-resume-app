@@ -12,6 +12,7 @@ import InputUI from '../../../../components/ui/inputs/input';
 import Button, {buttonType} from '../../../../components/ui/buttons';
 import {Routes} from "../../../../routes/Routes";
 import {resumeEditScreenStyle as s} from "./styles";
+import ScrollShadow from "../../../../components/ScrollShadow";
 
 export interface IResumeEdit {}
 
@@ -34,7 +35,7 @@ export default class ResumeEditScreen extends React.Component<any, any> {
           </TouchableOpacity>
         </Container>
         <Container>
-          <ScrollView
+          <ScrollShadow
             showsVerticalScrollIndicator={false}
             style={s.scrollContainer}>
             <Title text={'Редактирование'} left />
@@ -139,7 +140,7 @@ export default class ResumeEditScreen extends React.Component<any, any> {
                 style={s.saveButton}
               />
             </View>
-          </ScrollView>
+          </ScrollShadow>
         </Container>
       </View>
     );

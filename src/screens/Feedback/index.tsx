@@ -7,6 +7,7 @@ import TabBar from '../../components/TabBar';
 import {TAB_MENU} from '../../constants/TabMenu';
 import MiniCard from './components/MiniCard';
 import {feedbackScreenStyle as s} from './styles';
+import ScrollShadow from "../../components/ScrollShadow";
 
 export interface IFeedback {}
 
@@ -34,7 +35,7 @@ export default class FeedbackScreen extends React.Component<any, any> {
           />
 
           {!tabSection ? (
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollShadow>
               <Card
                 flagged
                 feedback
@@ -54,9 +55,9 @@ export default class FeedbackScreen extends React.Component<any, any> {
                 onClick={() => this.props.navigation.navigate('Vacancy')}
                 latest
               />
-            </ScrollView>
+            </ScrollShadow>
           ) : (
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollShadow>
               <Card
                 feedback
                 disLikeAble
@@ -76,7 +77,7 @@ export default class FeedbackScreen extends React.Component<any, any> {
                 inviteTitle={'Резюме просмотрено'}
                 latest
               />
-            </ScrollView>
+            </ScrollShadow>
           )}
         </View>
       </TabBar>

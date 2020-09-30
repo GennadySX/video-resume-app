@@ -24,13 +24,13 @@ export const IntroBackgroundStyle = StyleSheet.create({
   },
   backImage: {
     position: 'absolute',
-    bottom: 0
+    bottom: 0,
   },
   tl: {
     left: 0,
-    top: -40,
-    height: Width * 0.4,
-    width: Width * 0.29,
+    top: -0,
+    height: Width * 0.45,
+    width: Width * 0.37,
     resizeMode: 'stretch',
   },
   tr: {

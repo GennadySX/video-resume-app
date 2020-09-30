@@ -10,6 +10,7 @@ import Container from '../../components/Container';
 import TabBar from "../../components/TabBar";
 import {Routes} from "../../routes/Routes";
 import FilterShield from "../SearchPage/components/FilterShield";
+import ScrollShadow from "../../components/ScrollShadow";
 
 export interface ISearchResult {}
 
@@ -37,9 +38,9 @@ export default class SearchResultScreen extends React.Component<any, any> {
             }
           />
         </Container>
-        <ScrollView showsVerticalScrollIndicator={false} style={s.mainBlock}>
+        <ScrollShadow showsVerticalScrollIndicator={false} style={s.mainBlock}>
           <Container>
-            <Index text={'Результаты поиска'} fontSize={25} left unBottom />
+            <Index text={'Результаты поиска'} fontSize={23} left unBottom />
             <Text style={[s.descText, s.font]}>1005 вакансий</Text>
 
             <Text style={[s.blockTitle, {paddingBottom: 0}]}>
@@ -105,7 +106,7 @@ export default class SearchResultScreen extends React.Component<any, any> {
             latest
             onClick={() => this.props.navigation.navigate('Vacancy')}
           />
-        </ScrollView>
+        </ScrollShadow>
         <FilterShield onFilter={onFilter} onCloseSheet={() => this.setState({onFilter: false})} />
       </TabBar>
     );

@@ -31,9 +31,11 @@ export default function BottomDrawer({
   const [heightLayout, setHeightLayout] = React.useState(height ?? 500);
 
   useEffect(() => {
-    if (startUp && RBSheetX) {
+
+    if (startUp === true && RBSheetX) {
       RBSheetX.open();
-    } else if (startUp === false && RBSheetX) {
+    }
+    if (startUp === false && RBSheetX) {
       RBSheetX.close();
     }
   });
@@ -61,7 +63,9 @@ export default function BottomDrawer({
         },
       }}>
       <View
-        onLayout={({nativeEvent}: nativeEventLayout) => !height && setHeightLayout(nativeEvent.layout.height + 40)}>
+        onLayout={({nativeEvent}: nativeEventLayout) =>
+          !height && setHeightLayout(nativeEvent.layout.height + 40)
+        }>
         {children}
       </View>
     </RBSheet>

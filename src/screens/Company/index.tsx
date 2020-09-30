@@ -14,6 +14,7 @@ import Popup from '../../components/Popup';
 import TabBar from '../../components/TabBar';
 // @ts-ignore
 import Share from 'react-native-share';
+import ScrollShadow from "../../components/ScrollShadow";
 
 export interface ICompany {}
 
@@ -83,7 +84,7 @@ export default class CompanyScreen extends React.Component<any, any> {
               </View>
             }
           />
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollShadow showsVerticalScrollIndicator={false}>
             <View style={s.mainBlock}>
               <Title left text={'Компания'} style={{marginBottom: 0}} />
               <View style={s.bodyGeo}>
@@ -142,7 +143,7 @@ export default class CompanyScreen extends React.Component<any, any> {
               latest
               onClick={() => this.props.navigation.navigate('Vacancy')}
             />
-          </ScrollView>
+          </ScrollShadow>
           <Popup visible={likedPopup} onClose={() => this.setLikedPopup()}>
             <Container style={s.container}>
               <Title

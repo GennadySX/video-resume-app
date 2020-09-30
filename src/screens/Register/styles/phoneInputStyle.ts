@@ -9,11 +9,10 @@ export const phoneInputStyle = StyleSheet.create({
   },
   logoSmall: {
     position: 'absolute',
-    top: '-2%',
+    top: '2.5%',
     marginBottom: 40,
-    width: Width * 0.27,
-    height: Width * 0.27,
-    resizeMode: 'contain',
+    width: 350,
+    resizeMode: 'contain'
   },
   bottomButton: {
     marginTop: 20,

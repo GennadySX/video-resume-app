@@ -18,6 +18,8 @@ import Button, {buttonType} from '../../components/ui/buttons';
 import {styles} from '../../styles/style';
 import Popup from '../../components/Popup';
 import {PREMIUM_ACCOUNT, PREMIUM_OFF} from "../../store/actions/profileAction";
+import {IconsSvg} from "../../helpers/IconsSVG";
+import ScrollShadow from "../../components/ScrollShadow";
 
 export interface IProfileScreen {}
 
@@ -58,7 +60,7 @@ class ProfileScreen extends React.Component<any, any> {
     const { premium } = this.props
     return (
       <TabBar background>
-        <Container paddingTop style={s.header}>
+        <Container paddingTop style={s.header} >
           <Title text={'Профиль'} left unBottom />
           <ButtonIcon
             icon={Icons.more}
@@ -66,27 +68,28 @@ class ProfileScreen extends React.Component<any, any> {
             focused={true}
           />
         </Container>
-        <ScrollView>
+        <ScrollShadow>
           <Container style={s.profileImageBlock}>
-            <TouchableOpacity
+            <View
               style={[
                 s.imgContainer,
                 {borderColor: premium ? 'rgba(125,90,160,0.62)' : '#bdbbbb'},
-              ]}
-              onPress={() => this.props.navigation.navigate(Routes.Premium)}>
+              ]}>
               <Image source={Assets.photo} style={s.img} />
+            </View>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate(Routes.Premium)} >
+              <LinearGradient
+                colors={
+                  premium
+                    ? ['rgba(142,62,193,0.74)', 'rgb(241,240,240)']
+                    : ['#b9b9bf', 'rgba(182,180,180,0.84)']
+                }
+                start={{x: 0, y: 1}}
+                end={{x: 1, y: 0}}
+                style={s.status}>
+                <Text style={s.statusTitle}>Premium</Text>
+              </LinearGradient>
             </TouchableOpacity>
-            <LinearGradient
-              colors={
-                premium
-                  ? ['rgba(142,62,193,0.74)', 'rgb(241,240,240)']
-                  : ['#b9b9bf', 'rgba(182,180,180,0.84)']
-              }
-              start={{x: 0, y: 1}}
-              end={{x: 1, y: 0}}
-              style={s.status}>
-              <Text style={s.statusTitle}>Premium</Text>
-            </LinearGradient>
             <Title text={'Основные данные'} left fontSize={18} unBottom />
             <Text style={s.username}>Иван Иванов</Text>
           </Container>
@@ -148,7 +151,7 @@ class ProfileScreen extends React.Component<any, any> {
               </TouchableOpacity>
             </View>
           </Container>
-        </ScrollView>
+        </ScrollShadow>
         <ProfileMoreMenu active={isMore} onClose={() => this.openMore()} />
         <Popup visible={premium && popup} onClose={() => this.setLikedPopup()}>
           <Container style={s.container}>

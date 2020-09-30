@@ -7,6 +7,7 @@ export const blockTabStyle = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 9999
   },
   tab: {
     padding: 10,

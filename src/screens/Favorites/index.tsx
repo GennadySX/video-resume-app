@@ -7,6 +7,7 @@ import TabBar from '../../components/TabBar';
 import MiniCard from './components/MiniCard';
 import {favoritesScreenStyle as s} from './styles';
 import {TAB_MENU} from '../../constants/TabMenu';
+import ScrollShadow from "../../components/ScrollShadow";
 
 export interface IFavorites {}
 
@@ -35,7 +36,7 @@ export default class FavoritesScreen extends React.Component<any, any> {
           />
 
           {!tabSection ? (
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollShadow showsVerticalScrollIndicator={false}>
               <Card  onClick={() => this.props.navigation.navigate('Vacancy')} liked />
               <Card onClick={() => this.props.navigation.navigate('Vacancy')} liked />
               <Card
@@ -43,15 +44,15 @@ export default class FavoritesScreen extends React.Component<any, any> {
                 liked
                 latest
               />
-            </ScrollView>
+            </ScrollShadow>
           ) : (
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollShadow showsVerticalScrollIndicator={false}>
               <MiniCard />
               <MiniCard />
               <MiniCard />
               <MiniCard />
               <MiniCard latest />
-            </ScrollView>
+            </ScrollShadow>
           )}
         </View>
       </TabBar>

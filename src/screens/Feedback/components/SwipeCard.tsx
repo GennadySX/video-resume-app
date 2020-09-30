@@ -82,12 +82,13 @@ export default function SwipeCard(props: ICard) {
               <Image source={Assets.cardAsset} style={s.bodyImage} />
             </TouchableOpacity>
 
-            <View style={s.bodyPart}>
-              <TouchableOpacity
+            <TouchableOpacity
                 onPress={() => props.onClick()}
-                activeOpacity={1}>
+                activeOpacity={1}
+                style={s.bodyPart}>
+              <View>
                 <Text style={[s.bodyCardTitle, s.font]}>Web-дизайнер</Text>
-              </TouchableOpacity>
+              </View>
               <Text style={[s.companyText, s.font]}>Компания</Text>
 
               {!props.feedback && (
@@ -100,7 +101,7 @@ export default function SwipeCard(props: ICard) {
                 <Image source={Icons.geo} style={s.geoIcon} />
                 <Text style={[s.font, s.geoText]}>Казань</Text>
               </View>
-            </View>
+            </TouchableOpacity>
           </View>
           <View style={s.footer}>
             <TouchableOpacity

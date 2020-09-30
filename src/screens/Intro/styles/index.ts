@@ -9,7 +9,7 @@ export const introScreenStyle = StyleSheet.create({
   },
   logo: {
     position: 'relative',
-    bottom: '0%',
+    top: '2%',
     marginBottom: 40,
     width: Height * 0.2,
     height: Height * 0.2,

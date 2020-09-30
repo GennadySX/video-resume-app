@@ -100,5 +100,6 @@ export const profileScreenStyle = StyleSheet.create({
     btnText: {
         ...styles.fontMedium,
         color: 'rgba(72,19,128,0.8)'
-    }
+    },
+
 });

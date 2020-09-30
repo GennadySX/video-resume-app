@@ -19,11 +19,11 @@ export default function MiniCard(props: IMiniCard) {
   return (
     <Container style={[s.block, props.latest && {marginBottom: 30}]}>
       <View style={s.blockChild}>
-        <View style={s.body}>
+        <TouchableOpacity style={s.body} onPress={() => navigation.navigate(Routes.Company)} activeOpacity={1}>
           <View style={s.bodyPart}>
-            <TouchableOpacity onPress={() => navigation.navigate(Routes.Company)} activeOpacity={1}>
+            <View>
               <Text style={[s.bodyCardTitle, s.font]}>Google</Text>
-            </TouchableOpacity>
+            </View>
             <Text style={[s.vacancyText, s.font]}>1200  вакансий</Text>
           </View>
           <TouchableOpacity onPress={() => {}} activeOpacity={1}>
@@ -35,7 +35,7 @@ export default function MiniCard(props: IMiniCard) {
               <Text style={[s.badgeTitle, s.font]}>1 вакансии</Text>
             </LinearGradient>
           </TouchableOpacity>
-        </View>
+        </TouchableOpacity>
         <View style={s.footer}>
           <View style={s.bodyGeo}>
             <Image source={Icons.geo} style={s.geoIcon} />

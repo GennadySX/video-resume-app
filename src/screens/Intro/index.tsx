@@ -21,7 +21,7 @@ class IntroScreen extends React.Component<any, any> {
   }
   render() {
     return (
-      <IntroBackground>
+      <IntroBackground introBottom>
         <View style={s.block}>
           <Image source={logo} style={s.logo} />
           <View style={s.blockBottom}>
@@ -39,7 +39,7 @@ class IntroScreen extends React.Component<any, any> {
               textStyle={{color: 'gray'}}
             />
           </View>
-          <BottomDrawer startUp={this.state.isPanel} full >
+          <BottomDrawer startUp={this.state.isPanel} full height={420} >
             <SocialAuth onClose={() => this.setState({isPanel: false})} />
           </BottomDrawer>
         </View>

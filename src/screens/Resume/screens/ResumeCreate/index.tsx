@@ -22,6 +22,7 @@ import BottomDrawer from '../../../../components/BottomDrawer';
 import Camera from '../../../../components/Camera';
 import ImagePicker from 'react-native-image-picker';
 import {resumeCreateScreenStyle as s } from "./styles";
+import ScrollShadow from "../../../../components/ScrollShadow";
 
 export interface IResumeCreateScreen {}
 
@@ -78,7 +79,7 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
           </TouchableOpacity>
         </Container>
         <Container>
-          <ScrollView
+          <ScrollShadow
             showsVerticalScrollIndicator={false}
             style={s.scrollContainer}>
             <Title text={'Создание'} left unBottom />
@@ -253,7 +254,7 @@ export default class ResumeCreateScreen extends React.Component<any, any> {
                 />
               </View>
             )}
-          </ScrollView>
+          </ScrollShadow>
           <BottomDrawer full height={240} startUp={bottomDrawer}>
             <Container>
               <Title text={'Добавить фотографию'} left unBottom fontSize={18} />

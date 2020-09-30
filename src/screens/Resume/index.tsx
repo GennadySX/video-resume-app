@@ -15,6 +15,7 @@ import TabBar from '../../components/TabBar';
 import {Assets, Icons} from '../../helpers/Assets';
 import {Routes} from '../../routes/Routes';
 import {resumeScreenStyle as s} from './styles';
+import ScrollShadow from "../../components/ScrollShadow";
 
 export interface IResumeScreen {}
 
@@ -49,7 +50,7 @@ class ResumeScreen extends React.Component<any, any> {
             }
           />
         </Container>
-        <ScrollView>
+        <ScrollShadow>
           <Container>
             <Title text={'Веб дизайнер'} unBottom left />
             <Title text={'от 30000 р.'} fontSize={20} left bottom={15} />
@@ -107,7 +108,7 @@ class ResumeScreen extends React.Component<any, any> {
               </TouchableOpacity>
             </View>
           </Container>
-        </ScrollView>
+        </ScrollShadow>
       </TabBar>
     );
   }

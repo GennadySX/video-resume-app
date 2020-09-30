@@ -1,4 +1,5 @@
 import {StyleSheet} from "react-native";
+import {Width} from "../../../helpers/Normalizer";
 
 export const slide1Style = StyleSheet.create({
     block: {
@@ -9,14 +10,17 @@ export const slide1Style = StyleSheet.create({
         fontFamily: 'Manrope-Medium',
     },
     img: {
-        width: 320,
+        width: Width * 0.8,
+        height: Width * 0.7,
         justifyContent: 'center',
         resizeMode: 'contain',
+        marginBottom: 50
     },
     btnSkip: {
         padding: 10,
         alignSelf: 'flex-end',
         position: 'relative',
+        top: 20
     },
     btnSkipText: {
         color: 'gray',

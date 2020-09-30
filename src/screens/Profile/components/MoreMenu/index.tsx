@@ -33,6 +33,7 @@ export default function ProfileMoreMenu(props: IMoreMenu) {
                             <Text>Настройки</Text>
                         </TouchableOpacity>
                 </View>
+                <Button title={'Отмена'} onPress={props.onClose} type={buttonType.transparent} textStyle={{color: 'gray'}} />
             </Container>
         </BottomDrawer>
     )

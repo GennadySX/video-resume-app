@@ -14,6 +14,7 @@ import {Routes} from '../../../../routes/Routes';
 import {editVideoScreenStyle as s} from './styles';
 import RadioUI from '../../../../components/ui/radio';
 import ToggleButton from '../../../../components/ui/buttons/ToggleButton';
+import ScrollShadow from "../../../../components/ScrollShadow";
 
 export interface IEditVideoScreen {}
 
@@ -23,7 +24,7 @@ export default function EditVideoScreen(props: IEditVideoScreen) {
   const navigation = useNavigation();
 
   return (
-    <ScrollView style={s.block} showsVerticalScrollIndicator={false}>
+    <ScrollShadow style={s.block} showsVerticalScrollIndicator={false}>
       <View style={s.topBlock}>
         <Image source={Assets.videEdit} style={s.topBlockBackground} />
         <TouchableOpacity
@@ -57,6 +58,6 @@ export default function EditVideoScreen(props: IEditVideoScreen) {
           />
         </Container>
       </View>
-    </ScrollView>
+    </ScrollShadow>
   );
 }

@@ -15,9 +15,10 @@ import {
 } from 'react-native';
 import Container from '../../../components/Container';
 import Header from '../../../components/Header';
-import {Icons} from '../../../helpers/Assets';
+import {AssetsBackground, Icons} from '../../../helpers/Assets';
 import {IconsSvg} from '../../../helpers/IconsSVG';
 import {Height, Width} from "../../../helpers/Normalizer";
+import ScrollShadow from "../../../components/ScrollShadow";
 
 interface ImessageList {
   me: boolean;
@@ -78,6 +79,7 @@ export default function ChatPanel(props: IChatPanel) {
           style={{marginBottom: 20}}
         />
       </Container>
+      <Image source={AssetsBackground.shadow} style={s.shadowContent} />
       <ScrollView
         ref={scrollViewRef}
         onContentSizeChange={() =>
@@ -168,5 +170,18 @@ const s = StyleSheet.create({
     height: Height - 100,
     width: Width,
     bottom: 0,
-  }
+  },
+  shadowContent: {
+    position: 'absolute',
+    opacity: 0.7,
+    zIndex: 99999,
+    height: 20,
+    width: Width + 50,
+    resizeMode: 'stretch',
+    top: 65,
+    left: -50,
+    transform: [
+      {rotate: '180deg'}
+    ]
+  },
 });

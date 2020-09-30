@@ -11,6 +11,7 @@ import TabBar from '../../components/TabBar';
 import {SearchLayout} from './components/SearchLayout';
 import {searchPageScreenStyle as s} from './styles';
 import FilterShield from './components/FilterShield';
+import ScrollShadow from "../../components/ScrollShadow";
 
 export interface ISearchPage {}
 
@@ -50,7 +51,7 @@ export default class SearchPageScreen extends React.Component<any, any> {
           />
           <BlockTab />
 
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollShadow>
             <Card onClick={() => this.props.navigation.navigate('Vacancy')} />
             <Card onClick={() => this.props.navigation.navigate('Vacancy')} />
             <Card
@@ -61,7 +62,7 @@ export default class SearchPageScreen extends React.Component<any, any> {
               onFilter={onFilter}
               onCloseSheet={() => this.setState({onFilter: false})}
             />
-          </ScrollView>
+          </ScrollShadow>
         </View>
       </TabBar>
     );

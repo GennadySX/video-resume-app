@@ -72,6 +72,7 @@ export enum Assets {
 export enum AssetsBackground {
   roundBackground = require('../assets/img/background/background-l-rounded.png'),
   shadow = require('../assets/img/background/shadow.png'),
+  topShadow = require('../assets/img/background/top_shadow.png'),
 }
 
 export enum AssetsPopup {

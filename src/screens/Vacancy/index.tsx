@@ -23,6 +23,7 @@ import {styles} from '../../styles/style';
 import TabBar from '../../components/TabBar';
 // @ts-ignore
 import Share from 'react-native-share';
+import ScrollShadow from "../../components/ScrollShadow";
 
 export interface IVacancy {}
 
@@ -112,7 +113,7 @@ export default class VacancyScreen extends React.Component<any, any> {
               </View>
             }
           />
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollShadow showsVerticalScrollIndicator={false}>
             <View style={s.mainBlock}>
               <Title text={'Web-дизайнер'} style={{marginBottom: 0}} left />
               <Text style={[s.companyText, s.font]}>Компания</Text>
@@ -184,7 +185,7 @@ export default class VacancyScreen extends React.Component<any, any> {
               latest
               onClick={() => this.props.navigation.navigate('Vacancy')}
             />
-          </ScrollView>
+          </ScrollShadow>
 
           <BottomDrawer
             full

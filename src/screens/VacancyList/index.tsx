@@ -8,6 +8,7 @@ import {vacancyListScreenStyle as s} from './styles';
 import Container from '../../components/Container';
 import TabBar from '../../components/TabBar';
 import FilterShield from './components/filter';
+import ScrollShadow from "../../components/ScrollShadow";
 
 export interface IVacancyList {}
 
@@ -49,7 +50,7 @@ export default class VacancyListScreen extends React.Component<any, any> {
           />
         </Container>
 
-        <ScrollView showsVerticalScrollIndicator={false} style={s.mainBlock}>
+        <ScrollShadow showsVerticalScrollIndicator={false} style={s.mainBlock}>
           <Container>
             <Index
               text={title || 'Результаты поиска'}
@@ -66,7 +67,7 @@ export default class VacancyListScreen extends React.Component<any, any> {
             latest
             onClick={() => this.props.navigation.navigate('Vacancy')}
           />
-        </ScrollView>
+        </ScrollShadow>
         <FilterShield
           onFilter={onFilter}
           onCloseSheet={() => this.setState({onFilter: false})}
