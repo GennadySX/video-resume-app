@@ -159,6 +159,7 @@ const s = StyleSheet.create({
   avatarContainer: {
     justifyContent: 'center',
     alignSelf: 'center',
+    marginTop: 15,
     marginBottom: 25,
   },
   avatarBtn: {},

@@ -25,7 +25,7 @@ export default function ScrollShadow(props: IScrollShadow) {
                 {props.children}
             </ScrollView>
         ) : (
-            <ScrollView showsVerticalScrollIndicator={ props.showsVerticalScrollIndicator || false} style={props.style} ref={props.ref}>
+            <ScrollView showsVerticalScrollIndicator={ props.showsVerticalScrollIndicator || false} style={[{marginBottom: 120},props.style]} ref={props.ref}>
                 {props.children}
             </ScrollView>
         )
