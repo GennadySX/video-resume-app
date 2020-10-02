@@ -50,7 +50,6 @@ export default class SearchPageScreen extends React.Component<any, any> {
             iconClick={() => this.filterFocus()}
           />
           <BlockTab />
-
           <ScrollShadow>
             <Card onClick={() => this.props.navigation.navigate('Vacancy')} />
             <Card onClick={() => this.props.navigation.navigate('Vacancy')} />
@@ -58,11 +57,11 @@ export default class SearchPageScreen extends React.Component<any, any> {
               onClick={() => this.props.navigation.navigate('Vacancy')}
               latest
             />
-            <FilterShield
+          </ScrollShadow>
+          <FilterShield
               onFilter={onFilter}
               onCloseSheet={() => this.setState({onFilter: false})}
-            />
-          </ScrollShadow>
+          />
         </View>
       </TabBar>
     );

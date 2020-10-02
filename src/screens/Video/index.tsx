@@ -34,9 +34,7 @@ export default function VideoScreen(props: IVideoScreen) {
     setVideoList(false);
     videoPlayer.current.seek(0);
   };
-  //const Vcd = 'https://srv-file9.gofile.io/downloadStore/srv-store4/kRBvzB/y2mate.com%20-%20COSTA%20RICA%20IN%204K%2060fps%20HDR%20(ULTRA%20HD)_1080pFHR.mp4';
-  const Vcd =
-    'https://www33.zippyshare.com/d/1aEN07JV/21/COSTA%20RICA%20IN%204K%2060fps%20HDR%20%28ULTRA%20HD%29.mp4';
+  const Vcd = 'https://srv-file21.gofile.io/downloadStore/srv-store3/Q0d2hl/COSTA%20RICA%20IN%204K%2060fps%20HDR%20(ULTRA%20HD).mp4';
   return (
     <View style={s.backgroundVideo}>
       <View style={s.header}>

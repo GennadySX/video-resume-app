@@ -1,13 +1,15 @@
 import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {
+  KeyboardAvoidingView,
+  Platform
+} from 'react-native';
 import Title from '../../../components/ui/Title';
 import Button, {buttonType} from '../../../components/ui/buttons';
+// @ts-ignore
 import TextInputMask from 'react-native-text-input-mask';
-import auth from '@react-native-firebase/auth';
 import {phoneInputStyle as s} from '../styles/phoneInputStyle';
-import {IconsSvg} from "../../../helpers/IconsSVG";
+import {IconsSvg} from '../../../helpers/IconsSVG';
 
-const logoSmall = require('../../../assets/img/logoSmall.png');
 
 export interface IPhoneInput {
   onSubmit: (phone: string) => void;
@@ -17,11 +19,16 @@ export default function PhoneInput({onSubmit}: IPhoneInput) {
   const [number, setNumber] = React.useState('');
 
   return (
-    <View style={s.block}>
-       {React.createElement(IconsSvg.LogoMINI, {...s.logoSmall})}
-      <Title left text={'Войти'} />
+    <KeyboardAvoidingView
+      enabled={true}
+      behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+      style={s.block}>
+      {React.createElement(IconsSvg.LogoMINI, {...s.logoSmall})}
+      <Title text={'Войти'} />
       <TextInputMask
-        onChangeText={(formatted: string, extracted: string) => setNumber(extracted)}
+        onChangeText={(formatted: string, extracted: string) =>
+          setNumber(extracted)
+        }
         placeholder={'Номер телефона'}
         style={s.textInput}
         value={number}
@@ -37,6 +44,6 @@ export default function PhoneInput({onSubmit}: IPhoneInput) {
         type={buttonType.purple}
         style={s.bottomButton}
       />
-    </View>
+    </KeyboardAvoidingView>
   );
 }

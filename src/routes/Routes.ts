@@ -2,6 +2,7 @@ export enum Routes {
   Intro = 'Intro',
   Auth = 'Auth',
   Register = 'Register',
+  RegisterEmail = 'RegisterEmail',
   Tutorial = 'Tutorial',
   SearchPage = 'SearchPage',
   SearchResult = 'SearchResult',
@@ -25,4 +26,4 @@ export enum Routes {
   EditVideoScreen = 'EditVideoScreen',
 }
 
-export const RouteActive: Routes = Routes.Intro;
+export const RouteActive: Routes = Routes.RegisterEmail;

@@ -1,21 +1,22 @@
 import React from 'react';
+// @ts-ignore
 import {connect} from 'react-redux';
-import IntroBackground from '../../components/Background/introBackground';
-import PhoneInput from './components/PhoneInput';
+import IntroBackground from '../../../../components/Background/introBackground';
+import EmailInput from './components/EmailInput';
 import ConfirmCode from './components/Confirm';
 import BaseInput from './components/BaseInput';
 import auth from '@react-native-firebase/auth';
-import {Storage} from '../../helpers/Storage';
-import {httpPOST} from '../../helpers/HTTP';
-import {API} from '../../constants/API';
+import {Storage} from '../../../../helpers/Storage';
+import {httpPOST} from '../../../../helpers/HTTP';
+import {API} from '../../../../constants/API';
 
 export interface IRegisterScreen {}
 
-class RegisterScreen extends React.Component<any, any> {
+class RegisterEmailScreen extends React.Component<any, any> {
   constructor(props: IRegisterScreen) {
     super(props);
     this.state = {
-      number: '+79991571858',
+      email: null,
       user: null,
       confirm: true,
       baseInput: false,
@@ -27,11 +28,11 @@ class RegisterScreen extends React.Component<any, any> {
     Storage.get('user', (user: any) => this.setState({user}));
   };
 
-  async signInWithPhoneNumber(phoneNumber: string) {
+  async signInWithPhoneNumber(email: string) {
     try {
-      const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
+      const confirmation = await auth().signInWithPhoneNumber(email);
       this.setState({
-        number: phoneNumber,
+        email: email,
         confirm: true,
         confirmation: confirmation,
       });
@@ -39,7 +40,7 @@ class RegisterScreen extends React.Component<any, any> {
       console.log('phone send error', e);
     }
     this.setState({
-      number: phoneNumber,
+      email: email,
       confirm: true,
     });
   }
@@ -47,7 +48,6 @@ class RegisterScreen extends React.Component<any, any> {
   async confirmCode(code: string) {
     try {
       await this.state.confirmation.confirm(code).then(() => this.sendIt());
-
     } catch (error) {
       console.log('Invalid code.', error);
     }
@@ -56,7 +56,7 @@ class RegisterScreen extends React.Component<any, any> {
   }
 
   sendIt() {
-    const {number, user} = this.state;
+    const {user} = this.state;
     const data = {
       email: user.email,
       last_name: user.familyName,
@@ -70,14 +70,15 @@ class RegisterScreen extends React.Component<any, any> {
   }
 
   render() {
-    const {confirm, number, baseInput} = this.state;
+    const {confirm,  email} = this.state;
     return (
       <IntroBackground hiddenDot hideBack={confirm}>
-        {!number && (
-          <PhoneInput
-            onSubmit={(number: string) => this.signInWithPhoneNumber(number)}
-          /> )}
-        { confirm && number ? (
+        {!email && (
+          <EmailInput
+            onSubmit={(email: string) => this.signInWithPhoneNumber(email)}
+          />
+        )}
+        {confirm && email ? (
           <ConfirmCode onSubmit={(code: string) => this.confirmCode(code)} />
         ) : (
           <BaseInput
@@ -89,4 +90,4 @@ class RegisterScreen extends React.Component<any, any> {
   }
 }
 
-export default connect()(RegisterScreen);
+export default connect()(RegisterEmailScreen);

@@ -21,6 +21,7 @@ export default function IntroBackground(props: IIntroBackgroundComponent) {
     <KeyboardAvoidingView
       style={s.block}
       enabled={false}
+
       behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
       <Image source={tl} style={[s.backImage, s.tl]} />
       {!props.hiddenDot && <Image source={tr} style={[s.backImage, s.tr]} />}

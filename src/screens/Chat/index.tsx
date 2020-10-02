@@ -49,7 +49,6 @@ export default class ChatScreen extends React.Component<any, any> {
               onClick={(val: boolean) => this.setState({tabSection: val})}
               selected={false}
             />
-
             {!tabSection ? (
               <ScrollShadow showsVerticalScrollIndicator={false}>
                 <Card new onClick={() => this.openMessagePanel()} />
@@ -57,11 +56,11 @@ export default class ChatScreen extends React.Component<any, any> {
                 <Card new onClick={() => this.openMessagePanel()} latest />
               </ScrollShadow>
             ) : (
-              <ScrollView showsVerticalScrollIndicator={false}>
+              <ScrollShadow showsVerticalScrollIndicator={false}>
                 <Card archive onClick={() => this.openMessagePanel()} />
                 <Card archive onClick={() => this.openMessagePanel()} />
                 <Card archive onClick={() => this.openMessagePanel()} latest />
-              </ScrollView>
+              </ScrollShadow>
             )}
           </View>
         </View>

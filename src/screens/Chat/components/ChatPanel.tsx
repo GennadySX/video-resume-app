@@ -88,7 +88,7 @@ export default function ChatPanel(props: IChatPanel) {
         style={s.messageListContainer}>
         <Container>
           {messageList.map((message: any, index: number) => (
-            <View style={[s.messageList, message.me && s.left]} key={index}>
+            <View style={[s.messageList, message.me && s.left, index === 0 && {marginTop: 20}]} key={index}>
               <Text style={s.message}>{message.text}</Text>
             </View>
           ))}

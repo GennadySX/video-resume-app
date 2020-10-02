@@ -1,7 +1,7 @@
 import React from 'react';
-import {Image, View, Text, KeyboardAvoidingView, Platform} from 'react-native';
-import Title from '../../../components/ui/Title';
-import Button, {buttonType} from '../../../components/ui/buttons';
+import { Text, KeyboardAvoidingView, Platform} from 'react-native';
+import Title from '../../../../../components/ui/Title';
+import Button, {buttonType} from '../../../../../components/ui/buttons';
 import {confirmStyle as s} from '../styles/confirmStyle';
 
 import {
@@ -10,10 +10,9 @@ import {
   useBlurOnFulfill,
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
-import {IconsSvg} from "../../../helpers/IconsSVG";
-import {Width} from "../../../helpers/Normalizer";
+import {IconsSvg} from '../../../../../helpers/IconsSVG';
+import {Width} from '../../../../../helpers/Normalizer';
 
-const logoSmall = require('../../../assets/img/logoSmall.png');
 const CELL_COUNT = 6;
 export interface IConfirmCode {
   onSubmit: (phone: string) => void;
@@ -33,9 +32,9 @@ export default function ConfirmCode({onSubmit}: IConfirmCode) {
       enabled={true}
       behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
       {React.createElement(IconsSvg.LogoMINI, {...s.logoSmall})}
-      <Title text={'Подтверждение номера'} left />
+      <Title text={'Подтверждение входа'} left />
       <Text style={s.textDescription}>
-        Введите код, который мы отправили Вам на номер + 7 (9**) *** - ** - 21
+          Введите код, который мы отправили Вам на почту sze*********.ru
       </Text>
       <CodeField
         ref={ref}

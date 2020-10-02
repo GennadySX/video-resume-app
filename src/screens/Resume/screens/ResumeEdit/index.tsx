@@ -13,6 +13,7 @@ import Button, {buttonType} from '../../../../components/ui/buttons';
 import {Routes} from "../../../../routes/Routes";
 import {resumeEditScreenStyle as s} from "./styles";
 import ScrollShadow from "../../../../components/ScrollShadow";
+import Camera from "../../../../components/Camera";
 
 export interface IResumeEdit {}
 
@@ -21,13 +22,22 @@ export default class ResumeEditScreen extends React.Component<any, any> {
     super(props);
     this.state = {
       about: null,
+      camera: false
     };
   }
 
+
+  cameraSet() {
+    this.setState({camera: !this.state.camera})
+  }
+
+
+
   render() {
-    const {about} = this.state;
+    const {about, camera} = this.state;
     const {navigation } = this.props
     return (
+        camera ? <Camera video onCaptue={(res:any) => console.log('result')} onClose={() => this.cameraSet()}/> :
       <View style={s.block}>
         <Container style={s.header}>
           <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
@@ -122,7 +132,7 @@ export default class ResumeEditScreen extends React.Component<any, any> {
                   </TouchableOpacity>
                 </View>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate(Routes.CameraScreen)}
+                  onPress={() => this.cameraSet()}
                   style={{alignItems: 'center'}}>
                   <Image
                     source={Icons.addVideo}

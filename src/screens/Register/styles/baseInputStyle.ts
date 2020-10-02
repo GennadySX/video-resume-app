@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Width} from '../../../helpers/Normalizer';
+import {Height, Width} from '../../../helpers/Normalizer';
 
 export const baseInputStyle = StyleSheet.create({
   block: {
@@ -9,9 +9,8 @@ export const baseInputStyle = StyleSheet.create({
     paddingTop: 50
   },
   logoSmall: {
-    position: 'absolute',
-    top: '2.5%',
-    marginBottom: 40,
+    position: 'relative',
+    bottom: Height * 0.195,
   },
   bottomButton: {
     marginTop: 20,

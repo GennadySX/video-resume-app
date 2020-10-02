@@ -94,7 +94,7 @@ class ResumeScreen extends React.Component<any, any> {
             <Text style={s.aboutText}>ivan@mail.ru</Text>
             <Text style={s.aboutText}>+79296059504</Text>
           </Container>
-          <Container style={s.container}>
+          <Container style={[s.container, {marginBottom: 50}]}>
             <Title text={'Видео'} left bottom={10} fontSize={18} />
             <View style={s.headerBlock}>
               <TouchableOpacity onPress={() => {}}>

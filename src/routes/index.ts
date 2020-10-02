@@ -26,6 +26,7 @@ import CameraScreen from '../screens/Camera';
 import ErrorPageScreen from '../screens/ErrorPage';
 import EditVideoScreen from '../screens/Resume/screens/EditVideo';
 import VacancyListScreen from '../screens/VacancyList';
+import RegisterEmailScreen from "../screens/Register/screens/RegisterEmail";
 
 export const RouteComponents = [
   {
@@ -215,6 +216,14 @@ export const RouteComponents = [
   {
     name: Routes.EditVideoScreen,
     component: EditVideoScreen,
+    options: {
+      headerShow: false,
+      animationEnabled: false,
+    },
+  },
+  {
+    name: Routes.RegisterEmail,
+    component: RegisterEmailScreen,
     options: {
       headerShow: false,
       animationEnabled: false,
