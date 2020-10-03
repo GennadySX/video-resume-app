@@ -26,4 +26,4 @@ export enum Routes {
   EditVideoScreen = 'EditVideoScreen',
 }
 
-export const RouteActive: Routes = Routes.RegisterEmail;
+export const RouteActive: Routes = Routes.Intro;

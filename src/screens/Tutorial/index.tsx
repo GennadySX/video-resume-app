@@ -32,7 +32,10 @@ class TutorialScreen extends React.Component<any, any> {
   }
 
   skip() {
-    this.props.navigation.navigate(Routes.SearchPage);
+    this.props.navigation.reset({
+      index: 0,
+      routes: [{name: Routes.SearchPage}],
+    });
   }
 
   render() {

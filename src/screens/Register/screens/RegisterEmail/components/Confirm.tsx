@@ -1,7 +1,6 @@
 import React from 'react';
-import { Text, KeyboardAvoidingView, Platform} from 'react-native';
+import { Text, KeyboardAvoidingView, Platform, TouchableOpacity, Image, View} from 'react-native';
 import Title from '../../../../../components/ui/Title';
-import Button, {buttonType} from '../../../../../components/ui/buttons';
 import {confirmStyle as s} from '../styles/confirmStyle';
 
 import {
@@ -11,14 +10,15 @@ import {
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
 import {IconsSvg} from '../../../../../helpers/IconsSVG';
-import {Width} from '../../../../../helpers/Normalizer';
+import {Icons} from "../../../../../helpers/Assets";
 
 const CELL_COUNT = 6;
 export interface IConfirmCode {
   onSubmit: (phone: string) => void;
+  goBack: () => void;
 }
 
-export default function ConfirmCode({onSubmit}: IConfirmCode) {
+export default function ConfirmCode({onSubmit, goBack}: IConfirmCode) {
   const [value, setValue] = React.useState('');
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
@@ -31,7 +31,14 @@ export default function ConfirmCode({onSubmit}: IConfirmCode) {
       style={s.block}
       enabled={true}
       behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
-      {React.createElement(IconsSvg.LogoMINI, {...s.logoSmall})}
+        <View style={s.header}>
+            <TouchableOpacity
+                style={{width: 70, height: 70, alignItems: 'center'}}
+                onPress={goBack}>
+                <Image source={Icons.back} style={s.backImg} />
+            </TouchableOpacity>
+            {React.createElement(IconsSvg.LogoMINI, {...s.logoSmall})}
+        </View>
       <Title text={'Подтверждение входа'} left />
       <Text style={s.textDescription}>
           Введите код, который мы отправили Вам на почту sze*********.ru
@@ -59,20 +66,7 @@ export default function ConfirmCode({onSubmit}: IConfirmCode) {
           </Text>
         )}
       />
-      <Button
-        title={'Отправить код повторно'}
-        onPress={() => onSubmit(value)}
-        type={buttonType.transparent}
-        textStyle={{color: 'gray', fontSize: 13 }}
-        style={{marginTop: 10, marginBottom: 0, paddingBottom: 0}}
-      />
-      <Button
-        title={'У меня нет доступа к номеру телефона'}
-        onPress={() => onSubmit(value)}
-        type={buttonType.transparent}
-        textStyle={{color: '#481380', fontSize: 13}}
-        style={{paddingBottom: 0, width: Width * 0.85}}
-      />
+
     </KeyboardAvoidingView>
   );
 }

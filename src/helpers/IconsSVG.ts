@@ -59,6 +59,7 @@ import Background_IntroBottom from '../assets/svg/background/intro_bottom.svg';
 import LogoMINI from '../assets/svg/logo.svg';
 import Premium from '../assets/svg/slide/premium.svg';
 import TopGradient from '../assets/svg/top_gradient.svg';
+import EmailSent from '../assets/svg/screen/email_sent.svg';
 
 export const IconsSvg = {
   AddResumeIcon,
@@ -122,4 +123,5 @@ export const IconsSvg = {
   Background_IntroBottom,
   Premium,
   TopGradient,
+  EmailSent,
 };

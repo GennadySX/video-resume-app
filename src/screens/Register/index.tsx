@@ -8,6 +8,7 @@ import auth from '@react-native-firebase/auth';
 import {Storage} from '../../helpers/Storage';
 import {httpPOST} from '../../helpers/HTTP';
 import {API} from '../../constants/API';
+import {Routes} from "../../routes/Routes";
 
 export interface IRegisterScreen {}
 
@@ -15,7 +16,7 @@ class RegisterScreen extends React.Component<any, any> {
   constructor(props: IRegisterScreen) {
     super(props);
     this.state = {
-      number: '+79991571858',
+      number: null,
       user: null,
       confirm: true,
       baseInput: false,
@@ -56,7 +57,7 @@ class RegisterScreen extends React.Component<any, any> {
   }
 
   sendIt() {
-    const {number, user} = this.state;
+    const { user} = this.state;
     const data = {
       email: user.email,
       last_name: user.familyName,
@@ -70,20 +71,19 @@ class RegisterScreen extends React.Component<any, any> {
   }
 
   render() {
-    const {confirm, number, baseInput} = this.state;
+    const {confirm, number} = this.state;
     return (
       <IntroBackground hiddenDot hideBack={confirm}>
-        {!number && (
+        {!number ? (
           <PhoneInput
             onSubmit={(number: string) => this.signInWithPhoneNumber(number)}
-          /> )}
-        { confirm && number ? (
-          <ConfirmCode onSubmit={(code: string) => this.confirmCode(code)} />
-        ) : (
-          <BaseInput
-            onSubmit={() => this.props.navigation.navigate('Tutorial')}
-          />
-        )}
+          /> ) : confirm && number ? (
+               <ConfirmCode onSubmit={(code: string) => this.confirmCode(code)} toEmailRegister={() => this.props.navigation.navigate(Routes.RegisterEmail)} />
+              ) : (
+                <BaseInput
+                  onSubmit={() => this.props.navigation.navigate(Routes.Tutorial)}
+                />
+              )}
       </IntroBackground>
     );
   }

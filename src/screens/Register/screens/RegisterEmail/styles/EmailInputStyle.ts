@@ -1,27 +1,33 @@
 import {StyleSheet} from 'react-native';
 import {Height, Width} from '../../../../../helpers/Normalizer';
 
-export const baseInputStyle = StyleSheet.create({
+export const emailInputStyle = StyleSheet.create({
   block: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 50
+    width: Width * 0.89,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: Width,
+    bottom: Height * 0.217,
+  },
+  backImg: {
+    width: 25,
+    height: 25,
+    resizeMode: 'contain',
+    top: 25,
   },
   logoSmall: {
+    left: Width * 0.17,
     position: 'relative',
-    bottom: Height * 0.195,
+    bottom: 30
   },
   bottomButton: {
+    top: 20,
     marginTop: 20,
-  },
-  textDescription: {
-    position: 'relative',
-    left: 0,
-    width: Width * 0.8,
-    marginBottom: 30,
-    color: '#272727',
-    opacity: 0.8,
   },
   textInput: {
     borderBottomColor: 'lightgray',

@@ -1,20 +1,20 @@
 import {StyleSheet} from 'react-native';
 import {Height, Width} from '../../../../../helpers/Normalizer';
 
-export const confirmStyle = StyleSheet.create({
+export const sentPass = StyleSheet.create({
   block: {
     flex: 1,
     height: Height,
     justifyContent: 'center',
     alignItems: 'center',
     width: Width * 0.89,
-    padding: 10,
+
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     width: Width,
-    bottom: Height * 0.194,
+    bottom: Height * 0.04,
   },
   backImg: {
     width: 25,
@@ -26,7 +26,6 @@ export const confirmStyle = StyleSheet.create({
     left: Width * 0.17,
     position: 'relative',
     bottom: 30
-
   },
   bottomButton: {
     marginTop: 20,
@@ -51,10 +50,7 @@ export const confirmStyle = StyleSheet.create({
   //
   root: {flex: 1, padding: 20},
   title: {textAlign: 'center', fontSize: 30},
-  codeFieldRoot: {
-    marginTop: 0,
-    marginBottom: 80
-  },
+  codeFieldRoot: {marginTop: 0},
   cell: {
     width: 40,
     height: 35,

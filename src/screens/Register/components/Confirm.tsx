@@ -17,9 +17,10 @@ const logoSmall = require('../../../assets/img/logoSmall.png');
 const CELL_COUNT = 6;
 export interface IConfirmCode {
   onSubmit: (phone: string) => void;
+  toEmailRegister: () => void;
 }
 
-export default function ConfirmCode({onSubmit}: IConfirmCode) {
+export default function ConfirmCode({onSubmit, toEmailRegister}: IConfirmCode) {
   const [value, setValue] = React.useState('');
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
@@ -69,7 +70,7 @@ export default function ConfirmCode({onSubmit}: IConfirmCode) {
       />
       <Button
         title={'У меня нет доступа к номеру телефона'}
-        onPress={() => onSubmit(value)}
+        onPress={toEmailRegister}
         type={buttonType.transparent}
         textStyle={{color: '#481380', fontSize: 13}}
         style={{paddingBottom: 0, width: Width * 0.85}}
