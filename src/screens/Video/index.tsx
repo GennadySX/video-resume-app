@@ -34,7 +34,7 @@ export default function VideoScreen(props: IVideoScreen) {
     setVideoList(false);
     videoPlayer.current.seek(0);
   };
-  const Vcd = 'https://srv-file21.gofile.io/downloadStore/srv-store3/Q0d2hl/COSTA%20RICA%20IN%204K%2060fps%20HDR%20(ULTRA%20HD).mp4';
+  const Vcd = 'http://filingx.gennadysx.com/uploads/347a318a787461dad9faad54f7d841a5.mp4';
   return (
     <View style={s.backgroundVideo}>
       <View style={s.header}>
